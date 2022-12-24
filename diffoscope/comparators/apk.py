@@ -35,9 +35,11 @@ from diffoscope.tools import (
 )
 from diffoscope.tempfiles import get_temporary_directory
 
-from .utils.archive import Archive
+from .text import TextFile
+from .utils.archive import Archive, ArchiveMember
 from .utils.command import Command
 from .utils.compare import compare_files
+from .utils.specialize import specialize_as
 from .zip import ZipContainer, zipinfo_differences, ZipFileBase
 from .missing_file import MissingFile
 
@@ -156,6 +158,14 @@ class ApkContainer(Archive):
 
     def get_member_names(self):
         return self._members
+
+    def get_member(self, member_name):
+        member = ArchiveMember(self, member_name)
+        if member_name.endswith(".smali") and member_name.startswith("smali"):
+            # smali{,_classesN}/**/*.smali files from apktool are always text,
+            # and using libmagic on thousands of these files takes minutes
+            return specialize_as(TextFile, member)
+        return member
 
     def extract(self, member_name, dest_dir):
         return os.path.join(self._tmpdir.name, member_name)

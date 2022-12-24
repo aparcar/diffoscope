@@ -28,9 +28,6 @@ logger = logging.getLogger(__name__)
 
 
 def try_recognize(file, cls, recognizes):
-    if isinstance(file, cls):
-        return True
-
     # Does this file class match?
     with profile("recognizes", file):
         # logger.debug("trying %s on %s", cls, file)
@@ -43,13 +40,22 @@ def try_recognize(file, cls, recognizes):
         format_class(cls, strip="diffoscope.comparators."),
         file.name,
     )
-    new_cls = type(cls.__name__, (cls, type(file)), {})
-    file.__class__ = new_cls
+    specialize_as(cls, file)
 
     return True
 
 
+def specialize_as(cls, file):
+    new_cls = type(cls.__name__, (cls, type(file)), {})
+    file.__class__ = new_cls
+    return file
+
+
 def specialize(file):
+    for cls in ComparatorManager().classes:
+        if isinstance(file, cls):
+            return file
+
     for cls in ComparatorManager().classes:
         if try_recognize(file, cls, cls.recognizes):
             return file
