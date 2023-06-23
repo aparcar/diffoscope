@@ -1,8 +1,16 @@
-diffoscope (243) UNRELEASED; urgency=medium
+diffoscope (243) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Drop Jenkins build reference in README.rst.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 05 May 2023 12:06:47 -0700
+  [ Ed Maste ]
+  * Update FreeBSD package names
+
+  [ Mattia Rizzolo ]
+  * Improve the documentation on to produce that binary blob that in the arsc
+    comparator.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 23 Jun 2023 17:11:25 +0100
 
 diffoscope (242) unstable; urgency=medium
 
