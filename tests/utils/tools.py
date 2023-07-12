@@ -157,7 +157,7 @@ def skip_unless_tool_is_between(
         (vcls(str(actual_ver)) < vcls(str(min_ver)))
         or (vcls(str(actual_ver)) > vcls(str(max_ver))),
         reason="{} min {} >= {} ({} detected)".format(
-            reason(tool), min_ver, max_ver, actual_ver
+            reason(tool, force_include=True), min_ver, max_ver, actual_ver
         ),
         tools=(tool,),
     )
@@ -215,11 +215,11 @@ def skip_unless_file_version_is_at_least(version):
     return skip_unless_tool_is_at_least("file", file_version, version)
 
 
-def reason(*tools):
+def reason(*tools, force_include=False):
     xs = []
 
     for x in tools:
-        if not tools_missing(x):
+        if not tools_missing(x) and not force_include:
             continue
         provider = get_package_provider(x)
         if provider is None:
@@ -227,5 +227,8 @@ def reason(*tools):
             continue
 
         xs.append("{} (try installing {})".format(x, provider))
+
+    if not xs:
+        return ""
 
     return "requires {}".format(" and ".join(xs))
