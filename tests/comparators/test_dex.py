@@ -94,7 +94,7 @@ def test_differences(differences):
     check_dex_differences(differences, expected_diff)
 
 
-@skip_unless_tools_exist("enjarify", "zipinfo", "javap", "dexdump")
+@skip_unless_tools_exist("enjarify", "zipinfo", "javap", "dexdump", "procyon")
 @skip_unless_tool_is_at_least("javap", javap_version, "14.0")
 @skip_unless_tool_is_at_least("enjarify", enjarify_version, "1.0.3")
 def test_javap_14_differences(differences):
