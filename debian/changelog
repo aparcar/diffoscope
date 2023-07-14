@@ -1,8 +1,16 @@
-diffoscope (244) UNRELEASED; urgency=medium
+diffoscope (244) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Address compatibility with python-libarchive-c version 5.
+    (Closes: reproducible-builds/diffoscope#344)
+  * Testsuite changes:
+    - Mark that test_dex::test_javap_14_differences requires procyon.
+    - Fix "test skipped" textual reason generation in the case of a required
+      version being outside of the required range.
+    - Temporarily mark some Android-related as XFAIL due to Debian bugs
+      #1040941 and #1040916.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 23 Jun 2023 17:12:40 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 14 Jul 2023 13:07:47 +0100
 
 diffoscope (243) unstable; urgency=medium
 
