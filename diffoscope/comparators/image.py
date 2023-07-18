@@ -47,7 +47,6 @@ class Img2Txt(Command):
 class Identify(Command):
     ATTRIBUTES = (
         "Image format: %m",
-        "File size: %b",
         "Height: %[height]",
         "Width: %[width]",
         "Orientation: %[orientation]",
