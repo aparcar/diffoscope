@@ -75,6 +75,7 @@ class ComparatorManager:
         ("ffprobe.FfprobeFile",),
         ("gnumeric.GnumericFile",),
         ("gzip.GzipFile",),
+        ("7z.SevenZFile",),
         ("haskell.HiFile",),
         ("icc.IccFile",),
         ("iso9660.Iso9660File",),
