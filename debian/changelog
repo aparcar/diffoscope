@@ -1,8 +1,12 @@
-diffoscope (245) UNRELEASED; urgency=medium
+diffoscope (245) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Don't include file size in image metadata; it is, at best, distracting and
+    it is already in the directory metadata.
+  * Move to using assert_diff in ICO and JPEG tests.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 14 Jul 2023 13:17:58 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 21 Jul 2023 08:57:41 +0100
 
 diffoscope (244) unstable; urgency=medium
 
