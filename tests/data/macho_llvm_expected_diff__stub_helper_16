@@ -1,0 +1,11 @@
+@@ -1,7 +1,7 @@
+ Contents of (__TEXT,__stub_helper) section
+-	leaq	0xa9(%rip), %r11
++	leaq	0x91(%rip), %r11
+ 	pushq	%r11
+-	jmpq	*0x99(%rip) ## literal pool symbol address: dyld_stub_binder
++	jmpq	*0x81(%rip) ## literal pool symbol address: dyld_stub_binder
+ 	nop
+ 	pushq	$0x0
+-	jmp	0x100000f58
++	jmp	0x100000f70

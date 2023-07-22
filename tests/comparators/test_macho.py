@@ -116,14 +116,25 @@ def test_llvm_diff(obj_differences):
     # Sections
     arch_differences = obj_differences[-1].details
     assert len(arch_differences) == 7
-    filenames = [
-        "macho_llvm_expected_diff__text",
-        "macho_llvm_expected_diff__stubs",
-        "macho_llvm_expected_diff__stub_helper",
-        "macho_llvm_expected_diff__cstring",
-        "macho_llvm_expected_diff__unwind_info",
-        "macho_llvm_expected_diff__eh_frame",
-        "macho_llvm_expected_diff__la_symbol_ptr",
-    ]
+    if llvm_version() < "16":
+        filenames = [
+            "macho_llvm_expected_diff__text",
+            "macho_llvm_expected_diff__stubs",
+            "macho_llvm_expected_diff__stub_helper",
+            "macho_llvm_expected_diff__cstring",
+            "macho_llvm_expected_diff__unwind_info",
+            "macho_llvm_expected_diff__eh_frame",
+            "macho_llvm_expected_diff__la_symbol_ptr",
+        ]
+    else:
+        filenames = [
+            "macho_llvm_expected_diff__text_16",
+            "macho_llvm_expected_diff__stubs_16",
+            "macho_llvm_expected_diff__stub_helper_16",
+            "macho_llvm_expected_diff__cstring",
+            "macho_llvm_expected_diff__unwind_info",
+            "macho_llvm_expected_diff__eh_frame",
+            "macho_llvm_expected_diff__la_symbol_ptr",
+        ]
     for idx, diff in enumerate(arch_differences):
         assert_diff(diff, filenames[idx])

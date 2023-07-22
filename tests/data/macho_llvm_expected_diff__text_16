@@ -1,0 +1,20 @@
+@@ -1,16 +1,15 @@
+ Contents of (__TEXT,__text) section
+ _main:
+ 	pushq	%rbp
+ 	movq	%rsp, %rbp
+ 	subq	$0x10, %rsp
+-	leaq	0x43(%rip), %rdi ## literal pool for: "%s %s\n"
+-	leaq	0x43(%rip), %rsi ## literal pool for: "17:31:50"
+-	leaq	0x45(%rip), %rdx ## literal pool for: "Wed Dec  2 17:31:49 2015"
++	leaq	0x3b(%rip), %rdi ## literal pool for: "%s\n"
++	leaq	0x38(%rip), %rsi ## literal pool for: "15:52:34"
+ 	movb	$0x0, %al
+-	callq	0x100000f52 ## symbol stub for: _printf
++	callq	0x100000f6a ## symbol stub for: _printf
+ 	xorl	%ecx, %ecx
+ 	movl	%eax, -0x4(%rbp)
+ 	movl	%ecx, %eax
+ 	addq	$0x10, %rsp
+ 	popq	%rbp
+ 	retq

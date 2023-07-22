@@ -39,6 +39,7 @@ from ..utils.tools import (
     skip_if_tool_version_is,
     skip_unless_tool_is_at_least,
 )
+from .test_rlib import llvm_version
 
 
 obj1 = load_fixture("test1.o")
@@ -194,7 +195,11 @@ def test_libmix_differences(libmix_differences):
     assert_diff(x86_o, "elfmix_disassembly_expected_diff")
     assert_diff(src_c, "elfmix_src_c_expected_diff")
 
-    mach_o_filenames = ["elfmix_mach_o_expected_diff__text"]
+    if llvm_version() < "16":
+        mach_o_filenames = ["elfmix_mach_o_expected_diff__text"]
+    else:
+        mach_o_filenames = ["elfmix_mach_o_expected_diff__text_16"]
+
     for idx, diff in enumerate(mach_o.details):
         assert_diff(diff, mach_o_filenames[idx])
 

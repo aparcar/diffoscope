@@ -1,0 +1,9 @@
+@@ -1,7 +1,7 @@
+ Contents of (__TEXT,__text) section
+ _return42_or_3:
+ 	pushq	%rbp
+ 	movq	%rsp, %rbp
+-	movl	$0x2a, %eax
++	movl	$0x2b, %eax
+ 	popq	%rbp
+ 	retq

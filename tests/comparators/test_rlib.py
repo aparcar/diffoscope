@@ -86,6 +86,9 @@ def rlib_dis_expected_diff():
     if actual_ver >= "15.0":
         diff_file = "rlib_llvm_dis_expected_diff_15"
 
+    if actual_ver >= "16.0":
+        diff_file = "rlib_llvm_dis_expected_diff_16"
+
     return get_data(diff_file)
 
 

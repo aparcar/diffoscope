@@ -1,0 +1,4 @@
+@@ -1,2 +1,2 @@
+ Contents of (__TEXT,__stubs) section
+-	jmpq	*0xb8(%rip) ## literal pool symbol address: _printf
++	jmpq	*0xa0(%rip) ## literal pool symbol address: _printf
