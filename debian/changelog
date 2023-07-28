@@ -1,8 +1,9 @@
-diffoscope (246) UNRELEASED; urgency=medium
+diffoscope (246) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Gianfranco Costamagna ]
+  * Add support for LLVM 16.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 21 Jul 2023 08:58:48 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 28 Jul 2023 08:57:05 +0100
 
 diffoscope (245) unstable; urgency=medium
 
