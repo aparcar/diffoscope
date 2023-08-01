@@ -21,7 +21,7 @@ import pytest
 
 from diffoscope.comparators.cpio import CpioFile
 
-from ..utils.data import load_fixture, get_data
+from ..utils.data import load_fixture, assert_diff
 from ..utils.tools import (
     skip_unless_tools_exist,
     skip_unless_file_version_is_at_least,
@@ -49,8 +49,7 @@ def differences(cpio1, cpio2):
 
 @skip_unless_tools_exist("cpio")
 def test_listing(differences):
-    expected_diff = get_data("cpio_listing_expected_diff")
-    assert differences[0].unified_diff == expected_diff
+    assert_diff(differences[0], "cpio_listing_expected_diff")
 
 
 @skip_unless_tools_exist("cpio")
@@ -58,8 +57,7 @@ def test_listing(differences):
 def test_symlink(differences):
     assert differences[2].source1 == "dir/link"
     assert differences[2].comment == "symlink"
-    expected_diff = get_data("symlink_expected_diff")
-    assert differences[2].unified_diff == expected_diff
+    assert_diff(differences[2], "symlink_expected_diff")
 
 
 @skip_unless_tools_exist("cpio")
@@ -67,8 +65,7 @@ def test_symlink(differences):
 def test_compressed_files(differences):
     assert differences[3].source1 == "dir/text"
     assert differences[3].source2 == "dir/text"
-    expected_diff = get_data("text_ascii_expected_diff")
-    assert differences[3].unified_diff == expected_diff
+    assert_diff(differences[3], "text_ascii_expected_diff")
 
 
 @skip_unless_tools_exist("cpio")
