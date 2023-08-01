@@ -23,7 +23,7 @@ from diffoscope.comparators.binary import FilesystemFile
 from diffoscope.comparators.uimage import UimageFile
 from diffoscope.comparators.utils.specialize import specialize
 
-from ..utils.data import load_fixture, get_data, assert_diff
+from ..utils.data import load_fixture, assert_diff
 from ..utils.tools import (
     skip_unless_tools_exist,
     file_version_is_lt,
@@ -112,8 +112,7 @@ def test_file_differences(differences):
 
 @skip_unless_tools_exist("cpio")
 def test_nested_listing(nested_differences):
-    expected_diff = get_data("cpio_listing_expected_diff")
-    assert nested_differences[0].unified_diff == expected_diff
+    assert_diff(nested_differences[0], "cpio_listing_expected_diff")
 
 
 @skip_unless_tools_exist("cpio")
@@ -121,8 +120,7 @@ def test_nested_listing(nested_differences):
 def test_nested_symlink(nested_differences):
     assert nested_differences[2].source1 == "dir/link"
     assert nested_differences[2].comment == "symlink"
-    expected_diff = get_data("symlink_expected_diff")
-    assert nested_differences[2].unified_diff == expected_diff
+    assert_diff(nested_differences[2], "symlink_expected_diff")
 
 
 @skip_unless_tools_exist("cpio")
@@ -130,8 +128,7 @@ def test_nested_symlink(nested_differences):
 def test_nested_compressed_files(nested_differences):
     assert nested_differences[3].source1 == "dir/text"
     assert nested_differences[3].source2 == "dir/text"
-    expected_diff = get_data("text_ascii_expected_diff")
-    assert nested_differences[3].unified_diff == expected_diff
+    assert_diff(nested_differences[3], "text_ascii_expected_diff")
 
 
 @skip_unless_tools_exist("cpio")
