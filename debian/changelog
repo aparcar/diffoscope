@@ -1,8 +1,13 @@
-diffoscope (247) UNRELEASED; urgency=medium
+diffoscope (247) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Fix compataibility with file(1) version 5.45.
+  * Use assert_diff in test_uimage and test_cpio.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 28 Jul 2023 08:58:07 +0100
+  [ Roland Clobus ]
+  * xb-tool has moved in Debian bookworm.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 04 Aug 2023 09:37:54 +0100
 
 diffoscope (246) unstable; urgency=medium
 
