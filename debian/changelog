@@ -1,8 +1,9 @@
-diffoscope (248) UNRELEASED; urgency=medium
+diffoscope (248) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Greg Chabala ]
+  * Merge Docker "RUN" commands into single layer.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 04 Aug 2023 09:43:19 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 25 Aug 2023 08:20:33 -0700
 
 diffoscope (247) unstable; urgency=medium
 
