@@ -214,7 +214,7 @@ class PartialString:
     IndexError: tuple index out of range
 
     If you don't have specific objects to index the holes with, and don't want
-    to create artifical indexes as in the above examples, here is a slightly
+    to create artificial indexes as in the above examples, here is a slightly
     simpler way of doing it:
 
     >>> tmpl = PartialString.numl("{0} {1} {2}", 2, object())
@@ -375,7 +375,7 @@ class PartialString:
     def numl(cls, fmtstr="", nargs=0, *holes):
         """Create a partial string with some implicit numeric holes.
 
-        Useful in conjuction with PartialString.pformatl.
+        Useful in conjunction with PartialString.pformatl.
 
         >>> PartialString.numl("{0}{1}{2}{3}", 3, "last object")
         PartialString('{0}{1}{2}{3}', 0, 1, 2, 'last object')
