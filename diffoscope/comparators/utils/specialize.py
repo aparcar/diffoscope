@@ -46,20 +46,34 @@ def try_recognize(file, cls, recognizes):
 
 
 def specialize_as(cls, file):
+    """
+    Sometimes it is near-certain that files within a Container with a given
+    extension (say) are of a known File type. We therefore do not need to run
+    libmagic on these files, especially in cases where the Container contains
+    hundreds of similar/smal files. (This can be seeen in the case of apktool
+    and .smali files). In this case, this method can be used to essentially
+    fix/force the type. Care should naturally be taken within Container
+    implementations; such as checking the file extension and so forth.
+    """
+
     new_cls = type(cls.__name__, (cls, type(file)), {})
     file.__class__ = new_cls
     return file
 
 
 def specialize(file):
+    # If we already know the class (ie. via `specialize_as`), then we do not
+    # need to run `File.recognizes` at all.
     for cls in ComparatorManager().classes:
         if isinstance(file, cls):
             return file
 
+    # Run the usual `File.recognizes` implementation.
     for cls in ComparatorManager().classes:
         if try_recognize(file, cls, cls.recognizes):
             return file
 
+    # If there are no matches, run the fallback implementation.
     for cls in ComparatorManager().classes:
         if try_recognize(file, cls, cls.fallback_recognizes):
             logger.debug(
