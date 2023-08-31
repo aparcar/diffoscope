@@ -49,11 +49,13 @@ def specialize_as(cls, file):
     """
     Sometimes it is near-certain that files within a Container with a given
     extension (say) are of a known File type. We therefore do not need to run
-    libmagic on these files, especially in cases where the Container contains
-    hundreds of similar/smal files. (This can be seeen in the case of apktool
-    and .smali files). In this case, this method can be used to essentially
-    fix/force the type. Care should naturally be taken within Container
-    implementations; such as checking the file extension and so forth.
+    libmagic on these files. Using this facily within a Container can be an
+    optimization, especially in cases where the Container contains hundreds of
+    similar/small files. (This can be seen in the case of apktool and .smali
+    files). In this case, this method can be used to essentially fix/force the
+    type.
+    Care should naturally be taken within Container implementations; such as
+    checking the file extension and so forth.
     """
 
     new_cls = type(cls.__name__, (cls, type(file)), {})
