@@ -1,8 +1,18 @@
-diffoscope (249) UNRELEASED; urgency=medium
+diffoscope (249) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ FC Stegerman ]
+  * Add specialize_as() method, and use it to speed up .smali comparison in
+    APKs. (Closes: reproducible-builds/diffoscope!108)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 25 Aug 2023 08:25:09 -0700
+  [ Chris Lamb ]
+  * Add documentation for the new specialize_as, and expand the documentation
+    of `specialize` too. (Re: reproducible-builds/diffoscope!108)
+  * Update copyright years.
+
+  [ Felix Yan ]
+  * Correct typos in diffoscope/presenters/utils.py.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 01 Sep 2023 10:41:51 -0700
 
 diffoscope (248) unstable; urgency=medium
 
