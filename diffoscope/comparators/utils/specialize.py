@@ -53,9 +53,8 @@ def specialize_as(cls, file):
     optimization, especially in cases where the Container contains hundreds of
     similar/small files. (This can be seen in the case of apktool and .smali
     files). In this case, this method can be used to essentially fix/force the
-    type.
-    Care should naturally be taken within Container implementations; such as
-    checking the file extension and so forth.
+    type. Care should naturally be taken within Container implementations;
+    such as checking the file extension and so forth.
     """
 
     new_cls = type(cls.__name__, (cls, type(file)), {})
