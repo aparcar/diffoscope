@@ -86,7 +86,7 @@ EXTERNAL_TOOLS = {
     "guestfs": {"debian": "python3-guestfs"},
     "gzip": {"debian": "gzip", "arch": "gzip", "guix": "gzip"},
     "h5dump": {"debian": "hdf5-tools", "arch": "hdf5", "guix": "hdf5"},
-    "html2text": {"debian": "html2text"},
+    "html2text": {"debian": "html2text", "guix": "html2text"},
     "identify": {
         "debian": "imagemagick",
         "arch": "imagemagick",
