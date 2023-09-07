@@ -27,7 +27,11 @@ from diffoscope.comparators.fit import FlattenedImageTreeFile
 from diffoscope.comparators.utils.specialize import specialize
 
 from ..utils.data import data, assert_diff, load_fixture
-from ..utils.tools import skip_unless_tools_exist, skip_unless_tool_is_at_least
+from ..utils.tools import (
+    skip_unless_tools_exist,
+    skip_unless_tool_is_at_least,
+    skip_unless_file_version_is_at_least,
+)
 from ..utils.nonexisting import assert_non_existing
 
 cpio1 = load_fixture("test1.cpio")
@@ -123,20 +127,22 @@ def test_nested_listing(nested_differences):
 
 @skip_unless_tools_exist("cpio")
 @skip_unless_tool_is_at_least("dumpimage", dumpimage_version, "2021.01")
+@skip_unless_file_version_is_at_least("5.45")
 @skip_unless_tools_exist("fdtdump")
 def test_nested_symlink(nested_differences):
-    assert nested_differences[1].source1 == "dir/link"
-    assert nested_differences[1].comment == "symlink"
-    assert_diff(nested_differences[1], "symlink_expected_diff")
+    assert nested_differences[2].source1 == "dir/link"
+    assert nested_differences[2].comment == "symlink"
+    assert_diff(nested_differences[2], "symlink_expected_diff")
 
 
 @skip_unless_tools_exist("cpio")
 @skip_unless_tool_is_at_least("dumpimage", dumpimage_version, "2021.01")
 @skip_unless_tools_exist("fdtdump")
+@skip_unless_file_version_is_at_least("5.45")
 def test_nested_compressed_files(nested_differences):
-    assert nested_differences[2].source1 == "dir/text"
-    assert nested_differences[2].source2 == "dir/text"
-    assert_diff(nested_differences[2], "text_ascii_expected_diff")
+    assert nested_differences[3].source1 == "dir/text"
+    assert nested_differences[3].source2 == "dir/text"
+    assert_diff(nested_differences[3], "text_ascii_expected_diff")
 
 
 @skip_unless_tools_exist("cpio")
