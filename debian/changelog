@@ -1,8 +1,12 @@
-diffoscope (250) UNRELEASED; urgency=medium
+diffoscope (250) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Fix compatibility with file 5.45. (Closes: reproducible-builds/diffoscope#351)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 01 Sep 2023 10:43:10 -0700
+  [ Vagrant Cascadian ]
+  * Add external tool references for GNU Guix (for html2text and ttx).
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 08 Sep 2023 12:10:31 -0700
 
 diffoscope (249) unstable; urgency=medium
 
