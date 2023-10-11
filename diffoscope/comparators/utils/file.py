@@ -87,6 +87,11 @@ class File(metaclass=abc.ABCMeta):
             )
 
         @classmethod
+        def guess_mime(cls, path):
+            # Not yet implemented
+            return ""
+
+        @classmethod
         def guess_encoding(cls, path):
             if not hasattr(cls, "_mimedb_encoding"):
                 cls._mimedb_encoding = magic.open(magic.MAGIC_MIME_ENCODING)
@@ -101,6 +106,12 @@ class File(metaclass=abc.ABCMeta):
             if not hasattr(cls, "_mimedb"):
                 cls._mimedb = magic.Magic()
             return maybe_decode(cls._mimedb.from_file(path))
+
+        @classmethod
+        def guess_mime(cls, path):
+            if not hasattr(cls, "_mimedb_mime"):
+                cls._mimedb_mime = magic.Magic(mime=True)
+            return maybe_decode(cls._mimedb_mime.from_file(path))
 
         @classmethod
         def guess_encoding(cls, path):
@@ -313,6 +324,12 @@ class File(metaclass=abc.ABCMeta):
         if not hasattr(self, "_magic_file_type"):
             self._magic_file_type = File.guess_file_type(self.path)
         return self._magic_file_type
+
+    @property
+    def magic_mime_type(self):
+        if not hasattr(self, "_magic_mime_type"):
+            self._magic_mime_type = File.guess_mime(self.path)
+        return self._magic_mime_type
 
     @property
     def file_header(self):

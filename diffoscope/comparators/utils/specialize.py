@@ -19,6 +19,7 @@
 import logging
 
 from diffoscope.profiling import profile
+from diffoscope.comparators.text import TextFile
 
 from ...utils import format_class
 
@@ -88,6 +89,14 @@ def specialize(file):
         file.name,
         file.magic_file_type,
     )
+
+    if file.magic_mime_type == "text/plain":
+        logger.debug(
+            "However, %s is probably text; using %s",
+            file.name,
+            format_class(TextFile, strip="diffoscope.comparators."),
+        )
+        return specialize_as(TextFile, file)
 
     return file
 

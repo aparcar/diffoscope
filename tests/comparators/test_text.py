@@ -20,6 +20,7 @@
 import codecs
 
 from diffoscope.comparators.binary import FilesystemFile
+from diffoscope.comparators.text import TextFile
 from diffoscope.comparators.utils.specialize import specialize
 
 from ..utils.data import data, load_fixture, get_data
@@ -95,3 +96,13 @@ def test_ordering_differences(text_order1, text_order2):
     difference = text_order1.compare(text_order2)
     assert difference.comments == ["Ordering differences only"]
     assert difference.unified_diff == get_data("text_order_expected_diff")
+
+
+def test_text_fallback(tmp_path):
+    """
+    If we don't know the exact type but it looks like text, compare it as text.
+    """
+    temp = tmp_path / "temp.msc"
+    temp.write_text("msc{a, b;}")
+    specialized = specialize(FilesystemFile(str(temp)))
+    assert isinstance(specialized, TextFile)
