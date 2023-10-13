@@ -1,3 +1,9 @@
+diffoscope (252) UNRELEASED; urgency=medium
+
+  * WIP (generated upon release).
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 13 Oct 2023 09:07:59 +0100
+
 diffoscope (251) unstable; urgency=medium
 
   * If the equivalent of `file -i` returns text/plain, fallback to comparing
