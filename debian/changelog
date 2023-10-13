@@ -1,8 +1,11 @@
-diffoscope (251) UNRELEASED; urgency=medium
+diffoscope (251) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  * If the equivalent of `file -i` returns text/plain, fallback to comparing
+    this file as a text file. This especially helps when file(1) miscategorises
+    text files as some esoteric type. (Closes: Debian:#1053668)
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 08 Sep 2023 12:12:06 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 13 Oct 2023 08:59:12 +0100
 
 diffoscope (250) unstable; urgency=medium
 
