@@ -773,6 +773,9 @@ def main(args=None):
             raise
         logger.error("No space left on device. Diffoscope exiting.")
         sys.exit(2)
+    except MemoryError:
+        logger.error("Out of memory. Diffoscope exiting.")
+        sys.exit(2)
     except KeyboardInterrupt:
         logger.error("Keyboard Interrupt")
         sys.exit(2)
