@@ -1,8 +1,11 @@
-diffoscope (252) UNRELEASED; urgency=medium
+diffoscope (252) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  * As UI/UX improvement, try and avoid printing an extended traceback if
+    diffoscope runs out of memory. This may not always be possible to detect.
+  * Mark diffoscope as stable in setup.py (for PyPI.org). Whatever diffoscope
+    is, at least, not "alpha" anymore.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 13 Oct 2023 09:07:59 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 17 Nov 2023 08:18:10 +0000
 
 diffoscope (251) unstable; urgency=medium
 
