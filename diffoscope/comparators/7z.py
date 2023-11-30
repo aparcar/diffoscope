@@ -21,6 +21,7 @@ import re
 import logging
 import subprocess
 
+from diffoscope.exc import RequiredToolNotFound
 from diffoscope.tools import tool_required
 from diffoscope.tempfiles import get_temporary_directory
 from diffoscope.difference import Difference
