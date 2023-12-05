@@ -265,7 +265,7 @@ class ObjdumpDisassembleSection(ObjdumpSection):
 
     def filter(self, line):
         # Apply this filter first as super() removes offsets
-        line = ObjdumpDisassembleSection.RE_SYMBOL_COMMENT.sub(r"\1", line)
+        line = ObjdumpDisassembleSection.RE_SYMBOL_COMMENT.sub(rb"\1", line)
         return super().filter(line)
 
 
