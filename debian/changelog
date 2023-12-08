@@ -1,8 +1,13 @@
-diffoscope (253) UNRELEASED; urgency=medium
+diffoscope (253) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  * Improve DOS/MBR extraction by adding support for 7z.
+    (Closes: reproducible-builds/diffoscope#333)
+  * Process objdump symbol comment filter inputs as the Python "bytes" type
+    (and not str). (Closes: reproducible-builds/diffoscope#358)
+  * Add a missing RequiredToolNotFound import.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 17 Nov 2023 08:19:37 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 08 Dec 2023 12:25:12 +0000
 
 diffoscope (252) unstable; urgency=medium
 
