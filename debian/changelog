@@ -1,3 +1,9 @@
+diffoscope (254) UNRELEASED; urgency=medium
+
+  * WIP (generated upon release).
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 08 Dec 2023 12:39:27 +0000
+
 diffoscope (253) unstable; urgency=medium
 
   * Improve DOS/MBR extraction by adding support for 7z.
