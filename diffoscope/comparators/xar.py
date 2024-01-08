@@ -58,7 +58,9 @@ class XarContainer(Archive):
         # Write data from the heap into the temporary directory.
         # We automatically handle gzipped data thanks to the header.
         dest_path = os.path.join(dest_dir, file_name)
-        with open(dest_path, mode="wb") as fw, open(self._source.path, mode="rb") as fr:
+        with open(dest_path, mode="wb") as fw, open(
+            self._source.path, mode="rb"
+        ) as fr:
             fr.seek(self._heap_offset + data_offset, 0)
             fw.write(fr.read(data_length))
 
@@ -69,7 +71,10 @@ class XarContainer(Archive):
             with open(self._source.path, mode="rb") as f:
                 # Skip the magic and format, we're looking for
                 # header and TOC compressed lengths.
-                header_length, toc_compressed_length, = struct.unpack(">xxxxHxxQ", f.read(16))
+                (
+                    header_length,
+                    toc_compressed_length,
+                ) = struct.unpack(">xxxxHxxQ", f.read(16))
 
                 # Read, decompress, and parse the TOC as XML. Save heap offset for later.
                 f.seek(header_length, 0)
@@ -80,11 +85,15 @@ class XarContainer(Archive):
 
         return self._toc_xml
 
+
 class XarFile(File):
     DESCRIPTION = "eXtensible ARchive files"
     CONTAINER_CLASSES = [XarContainer]
     FILE_TYPE_RE = re.compile(r"\bpkg\b")
-    FALLBACK_FILE_EXTENSION_SUFFIX = {".xar", ".pkg"}  # NOTE: Facebook's Executable Archive format also uses '.xar'.
+    FALLBACK_FILE_EXTENSION_SUFFIX = {
+        ".xar",
+        ".pkg",
+    }  # NOTE: Facebook's Executable Archive format also uses '.xar'.
     FALLBACK_FILE_TYPE_HEADER_PREFIX = b"xar!"
 
     def compare_details(self, other, source=None):
@@ -119,7 +128,7 @@ def describe_xar(path):
             format_version,
             toc_compressed_length,
             toc_uncompressed_length,
-            checksum_alg
+            checksum_alg,
         ) = struct.unpack(">HHQQI", f.read(24))
 
         known_checksum_algs = {
@@ -127,7 +136,7 @@ def describe_xar(path):
             1: "SHA1",
             2: "MD5",
             3: "SHA-256",
-            4: "SHA-512"
+            4: "SHA-512",
         }
 
         header_lines = [
@@ -135,7 +144,9 @@ def describe_xar(path):
             "format version:          {}".format(format_version),
             "TOC compressed length:   {}".format(toc_compressed_length),
             "TOC uncompressed length: {}".format(toc_uncompressed_length),
-            "checksum:                {} ({})".format(checksum_alg, known_checksum_algs.get(checksum_alg, "???")),
+            "checksum:                {} ({})".format(
+                checksum_alg, known_checksum_algs.get(checksum_alg, "???")
+            ),
         ]
 
         # Note that this 'header length' includes the 4 bytes of magic, hence 28.
@@ -152,10 +163,14 @@ def describe_xar(path):
         # "invisible" differences in the heap, for example if data is inserted
         # but isn't referenced in the TOC. This shouldn't happen in a normal XAR file.
         heap_bytes = f.read()
-        header_lines.extend([
-            "heap length:             {}".format(len(heap_bytes)),
-            "heap checksum:           {}".format(hashlib.sha256(heap_bytes).hexdigest()),
-        ])
+        header_lines.extend(
+            [
+                "heap length:             {}".format(len(heap_bytes)),
+                "heap checksum:           {}".format(
+                    hashlib.sha256(heap_bytes).hexdigest()
+                ),
+            ]
+        )
 
         header_as_text = "\n".join(header_lines)
         return header_as_text, toc_as_text
