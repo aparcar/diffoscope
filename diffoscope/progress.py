@@ -207,11 +207,12 @@ class ProgressBar:
     def __init__(self):
         try:
             from progressbar.widgets import WidgetBase
-            self.compatibility_mode = False
+            compatibility_mode = False
         except ImportError:
             # Fallback to the older Debian version
             from progressbar import Widget as WidgetBase
-            self.compatibility_mode = True
+            compatibility_mode = True
+        self.compatibility_mode = compatibility_mode
 
         self.msg = ""
 
@@ -252,7 +253,7 @@ class ProgressBar:
                     self.fd.flush()
 
             def finish(self):
-                if self.compatibility_mode:
+                if compatibility_mode:
                     # setting self.finished = True makes super().finish() a noop
                     self.finished = True
                     self.update(self.maxval)
@@ -275,7 +276,7 @@ class ProgressBar:
                 " ",
             )
         )
-        if self.compatibility_mode:
+        if compatibility_mode:
             self.bar.start()
 
     def notify(self, current, total, msg):
