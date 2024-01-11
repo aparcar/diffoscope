@@ -207,10 +207,12 @@ class ProgressBar:
     def __init__(self):
         try:
             from progressbar.widgets import WidgetBase
+
             compatibility_mode = False
         except ImportError:
             # Fallback to the older Debian version
             from progressbar import Widget as WidgetBase
+
             compatibility_mode = True
         self.compatibility_mode = compatibility_mode
 
@@ -245,7 +247,6 @@ class ProgressBar:
             def _need_update(self):
                 """Compatibility method for progressbar 2.5"""
                 return self._needs_update()
-
 
             def erase_line(self):
                 if self.erase_to_eol:
