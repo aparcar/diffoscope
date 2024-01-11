@@ -214,7 +214,7 @@ class ProgressBar:
         self.msg = ""
 
         class Message(WidgetBase):
-            def update(self, pbar, _observer=self):
+            def __call__(self, progress, data, _observer=self):
                 msg = _observer.msg
                 width = 25
 
@@ -232,7 +232,7 @@ class ProgressBar:
                 # Terminal handling after parent init since that sets self.fd
                 self.erase_to_eol = line_eraser(self.fd)
 
-            def _need_update(self):
+            def _needs_update(self):
                 return True
 
             def erase_line(self):
@@ -241,8 +241,7 @@ class ProgressBar:
                     self.fd.flush()
 
             def finish(self):
-                self.finished = True
-                self.update(self.maxval)
+                super().finish()
                 # Clear the progress bar after completion
                 self.erase_line()
                 if self.signal_set:
@@ -261,14 +260,12 @@ class ProgressBar:
                 " ",
             )
         )
-        self.bar.start()
 
     def notify(self, current, total, msg):
         self.msg = msg
 
-        self.bar.maxval = total
-        self.bar.value = current
-        self.bar.update()
+        self.bar.max_value = total
+        self.bar.update(current)
 
     def finish(self):
         self.bar.finish()
