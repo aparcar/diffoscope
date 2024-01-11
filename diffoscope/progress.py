@@ -207,9 +207,11 @@ class ProgressBar:
     def __init__(self):
         try:
             from progressbar.widgets import WidgetBase
+            self.compatibility_mode = False
         except ImportError:
             # Fallback to the older Debian version
             from progressbar import Widget as WidgetBase
+            self.compatibility_mode = True
 
         self.msg = ""
 
@@ -224,6 +226,10 @@ class ProgressBar:
                 # Print the last `width` characters with an ellipsis.
                 return "…{}".format(msg[-width + 1 :])
 
+            def update(self, pbar, _observer=self):
+                """Compatibility method for progressbar 2.5"""
+                return self(pbar, None, _observer)
+
         class OurProgressBar(progressbar.ProgressBar):
             def __init__(self, *args, **kwargs):
                 # Remove after https://github.com/niltonvolpato/python-progressbar/pull/57 is fixed.
@@ -235,12 +241,21 @@ class ProgressBar:
             def _needs_update(self):
                 return True
 
+            def _need_update(self):
+                """Compatibility method for progressbar 2.5"""
+                return self._needs_update()
+
+
             def erase_line(self):
                 if self.erase_to_eol:
                     self.fd.buffer.write(self.erase_to_eol)
                     self.fd.flush()
 
             def finish(self):
+                if self.compatibility_mode:
+                    # setting self.finished = True makes super().finish() a noop
+                    self.finished = True
+                    self.update(self.maxval)
                 super().finish()
                 # Clear the progress bar after completion
                 self.erase_line()
@@ -260,9 +275,17 @@ class ProgressBar:
                 " ",
             )
         )
+        if self.compatibility_mode:
+            self.bar.start()
 
     def notify(self, current, total, msg):
         self.msg = msg
+
+        if self.compatibility_mode:
+            self.bar.maxval = total
+            self.bar.value = current
+            self.bar.update()
+            return
 
         self.bar.max_value = total
         self.bar.update(current)
