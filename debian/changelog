@@ -1,8 +1,15 @@
-diffoscope (254) UNRELEASED; urgency=medium
+diffoscope (254) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Reflow some code according to black.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 08 Dec 2023 12:39:27 +0000
+  [ Seth Michael Larson ]
+  * Add support for comparing the 'eXtensible ARchive' (.XAR/.PKG) file format.
+
+  [ Vagrant Cascadian ]
+  * Add external tool on GNU Guix for 7z.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 19 Jan 2024 09:32:28 -0800
 
 diffoscope (253) unstable; urgency=medium
 
