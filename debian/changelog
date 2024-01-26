@@ -1,8 +1,12 @@
-diffoscope (255) UNRELEASED; urgency=medium
+diffoscope (255) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Vekhir ]
+  * Add/fix compatibility for Python progressbar 2.5 & 3.0 etc.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 19 Jan 2024 09:34:48 -0800
+  [ Chris Lamb ]
+  * Update copyright years.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 26 Jan 2024 08:44:05 -0800
 
 diffoscope (254) unstable; urgency=medium
 
