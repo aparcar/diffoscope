@@ -87,7 +87,7 @@ def test_mozzip_identification(mozzip1):
 
 @skipif(
     sys.version_info >= (3, 11, 8),
-    reason="Test fails under 3.11.8+; possible regression"
+    reason="Test fails under 3.11.8+; possible regression",
 )
 def test_mozzip_no_differences(mozzip1):
     difference = mozzip1.compare(mozzip1)
@@ -102,7 +102,7 @@ def mozzip_differences(mozzip1, mozzip2):
 @skip_unless_tools_exist("zipinfo")
 @skipif(
     sys.version_info >= (3, 11, 8),
-    reason="Test fails under 3.11.8+; possible regression"
+    reason="Test fails under 3.11.8+; possible regression",
 )
 def test_mozzip_metadata(mozzip_differences, mozzip1, mozzip2):
     assert_diff(mozzip_differences[0], "mozzip_zipinfo_expected_diff")
@@ -111,7 +111,7 @@ def test_mozzip_metadata(mozzip_differences, mozzip1, mozzip2):
 @skip_unless_tools_exist("zipinfo")
 @skipif(
     sys.version_info >= (3, 11, 8),
-    reason="Test fails under 3.11.8+; possible regression"
+    reason="Test fails under 3.11.8+; possible regression",
 )
 def test_mozzip_compressed_files(mozzip_differences):
     assert mozzip_differences[-1].source1 == "dir/text"
@@ -122,7 +122,7 @@ def test_mozzip_compressed_files(mozzip_differences):
 @skip_unless_tools_exist("zipinfo")
 @skipif(
     sys.version_info >= (3, 11, 8),
-    reason="Test fails under 3.11.8+; possible regression"
+    reason="Test fails under 3.11.8+; possible regression",
 )
 def test_mozzip_compare_non_existing(monkeypatch, mozzip1):
     assert_non_existing(monkeypatch, mozzip1)
