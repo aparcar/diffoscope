@@ -80,8 +80,9 @@ def test_pgp_signature_identification(signature1, signature2):
 def test_pgp_signature(signature1, signature2):
     difference = signature1.compare(signature2)
     assert_diff(difference, "pgp_signature_expected_diff")
+    assert len(difference.details) == 2
     assert difference.details[0].source1 == "pgpdump"
-    assert len(difference.details) == 1
+    assert difference.details[1].source1 == "gpg --list-packets"
 
 
 @skip_unless_tools_exist("pgpdump")

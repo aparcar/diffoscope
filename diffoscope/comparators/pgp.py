@@ -32,6 +32,8 @@ from .utils.command import Command, our_check_output
 
 logger = logging.getLogger(__name__)
 
+re_name = re.compile(r", created \d+, name=\"(?P<name>[^\"]+)\",")
+
 
 class Pgpdump(Command):
     @tool_required("pgpdump")
@@ -46,21 +48,31 @@ class Pgpdump(Command):
         )
 
 
+class GpgListPackets(Command):
+    @tool_required("gpg")
+    def cmdline(self):
+        return (
+            "gpg",
+            "--no-keyring",
+            "--list-packets",
+            self.path,
+        )
+
+
 class PGPContainer(Archive):
     @tool_required("gpg")
     def open_archive(self):
-        # Extract to a fresh temporary directory so that we can use the
-        # embedded filename.
-
+        # Extract to a fresh temporary directory.
         self._temp_dir = get_temporary_directory(suffix="pgp")
 
         try:
             our_check_output(
                 (
                     "gpg",
-                    "--use-embedded-filename",
                     "--decrypt",
                     "--no-keyring",
+                    "--output",
+                    os.path.join(self._temp_dir.name, "contents"),
                     os.path.abspath(self.source.path),
                 ),
                 cwd=self._temp_dir.name,
@@ -75,7 +87,7 @@ class PGPContainer(Archive):
         self._temp_dir.cleanup()
 
     def get_member_names(self):
-        # Will only return one filename, taken from the signature file itself.
+        # Will only ever return one filename
         return os.listdir(self._temp_dir.name)
 
     def extract(self, member_name, dest_dir):
@@ -132,6 +144,18 @@ class PgpSignature(TextFile):
             [
                 Difference.from_operation(
                     Pgpdump, self.path, other.path, source="pgpdump"
+                )
+            ]
+        )
+
+        # ... as well as gpg --list-packets
+        difference.add_details(
+            [
+                Difference.from_operation(
+                    GpgListPackets,
+                    self.path,
+                    other.path,
+                    source="gpg --list-packets",
                 )
             ]
         )
