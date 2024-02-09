@@ -79,7 +79,7 @@ EXTERNAL_TOOLS = {
     },
     "ghc": {"debian": "ghc", "arch": "ghc", "FreeBSD": "ghc", "guix": "ghc"},
     "gpg": {
-        "debian": "gnupg",
+        "debian": "gpg",
         "arch": "gnupg",
         "FreeBSD": "gnupg",
         "guix": "gnupg",

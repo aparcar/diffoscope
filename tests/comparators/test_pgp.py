@@ -77,6 +77,7 @@ def test_pgp_signature_identification(signature1, signature2):
 
 
 @skip_unless_tools_exist("pgpdump")
+@skip_unless_tools_exist("gpg")
 def test_pgp_signature(signature1, signature2):
     difference = signature1.compare(signature2)
     assert_diff(difference, "pgp_signature_expected_diff")

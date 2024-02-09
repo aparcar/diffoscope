@@ -39,6 +39,7 @@ Build-Depends:
  giflib-tools <!nocheck>,
  gnumeric <!nocheck>,
  gnupg-utils <!nocheck>,
+ gpg <!nocheck>,
  hdf5-tools <!nocheck>,
  help2man,
  html2text <!nocheck>,
