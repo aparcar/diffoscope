@@ -6,13 +6,18 @@ diffoscope (257) UNRELEASED; urgency=medium
 
 diffoscope (256) unstable; urgency=high
 
-  * Use a determistic name when extracting content from GPG artifacts instead
-    of trusting the value of gpg's --use-embedded-filenames. This prevents a
-    potential information disclosure vulnerability that could have been
-    exploited by providing a specially-crafted GPG file with an embedded
-    filename of, say, "../../.ssh/id_rsa". Many thanks to Daniel Kahn Gillmor
-    <dkg@debian.org> for reporting this issue and providing feedback.
+  * CVE-2024-25711: Use a determistic name when extracting content from GPG
+    artifacts instead of trusting the value of gpg's --use-embedded-filenames.
+
+    This prevents a potential information disclosure vulnerability that could
+    have been exploited by providing a specially-crafted GPG file with an
+    embedded filename of, say, "../../.ssh/id_rsa".
+
+    Many thanks to Daniel Kahn Gillmor <dkg@debian.org> for reporting this
+    issue and providing feedback.
+
     (Closes: reproducible-builds/diffoscope#361)
+
   * Temporarily fix support for Python 3.11.8 re. a potential regression
     with the handling of ZIP files. (See reproducible-builds/diffoscope#362)
 
