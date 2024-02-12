@@ -270,6 +270,7 @@ class PartialString:
     So you probably want to avoid such usages. The exact behaviour of these
     might change in the future, too.
     """
+
     formatter = PartialFormatter()
     escape = staticmethod(PartialFormatter.escape)
 
@@ -287,9 +288,11 @@ class PartialString:
         # Remove unused and duplicates in the holes objects
         seen = collections.OrderedDict()
         mapping = tuple(
-            FormatPlaceholder(seen.setdefault(k, len(seen)))
-            if i in used_args
-            else None
+            (
+                FormatPlaceholder(seen.setdefault(k, len(seen)))
+                if i in used_args
+                else None
+            )
             for i, k in enumerate(holes)
         )
         self._fmtstr = fmt.vformat(fmtstr, mapping, None)
