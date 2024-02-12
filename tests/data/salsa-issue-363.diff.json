@@ -1,0 +1,6 @@
+{
+  "diffoscope-json-version": 1,
+  "source1": "example.sql",
+  "source2": "example.sql",
+  "unified_diff": "@@ -1,2 +1,2 @@\n -- unrelated comment\n--- comment containing a timestamp: 2024-02-12T02:07:00.000Z\n+-- comment containing a timestamp: 2024-02-12T02:08:00.000Z\n"
+}

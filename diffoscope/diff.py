@@ -661,7 +661,8 @@ class SideBySideDiff:
         """
         self.reset()
 
-        for l in diff_split_lines(self.unified_diff, False):
+        diff_lines = iter(diff_split_lines(self.unified_diff, False))
+        for l in diff_lines:
             self._bytes_processed += len(l) + 1
             m = re.match(r"^--- ([^\s]*)", l)
             if m:
@@ -689,8 +690,10 @@ class SideBySideDiff:
                     self.hunk_off2,
                     self.hunk_size2,
                 )
-                continue
+                break
 
+        for l in diff_lines:
+            self._bytes_processed += len(l) + 1
             if re.match(r"^\[", l):
                 yield from self.empty_buffer()
                 yield "C", l

@@ -200,6 +200,25 @@ def test_html_regression_875281(tmpdir, capsys):
         )
 
 
+def test_html_presentation_issue_363(tmpdir, capsys):
+    filename = "salsa-issue-363.diff.json"
+    diff_data = get_data(filename)
+    diff_path = str(tmpdir.join(filename))
+    with open(diff_path, "w") as fp:
+        fp.write(diff_data)
+    report_path = str(tmpdir.join("report.html"))
+    out = run(
+        capsys,
+        "--html",
+        report_path,
+        f"--load-existing-diff={diff_path}",
+    )
+    assert out == ""
+
+    with open(report_path, "r", encoding="utf-8") as f:
+        assert extract_body(f.read()) == get_data("output_expected_363.html")
+
+
 def test_limited_print():
     def fake(x):
         return None
