@@ -1,8 +1,17 @@
-diffoscope (257) UNRELEASED; urgency=medium
+diffoscope (257) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ James Addison ]
+  * Parse the header and hunksize of diffs strictly before parsing the context
+    below. (Closes: reproducible-builds/diffoscope#363)
+  * Reformat code to comply with the latest version of Black (24.1.1).
 
- -- Chris Lamb <lamby@debian.org>  Fri, 09 Feb 2024 12:26:10 -0800
+  [ Chris Lamb ]
+  * Expand the previous changelog entry to include the CVE number that was
+    subsequently assigned.
+  * Bump the miniumum Black requirement to run the "Black clean" test and make
+    test_zip.py Black clean.
+
+ -- Chris Lamb <lamby@debian.org>  Mon, 12 Feb 2024 10:08:35 -0800
 
 diffoscope (256) unstable; urgency=high
 
@@ -46,7 +55,7 @@ diffoscope (254) unstable; urgency=medium
 
  -- Chris Lamb <lamby@debian.org>  Fri, 19 Jan 2024 09:32:28 -0800
 
-diffoscope (253) unstable; urgency=medium
+uiffoscope (253) unstable; urgency=medium
 
   * Improve DOS/MBR extraction by adding support for 7z.
     (Closes: reproducible-builds/diffoscope#333)
