@@ -61,7 +61,7 @@ diffoscope (254) unstable; urgency=medium
 
  -- Chris Lamb <lamby@debian.org>  Fri, 19 Jan 2024 09:32:28 -0800
 
-uiffoscope (253) unstable; urgency=medium
+diffoscope (253) unstable; urgency=medium
 
   * Improve DOS/MBR extraction by adding support for 7z.
     (Closes: reproducible-builds/diffoscope#333)
