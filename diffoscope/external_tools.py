@@ -23,7 +23,7 @@ that might resolve to, for example, `/usr/bin/abootimg`.
 """
 
 EXTERNAL_TOOLS = {
-    "7z": {"debian": "p7zip-full", "guix": "p7zip"},
+    "7z": {"debian": "7zip", "guix": "p7zip"},
     "aapt2": {"debian": "aapt"},
     "abootimg": {"debian": "abootimg", "guix": "abootimg"},
     "androguard": {"debian": "androguard"},
