@@ -1,8 +1,14 @@
-diffoscope (258) UNRELEASED; urgency=medium
+diffoscope (258) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Use the 7zip package (over p7zip-full) after package transition.
+    (Closes: #1063559)
+  * Update debian/tests/control.
 
- -- Chris Lamb <lamby@debian.org>  Mon, 12 Feb 2024 10:32:02 -0800
+  [ Vagrant Cascadian ]
+  * Fix a typo in the package name field (!) within debian/changelog.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 23 Feb 2024 11:31:52 +0000
 
 diffoscope (257) unstable; urgency=medium
 
