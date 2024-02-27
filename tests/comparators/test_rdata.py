@@ -21,6 +21,7 @@ import re
 import pytest
 import subprocess
 
+from diffoscope.tools import os_is_gnu
 from diffoscope.comparators.gzip import GzipFile
 from diffoscope.comparators.rdata import RdbFile
 
@@ -71,6 +72,9 @@ def test_num_items_rdb(differences_rdb):
     assert len(differences_rdb) == 1
 
 
+@pytest.mark.skipif(
+    not os_is_gnu(), reason="requires GNU stdlib for consistent %p formatting"
+)
 @skip_unless_tools_exist("Rscript")
 @skip_unless_tool_is_at_least("Rscript", rscript_version, "4.2.0")
 def test_item_rdb(differences_rdb):
