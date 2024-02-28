@@ -219,6 +219,11 @@ def test_with_compare_details_and_tool_not_found(monkeypatch):
         },
     )
 
+    # @tool_required(foo) below modifies global state (specifically, it adds
+    # "foo" to a set), and we need to ensure that is unwound after we exit this
+    # function. (Re: #365)
+    monkeypatch.setattr(tool_required, "all", set())
+
     class MockFile(FilesystemFile):
         @tool_required("nonexistent")
         def compare_details(self, other, source=None):
