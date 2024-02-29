@@ -55,7 +55,7 @@ class PycFile(File):
                     source="Python bytecode",
                 )
             ]
-        except (ValueError, IndexError) as exc:
+        except (ValueError, IndexError, struct.error) as exc:
             self.add_comment("Could not decompile bytecode: {}".format(exc))
             return []
 
