@@ -1,0 +1,15 @@
+@@ -5,13 +5,13 @@
+ Scanning the drive for archives:
+ 1 file, 131072 bytes (128 KiB)
+ 
+ 
+ --
+ Type = GPT
+ Physical Size = 131072
+-ID = BEFEFA22-EED4-4977-8407-46CD48ABC5D9
++ID = A2E15781-E1B6-422C-BA65-9210D36BE3AA
+ 
+    Date      Time    Attr         Size   Compressed  Name
+ ------------------- ----- ------------ ------------  ------------------------
+ ------------------- ----- ------------ ------------  ------------------------
+                                      0            0  0 files

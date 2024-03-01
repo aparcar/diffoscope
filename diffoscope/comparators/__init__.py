@@ -3,7 +3,7 @@
 #
 # Copyright © 2014-2015 Jérémy Bobbio <lunar@debian.org>
 # Copyright ©      2015  Helmut Grohne <helmut@subdivi.de>
-# Copyright © 2015-2023 Chris Lamb <lamby@debian.org>
+# Copyright © 2015-2024 Chris Lamb <lamby@debian.org>
 #
 # diffoscope is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -75,7 +75,7 @@ class ComparatorManager:
         ("ffprobe.FfprobeFile",),
         ("gnumeric.GnumericFile",),
         ("gzip.GzipFile",),
-        ("7z.SevenZFile",),
+        ("sevenz.SevenZFile",),
         ("haskell.HiFile",),
         ("icc.IccFile",),
         ("iso9660.Iso9660File",),
