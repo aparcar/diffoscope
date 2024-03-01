@@ -21,6 +21,7 @@ import binascii
 import dis
 import io
 import marshal
+import os
 import re
 import struct
 import time
@@ -66,6 +67,12 @@ def describe_pyc(filename):
 
 
 def parse_pyc(f):
+    f.seek(0, io.SEEK_END)
+    if f.tell() == 0:
+        yield "type:     empty"
+        return
+
+    f.seek(0)
     magic = f.read(4)
     yield "magic:    {}".format(hexlify(magic))
 
