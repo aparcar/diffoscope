@@ -1,8 +1,13 @@
-diffoscope (259) UNRELEASED; urgency=medium
+diffoscope (259) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Don't error-out with a traceback if we encounter "struct.unpack"-related
+    errors when parsing .pyc files. (Closes: #1064973)
+  * Fix compatibility with PyTest 8.0. (Closes: reproducible-builds/diffoscope#365)
+  * Don't try and compare rdb_expected_diff on non-GNU systems as %p formatting
+    can vary. (Re: reproducible-builds/diffoscope#364)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 23 Feb 2024 11:33:14 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 01 Mar 2024 09:34:23 +0000
 
 diffoscope (258) unstable; urgency=medium
 
