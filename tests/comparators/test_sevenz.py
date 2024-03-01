@@ -46,7 +46,7 @@ def differences(sevenza, sevenzb):
     return sevenza.compare(sevenzb).details
 
 
-@skip_unless_tools_exist("lz4")
+@skip_unless_tools_exist("7z")
 def test_content_source(differences):
     # We gzip our test data image, so we need to go one level deeper.
     assert differences[0].source1 == "test1.disk"
@@ -55,7 +55,7 @@ def test_content_source(differences):
     assert differences[0].details[0].source2 == "7z l"
 
 
-@skip_unless_tools_exist("lz4")
+@skip_unless_tools_exist("7z")
 def test_content_source_without_extension(tmpdir, sevenza, sevenzb):
     path1 = str(tmpdir.join("test1"))
     path2 = str(tmpdir.join("test2"))
@@ -68,11 +68,11 @@ def test_content_source_without_extension(tmpdir, sevenza, sevenzb):
     assert difference[0].source2 == "test2-content"
 
 
-@skip_unless_tools_exist("lz4")
+@skip_unless_tools_exist("7z")
 def test_metadata_diff(differences):
     assert_diff(differences[0].details[0], "text_sevenzmetadata_expected_diff")
 
 
-@skip_unless_tools_exist("lz4")
+@skip_unless_tools_exist("7z")
 def test_compare_non_existing(monkeypatch, sevenza):
     assert_non_existing(monkeypatch, sevenza)
