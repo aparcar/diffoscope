@@ -1,8 +1,14 @@
-diffoscope (260) UNRELEASED; urgency=medium
+diffoscope (260) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Actually test 7z support in the test_7z set of tests, not the lz4
+    functionality. (Closes: reproducible-builds/diffoscope#359)
+  * In addition, correctly check for the 7z binary being available
+    (and not lz4) when testing 7z.
+  * Prevent a traceback when comparing a contentful .pyc file with an
+    empty one. (Re: Debian:#1064973)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 01 Mar 2024 09:39:44 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 08 Mar 2024 11:07:49 +0000
 
 diffoscope (259) unstable; urgency=medium
 
