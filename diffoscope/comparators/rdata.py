@@ -96,12 +96,20 @@ def get_module_path_for_rdb(rdb, temp_dir, module_name):
     rdx_name = "{}.rdx".format(os.path.splitext(rdb.name)[0])
 
     # Query the container for the full path (eg. `./path/to/foo.rdx`)...
-    rdx = rdb.container.get_member(rdx_name)
+    try:
+        rdx = rdb.container.get_member(rdx_name)
+    except KeyError:
+        # There is no guarantee that the equivalent .rdx file exists.
+        # (see Debian:#1066991)
+        return None
 
     if not os.path.exists(rdx.path):
         # ... falling back to looking in the same directory for when
         # comparing two .rdb files directly
-        rdx = rdb.container.get_member(os.path.basename(rdx_name))
+        try:
+            rdx = rdb.container.get_member(os.path.basename(rdx_name))
+        except KeyError:
+            return None
 
     if not os.path.exists(rdx.path):
         # Corresponding .rdx does not exist
