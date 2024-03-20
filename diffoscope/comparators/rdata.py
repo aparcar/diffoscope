@@ -171,6 +171,9 @@ class RdbFile(File):
 
     @classmethod
     def recognizes(cls, file):
+        if not super().recognizes(file):
+            return False
+
         # file(1) does not yet support identifying R database files, so we
         # match on "data" AND the filename ends with .rdb (via
         # FILE_EXTENSION_SUFFIX above) to avoid matching, say, Redis database
