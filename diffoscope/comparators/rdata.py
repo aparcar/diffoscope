@@ -169,6 +169,14 @@ class RdbFile(File):
     DESCRIPTION = "GNU R database files (.rdb)"
     FILE_EXTENSION_SUFFIX = {".rdb"}
 
+    @classmethod
+    def recognizes(cls, file):
+        # file(1) does not yet support identifying R database files, so we
+        # match on "data" AND the filename ends with .rdb (via
+        # FILE_EXTENSION_SUFFIX above) to avoid matching, say, Redis database
+        # dumps (dump.rdb).
+        return file.magic_file_type == "data"
+
     def compare_details(self, other, source=None):
         with get_temporary_directory(suffix="rdb") as tmpdir:
             a = get_module_path_for_rdb(self, tmpdir, "a")
