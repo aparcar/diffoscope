@@ -1,8 +1,13 @@
-diffoscope (261) UNRELEASED; urgency=medium
+diffoscope (261) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Don't crash if we encounter an .rdb file without an equivalent .rdx file.
+    (Closes: #1066991)
+  * In addition, don't identify Redis database dumps (etc.) as GNU R database
+    files based simply on their filename. (Re: #1066991)
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 08 Mar 2024 11:09:41 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 22 Mar 2024 09:42:15 +0000
 
 diffoscope (260) unstable; urgency=medium
 
