@@ -41,8 +41,8 @@ test_comment2 = load_fixture("test_comment2.zip")
 
 # See #362
 skip_if_python_zip_regression = pytest.mark.skipif(
-    sys.version_info >= (3, 11, 8),
-    reason="Test fails under 3.11.8+; possible regression",
+    sys.version_info >= (3, 10, 14),
+    reason="Test fails under 3.10.14+ (and 3.11.8+); possible regression",
 )
 
 
