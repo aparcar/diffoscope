@@ -1,8 +1,12 @@
-diffoscope (262) UNRELEASED; urgency=medium
+diffoscope (262) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Factor out Python version checking in test_zip.py. (Re: #362)
+  * Also skip some zip tests under 3.10.14 as well; a potential regression may
+    have been backported to the 3.10.x series. The underlying cause is still to
+    be investigated. (Re: #362)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 22 Mar 2024 09:43:30 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 29 Mar 2024 09:43:00 +0000
 
 diffoscope (261) unstable; urgency=medium
 
