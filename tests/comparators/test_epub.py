@@ -45,16 +45,18 @@ def differences(epub1, epub2):
     return epub1.compare(epub2).details
 
 
-@skip_unless_tools_exist("zipinfo")
+@skip_unless_tools_exist("zipinfo", "zipdetails")
 def test_differences(differences):
     assert differences[0].source1 == "zipinfo {}"
     assert differences[0].source2 == "zipinfo {}"
-    assert differences[1].source1 == "content.opf"
-    assert differences[1].source2 == "content.opf"
-    assert differences[2].source1 == "toc.ncx"
-    assert differences[2].source2 == "toc.ncx"
-    assert differences[3].source1 == "ch001.xhtml"
-    assert differences[3].source2 == "ch001.xhtml"
+    assert differences[1].source1.startswith("zipdetails ")
+    assert differences[1].source2.startswith("zipdetails ")
+    assert differences[2].source1 == "content.opf"
+    assert differences[2].source2 == "content.opf"
+    assert differences[3].source1 == "toc.ncx"
+    assert differences[3].source2 == "toc.ncx"
+    assert differences[4].source1 == "ch001.xhtml"
+    assert differences[4].source2 == "ch001.xhtml"
 
     # Flatten everything recursively, as XMLFile will contain reformatted data
     # under Difference.details.
