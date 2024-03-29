@@ -2,7 +2,7 @@
 # diffoscope: in-depth comparison of files, archives, and directories
 #
 # Copyright © 2014-2015 Jérémy Bobbio <lunar@debian.org>
-# Copyright © 2015-2022 Chris Lamb <lamby@debian.org>
+# Copyright © 2015-2022, 2024 Chris Lamb <lamby@debian.org>
 #
 # diffoscope is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -154,6 +154,12 @@ def zipinfo_differences(file, other):
     return []
 
 
+class Zipdetails(Command):
+    @tool_required("zipdetails")
+    def cmdline(self):
+        return ["zipdetails", "--redact", "--scan", "--utc", self.path]
+
+
 class ZipDirectory(Directory, ArchiveMember):
     def __init__(self, archive, member_name):
         ArchiveMember.__init__(self, archive, member_name)
@@ -251,12 +257,13 @@ class ZipFile(ZipFileBase):
         if Config().exclude_directory_metadata != "recursive":
             differences.extend(zipinfo_differences(self, other))
 
-        try:
-            differences.append(
-                Difference.from_operation(Zipnote, self.path, other.path)
-            )
-        except RequiredToolNotFound:  # noqa
-            pass
+        for op in (Zipnote, Zipdetails):
+            try:
+                differences.append(
+                    Difference.from_operation(op, self.path, other.path)
+                )
+            except RequiredToolNotFound:  # noqa
+                pass
 
         return differences
 

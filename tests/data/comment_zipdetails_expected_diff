@@ -1,0 +1,45 @@
+@@ -33,15 +33,15 @@
+ 004B Compression Method    0000 'Stored'
+ 004D Last Mod Time         4D869485 'Thu Dec  6 18:36:10 2018'
+ 0051 CRC                   00000000
+ 0055 Compressed Length     00000000
+ 0059 Uncompressed Length   00000000
+ 005D Filename Length       0003
+ 005F Extra Length          0018
+-0061 Comment Length        0000
++0061 Comment Length        0005
+ 0063 Disk Start            0000
+ 0065 Int File Attributes   0000
+      [Bit 0]               0 'Binary Data'
+ 0067 Ext File Attributes   81A40000
+ 006B Local Header Offset   00000000
+ 006F Filename              'XXX'
+ 0072 Extra ID #0001        5455 'UT: Extended Timestamp'
+@@ -51,17 +51,19 @@
+ 007B Extra ID #0002        7875 'ux: Unix Extra Type 3'
+ 007D   Length              000B
+ 007F   Version             01
+ 0080   UID Size            04
+ 0081   UID                 000003E8
+ 0085   GID Size            04
+ 0086   GID                 000003E8
++008A Comment               'hello'
+ 
+-0086 END CENTRAL HEADER    06054B50
+-008A Number of this disk   0000
+-008C Central Dir Disk no   0000
+-008E Entries in this disk  0001
+-0090 Total Entries         0001
+-0092 Size of Central Dir   00000049
+-0096 Offset to Central Dir 0000003D
+-009A Comment Length        0000
++008B END CENTRAL HEADER    06054B50
++008F Number of this disk   0000
++0091 Central Dir Disk no   0000
++0093 Entries in this disk  0001
++0095 Total Entries         0001
++0097 Size of Central Dir   0000004E
++009B Offset to Central Dir 0000003D
++009F Comment Length        0007
++00A1 Comment               'goodbye'
+ Done

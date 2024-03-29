@@ -1,0 +1,19 @@
+@@ -36,16 +36,16 @@
+ 0054 Uncompressed Length   000001BE
+ 0058 Filename Length       0008
+ 005A Extra Length          001C
+ 005C Filename              'XXX/XXXX'
+ 0064 Extra ID #0001        5455 'UT: Extended Timestamp'
+ 0066   Length              0009
+ 0068   Flags               '03 mod access'
+-0069   Mod Time            558AB455 'Wed Jun 24 13:44:53 2015'
+-006D   Access Time         558AB45F 'Wed Jun 24 13:45:03 2015'
++0069   Mod Time            41414141 'Fri Sep 10 05:53:05 2004'
++006D   Access Time         41414141 'Fri Sep 10 05:53:05 2004'
+ 0071 Extra ID #0002        7875 'ux: Unix Extra Type 3'
+ 0073   Length              000B
+ 0075   Version             01
+ 0076   UID Size            04
+ 0077   UID                 000003E8
+ 007B   GID Size            04
+ 007C   GID                 000003E8

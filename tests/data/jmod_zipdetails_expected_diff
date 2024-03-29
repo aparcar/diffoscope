@@ -1,0 +1,20 @@
+@@ -1,10 +1,19 @@
+ Filename: classes/module-info.class
+ Comment: 
+ 
++Filename: classes/javax/transaction/xa/Xid.class
++Comment: 
++
++Filename: classes/javax/transaction/xa/XAResource.class
++Comment: 
++
++Filename: classes/javax/transaction/xa/XAException.class
++Comment: 
++
+ Filename: legal/ADDITIONAL_LICENSE_INFO
+ Comment: 
+ 
+ Filename: legal/ASSEMBLY_EXCEPTION
+ Comment: 
+ 
+ Filename: legal/LICENSE

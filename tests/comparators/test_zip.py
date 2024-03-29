@@ -65,21 +65,23 @@ def differences2(zip1, zip3):
     return zip1.compare(zip3).details
 
 
-@skip_unless_tools_exist("zipinfo")
+@skip_unless_tools_exist("zipinfo", "zipdetails")
 def test_metadata(differences):
     assert_diff(differences[0], "zip_zipinfo_expected_diff")
+    assert_diff(differences[1], "zip_zipdetails_expected_diff")
 
 
-@skip_unless_tools_exist("zipinfo")
+@skip_unless_tools_exist("zipinfo", "zipdetails")
 def test_compressed_files(differences):
-    assert differences[1].source1 == "dir/text"
-    assert differences[1].source2 == "dir/text"
-    assert_diff(differences[1], "text_ascii_expected_diff")
+    assert differences[2].source1 == "dir/text"
+    assert differences[2].source2 == "dir/text"
+    assert_diff(differences[2], "text_ascii_expected_diff")
 
 
-@skip_unless_tools_exist("zipinfo", "bsdtar")
+@skip_unless_tools_exist("zipinfo", "bsdtar", "zipdetails")
 def test_extra_fields(differences2):
     assert_diff(differences2[0], "zip_bsdtar_expected_diff")
+    assert_diff(differences2[1], "zip2_zipdetails_expected_diff")
 
 
 @skip_unless_tools_exist("zipinfo")
@@ -136,9 +138,10 @@ def jmod_differences(jmod1, jmod2):
     return jmod1.compare(jmod2).details
 
 
-@skip_unless_tools_exist("zipinfo")
+@skip_unless_tools_exist("zipinfo", "zipdetails")
 def test_jmod_metadata(jmod_differences, jmod1, jmod2):
     assert_diff(jmod_differences[0], "jmod_zipinfo_expected_diff")
+    assert_diff(jmod_differences[1], "jmod_zipdetails_expected_diff")
 
 
 def test_encrypted(encrypted_zip1, encrypted_zip2):
@@ -151,6 +154,7 @@ def comment_differences(test_comment1, test_comment2):
     return test_comment1.compare(test_comment2).details
 
 
-@skip_unless_tools_exist("zipnote")
+@skip_unless_tools_exist("zipnote", "zipdetails")
 def test_commented(comment_differences):
     assert_diff(comment_differences[1], "comment_zipinfo_expected_diff")
+    assert_diff(comment_differences[2], "comment_zipdetails_expected_diff")

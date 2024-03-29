@@ -251,6 +251,7 @@ EXTERNAL_TOOLS = {
         "arch": "libxmlb",
         "guix": "libxmlb",
     },
+    "zipdetails": {"debian": "perl"},
     "zstd": {"debian": "zstd", "guix": "zstd"},
 }
 

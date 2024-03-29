@@ -1,0 +1,177 @@
+@@ -26,103 +26,103 @@
+ 
+ 003E LOCAL HEADER #2       04034B50
+ 0042 Extract Zip Spec      14 '2.0'
+ 0043 Extract OS            00 'MS-DOS'
+ 0044 General Purpose Flag  0000
+      [Bits 1-2]            0 'Normal Compression'
+ 0046 Compression Method    0008 'Deflated'
+-0048 Last Mod Time         46D87D9B 'Wed Jun 24 15:44:54 2015'
+-004C CRC                   43E526E8
+-0050 Compressed Length     0000010D
+-0054 Uncompressed Length   000001BE
++0048 Last Mod Time         46D87DAC 'Wed Jun 24 15:45:24 2015'
++004C CRC                   5EB26950
++0050 Compressed Length     0000019C
++0054 Uncompressed Length   0000029F
+ 0058 Filename Length       0008
+ 005A Extra Length          001C
+ 005C Filename              'XXX/XXXX'
+ 0064 Extra ID #0001        5455 'UT: Extended Timestamp'
+ 0066   Length              0009
+ 0068   Flags               '03 mod access'
+-0069   Mod Time            558AB455 'Wed Jun 24 13:44:53 2015'
++0069   Mod Time            558AB474 'Wed Jun 24 13:45:24 2015'
+ 006D   Access Time         558AB45F 'Wed Jun 24 13:45:03 2015'
+ 0071 Extra ID #0002        7875 'ux: Unix Extra Type 3'
+ 0073   Length              000B
+ 0075   Version             01
+ 0076   UID Size            04
+ 0077   UID                 000003E8
+ 007B   GID Size            04
+ 007C   GID                 000003E8
+ 0080 PAYLOAD
+ 
+-0191 CENTRAL HEADER #1     02014B50
+-0195 Created Zip Spec      1E '3.0'
+-0196 Created OS            03 'Unix'
+-0197 Extract Zip Spec      0A '1.0'
+-0198 Extract OS            00 'MS-DOS'
+-0199 General Purpose Flag  0000
+-019B Compression Method    0000 'Stored'
+-019D Last Mod Time         46D87D9B 'Wed Jun 24 15:44:54 2015'
+-01A1 CRC                   00000000
+-01A5 Compressed Length     00000000
+-01A9 Uncompressed Length   00000000
+-01AD Filename Length       0004
+-01AF Extra Length          0018
+-01B1 Comment Length        0000
+-01B3 Disk Start            0000
+-01B5 Int File Attributes   0000
++0220 CENTRAL HEADER #1     02014B50
++0224 Created Zip Spec      1E '3.0'
++0225 Created OS            03 'Unix'
++0226 Extract Zip Spec      0A '1.0'
++0227 Extract OS            00 'MS-DOS'
++0228 General Purpose Flag  0000
++022A Compression Method    0000 'Stored'
++022C Last Mod Time         46D87D9B 'Wed Jun 24 15:44:54 2015'
++0230 CRC                   00000000
++0234 Compressed Length     00000000
++0238 Uncompressed Length   00000000
++023C Filename Length       0004
++023E Extra Length          0018
++0240 Comment Length        0000
++0242 Disk Start            0000
++0244 Int File Attributes   0000
+      [Bit 0]               0 'Binary Data'
+-01B7 Ext File Attributes   41ED0010
++0246 Ext File Attributes   41ED0010
+      [Bit 4]               Directory
+-01BB Local Header Offset   00000000
+-01BF Filename              'XXX/'
+-01C3 Extra ID #0001        5455 'UT: Extended Timestamp'
+-01C5   Length              0005
+-01C7   Flags               '03 mod access'
+-01C8   Mod Time            558AB455 'Wed Jun 24 13:44:53 2015'
+-01CC Extra ID #0002        7875 'ux: Unix Extra Type 3'
+-01CE   Length              000B
+-01D0   Version             01
+-01D1   UID Size            04
+-01D2   UID                 000003E8
+-01D6   GID Size            04
+-01D7   GID                 000003E8
++024A Local Header Offset   00000000
++024E Filename              'XXX/'
++0252 Extra ID #0001        5455 'UT: Extended Timestamp'
++0254   Length              0005
++0256   Flags               '03 mod access'
++0257   Mod Time            558AB455 'Wed Jun 24 13:44:53 2015'
++025B Extra ID #0002        7875 'ux: Unix Extra Type 3'
++025D   Length              000B
++025F   Version             01
++0260   UID Size            04
++0261   UID                 000003E8
++0265   GID Size            04
++0266   GID                 000003E8
+ 
+-01D7 CENTRAL HEADER #2     02014B50
+-01DB Created Zip Spec      1E '3.0'
+-01DC Created OS            03 'Unix'
+-01DD Extract Zip Spec      14 '2.0'
+-01DE Extract OS            00 'MS-DOS'
+-01DF General Purpose Flag  0000
++0266 CENTRAL HEADER #2     02014B50
++026A Created Zip Spec      1E '3.0'
++026B Created OS            03 'Unix'
++026C Extract Zip Spec      14 '2.0'
++026D Extract OS            00 'MS-DOS'
++026E General Purpose Flag  0000
+      [Bits 1-2]            0 'Normal Compression'
+-01E1 Compression Method    0008 'Deflated'
+-01E3 Last Mod Time         46D87D9B 'Wed Jun 24 15:44:54 2015'
+-01E7 CRC                   43E526E8
+-01EB Compressed Length     0000010D
+-01EF Uncompressed Length   000001BE
+-01F3 Filename Length       0008
+-01F5 Extra Length          0018
+-01F7 Comment Length        0000
+-01F9 Disk Start            0000
+-01FB Int File Attributes   0001
++0270 Compression Method    0008 'Deflated'
++0272 Last Mod Time         46D87DAC 'Wed Jun 24 15:45:24 2015'
++0276 CRC                   5EB26950
++027A Compressed Length     0000019C
++027E Uncompressed Length   0000029F
++0282 Filename Length       0008
++0284 Extra Length          0018
++0286 Comment Length        0000
++0288 Disk Start            0000
++028A Int File Attributes   0001
+      [Bit 0]               1 Text Data
+-01FD Ext File Attributes   81A40000
+-0201 Local Header Offset   0000003E
+-0205 Filename              'XXX/XXXX'
+-020D Extra ID #0001        5455 'UT: Extended Timestamp'
+-020F   Length              0005
+-0211   Flags               '03 mod access'
+-0212   Mod Time            558AB455 'Wed Jun 24 13:44:53 2015'
+-0216 Extra ID #0002        7875 'ux: Unix Extra Type 3'
+-0218   Length              000B
+-021A   Version             01
+-021B   UID Size            04
+-021C   UID                 000003E8
+-0220   GID Size            04
+-0221   GID                 000003E8
++028C Ext File Attributes   81A40000
++0290 Local Header Offset   0000003E
++0294 Filename              'XXX/XXXX'
++029C Extra ID #0001        5455 'UT: Extended Timestamp'
++029E   Length              0005
++02A0   Flags               '03 mod access'
++02A1   Mod Time            558AB474 'Wed Jun 24 13:45:24 2015'
++02A5 Extra ID #0002        7875 'ux: Unix Extra Type 3'
++02A7   Length              000B
++02A9   Version             01
++02AA   UID Size            04
++02AB   UID                 000003E8
++02AF   GID Size            04
++02B0   GID                 000003E8
+ 
+-0225 END CENTRAL HEADER    06054B50
+-0229 Number of this disk   0000
+-022B Central Dir Disk no   0000
+-022D Entries in this disk  0002
+-022F Total Entries         0002
+-0231 Size of Central Dir   00000098
+-0235 Offset to Central Dir 0000018D
+-0239 Comment Length        0000
++02B4 END CENTRAL HEADER    06054B50
++02B8 Number of this disk   0000
++02BA Central Dir Disk no   0000
++02BC Entries in this disk  0002
++02BE Total Entries         0002
++02C0 Size of Central Dir   00000098
++02C4 Offset to Central Dir 0000021C
++02C8 Comment Length        0000
+ Done
