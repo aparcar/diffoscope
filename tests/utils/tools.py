@@ -226,7 +226,7 @@ def reason(*tools, force_include=False):
             xs.append(x)
             continue
 
-        xs.append("{} (try installing {})".format(x, provider))
+        xs.append("{}; try installing {}".format(x, provider))
 
     if not xs:
         return ""
