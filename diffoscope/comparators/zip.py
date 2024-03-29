@@ -273,10 +273,13 @@ class MozillaZipContainer(ZipContainer):
         # This is gross: Monkeypatch zipfile._EndRecData to work with
         # Mozilla-optimized ZIPs
         _orig_EndRecData = zipfile._EndRecData
+        eocd_offset = None
 
         def _EndRecData(fh):
             endrec = _orig_EndRecData(fh)
             if endrec:
+                nonlocal eocd_offset
+                eocd_offset = endrec[zipfile._ECD_LOCATION]
                 endrec[zipfile._ECD_LOCATION] = (
                     endrec[zipfile._ECD_OFFSET] + endrec[zipfile._ECD_SIZE]
                 )
@@ -285,6 +288,17 @@ class MozillaZipContainer(ZipContainer):
         zipfile._EndRecData = _EndRecData
         result = super(MozillaZipContainer, self).open_archive()
         zipfile._EndRecData = _orig_EndRecData
+        # fix _end_offset after https://github.com/python/cpython/pull/110016
+        # added a check that fails because the central directory comes before
+        # the entries in these files
+        zinfos = sorted(
+            result.filelist,
+            key=lambda zinfo: zinfo.header_offset,
+            reverse=True,
+        )
+        if zinfos:
+            if hasattr(zinfos[0], "_end_offset"):
+                zinfos[0]._end_offset = eocd_offset
         return result
 
 

@@ -18,12 +18,11 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import pytest
-import sys
 
 from diffoscope.comparators.zip import ZipFile, MozillaZipFile, JmodJavaModule
 
 from ..utils.data import load_fixture, assert_diff
-from ..utils.tools import skip_unless_tools_exist, skipif
+from ..utils.tools import skip_unless_tools_exist
 from ..utils.nonexisting import assert_non_existing
 
 
@@ -38,12 +37,6 @@ jmod1 = load_fixture("test1.jmod")
 jmod2 = load_fixture("test2.jmod")
 test_comment1 = load_fixture("test_comment1.zip")
 test_comment2 = load_fixture("test_comment2.zip")
-
-# See #362
-skip_if_python_zip_regression = pytest.mark.skipif(
-    sys.version_info >= (3, 10, 14),
-    reason="Test fails under 3.10.14+ (and 3.11.8+); possible regression",
-)
 
 
 def test_identification(zip1):
@@ -93,7 +86,6 @@ def test_mozzip_identification(mozzip1):
     assert isinstance(mozzip1, MozillaZipFile)
 
 
-@skip_if_python_zip_regression
 def test_mozzip_no_differences(mozzip1):
     difference = mozzip1.compare(mozzip1)
     assert difference is None
@@ -105,13 +97,11 @@ def mozzip_differences(mozzip1, mozzip2):
 
 
 @skip_unless_tools_exist("zipinfo")
-@skip_if_python_zip_regression
 def test_mozzip_metadata(mozzip_differences, mozzip1, mozzip2):
     assert_diff(mozzip_differences[0], "mozzip_zipinfo_expected_diff")
 
 
 @skip_unless_tools_exist("zipinfo")
-@skip_if_python_zip_regression
 def test_mozzip_compressed_files(mozzip_differences):
     assert mozzip_differences[-1].source1 == "dir/text"
     assert mozzip_differences[-1].source2 == "dir/text"
@@ -119,7 +109,6 @@ def test_mozzip_compressed_files(mozzip_differences):
 
 
 @skip_unless_tools_exist("zipinfo")
-@skip_if_python_zip_regression
 def test_mozzip_compare_non_existing(monkeypatch, mozzip1):
     assert_non_existing(monkeypatch, mozzip1)
 
