@@ -1,8 +1,19 @@
-diffoscope (263) UNRELEASED; urgency=medium
+diffoscope (263) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Add support for the zipdetails(1) tool included in the Perl distribution.
+    Thanks to Larry Doolittle et al. for the pointer to this tool.
+  * Don't use parenthesis within test "skipping…" messages; PyTest adds its own
+    parenthesis, so we were ending up with double nested parens.
+  * Fix the .epub tests after supporting zipdetails(1).
+  * Update copyright years and debian/tests/control.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 29 Mar 2024 09:44:15 +0000
+  [ FC (Fay) Stegerman ]
+  * Fix MozillaZipContainer's monkeypatch after Python's zipfile module changed
+    to detect potentially insecure overlapping entries within .zip files.
+    (Closes: reproducible-builds/diffoscope#362)
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 05 Apr 2024 12:21:10 +0100
 
 diffoscope (262) unstable; urgency=medium
 
