@@ -184,9 +184,12 @@ class ZipContainer(Archive):
     def open_archive(self):
         zf = zipfile.ZipFile(self.source.path, "r")
         self.name_to_info = {}
+        self.duplicate_entries = 0
         for info in zf.infolist():
             if info.filename not in self.name_to_info:
                 self.name_to_info[info.filename] = info
+            else:
+                self.duplicate_entries += 1
         return zf
 
     def close_archive(self):
@@ -259,6 +262,21 @@ class ZipFile(ZipFileBase):
     FILE_TYPE_RE = re.compile(
         r"^((?:iOS App )?Zip archive|Java archive|EPUB document|OpenDocument (Text|Spreadsheet|Presentation|Drawing|Formula|Template|Text Template)|Google Chrome extension)\b"
     )
+
+    def compare(self, other, source=None):
+        x = super().compare(other, source)
+
+        if x is None:
+            return None
+
+        self_dups = getattr(self.as_container, "duplicate_entries", 0)
+        other_dups = getattr(other.as_container, "duplicate_entries", 0)
+        if self_dups:
+            x.add_comment(f"{self.name!r} has {self_dups} duplicate entries")
+        if other_dups:
+            x.add_comment(f"{other.name!r} has {other_dups} duplicate entries")
+
+        return x
 
     def compare_details(self, other, source=None):
         differences = []
