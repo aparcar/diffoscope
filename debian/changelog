@@ -1,8 +1,17 @@
-diffoscope (264) UNRELEASED; urgency=medium
+diffoscope (264) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Don't crash on invalid zipfiles, even if we encounter 'badness'
+    through through the file. (Re: #1068705)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 05 Apr 2024 12:24:24 +0100
+  [ FC (Fay) Stegerman ]
+  * Add note when there are duplicate entries in ZIP files.
+    (Closes: reproducible-builds/diffoscope!140)
+
+  [ Vagrant Cascadian ]
+  * Add an external tool reference for GNU Guix for zipdetails.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 12 Apr 2024 09:38:55 +0100
 
 diffoscope (263) unstable; urgency=medium
 
