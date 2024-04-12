@@ -8,9 +8,11 @@ diffoscope (264) unstable; urgency=medium
 
   [ Chris Lamb ]
   * Don't crash on invalid zipfiles, even if we encounter 'badness'
-    through through the file. (Re: #1068705)
+    halfway through the file. (Re: #1068705)
 
   [ FC (Fay) Stegerman ]
+  * Fix a crash when there are (invalid) duplicate entries in .zip files.
+    (Closes: #1068705)
   * Add note when there are duplicate entries in ZIP files.
     (Closes: reproducible-builds/diffoscope!140)
 
