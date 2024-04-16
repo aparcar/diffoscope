@@ -126,7 +126,7 @@ def skip_unless_tool_is_at_least(tool, actual_ver, min_ver, vcls=Version):
     return skipif(
         vcls(str(actual_ver)) < vcls(str(min_ver)),
         reason="{} >= {} ({} detected)".format(
-            reason(tool), min_ver, actual_ver
+            reason(tool, force_include=True), min_ver, actual_ver
         ),
         tools=(tool,),
     )
@@ -140,7 +140,7 @@ def skip_unless_tool_is_at_most(tool, actual_ver, max_ver, vcls=Version):
     return skipif(
         vcls(str(actual_ver)) > vcls(str(max_ver)),
         reason="{} <= {} ({} detected)".format(
-            reason(tool), max_ver, actual_ver
+            reason(tool, force_include=True), max_ver, actual_ver
         ),
         tools=(tool,),
     )
