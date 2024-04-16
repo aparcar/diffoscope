@@ -52,11 +52,11 @@ def differences(odt1, odt2):
     return odt1.compare(odt2).details
 
 
-@skip_unless_tool_is_at_least("odt2txt", odt2txt_version, "0.7")
+@skip_unless_tool_is_at_least("odt2txt", odt2txt_version, "0.5")
 def test_diff(differences):
     assert_diff(differences[0], "odt_expected_diff")
 
 
-@skip_unless_tool_is_at_least("odt2txt", odt2txt_version, "0.7")
+@skip_unless_tool_is_at_least("odt2txt", odt2txt_version, "0.5")
 def test_compare_non_existing(monkeypatch, odt1):
     assert_non_existing(monkeypatch, odt1, has_null_source=False)
