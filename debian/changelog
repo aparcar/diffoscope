@@ -1,8 +1,14 @@
-diffoscope (265) UNRELEASED; urgency=medium
+diffoscope (265) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Ensure that tests with ">=" version constraints actually print the
+    corresponding tool name. (Closes: reproducible-builds/diffoscope#370)
+  * Prevent odt2txt tests from always being skipped due to an impossibly new
+    version requirement. (Closes: reproducible-builds/diffoscope#369)
+  * Avoid nested parens-in-parens when printing "skipping…" messages
+    in the testsuite.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 12 Apr 2024 09:40:03 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 19 Apr 2024 10:15:50 +0100
 
 diffoscope (264) unstable; urgency=medium
 
