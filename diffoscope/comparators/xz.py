@@ -23,11 +23,19 @@ import logging
 import subprocess
 
 from diffoscope.tools import tool_required
+from diffoscope.difference import Difference
 
 from .utils.file import File
 from .utils.archive import Archive
+from .utils.command import Command
 
 logger = logging.getLogger(__name__)
+
+
+class XZList(Command):
+    @tool_required("xz")
+    def cmdline(self):
+        return ("xz", "--list", "--verbose", self.path)
 
 
 class XzContainer(Archive):
@@ -61,3 +69,10 @@ class XzFile(File):
     # Work around file(1) Debian bug #876316
     FALLBACK_FILE_EXTENSION_SUFFIX = {".xz"}
     FALLBACK_FILE_TYPE_HEADER_PREFIX = b"\xfd7zXZ\x00"
+
+    def compare_details(self, other, source=None):
+        return [
+            Difference.from_operation(
+                XZList, self.path, other.path, source="xz --list"
+            )
+        ]
