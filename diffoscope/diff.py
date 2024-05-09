@@ -661,20 +661,21 @@ class SideBySideDiff:
         """
         self.reset()
 
-        diff_lines = iter(diff_split_lines(self.unified_diff, False))
-        for l in diff_lines:
+        in_header = True
+        for l in diff_split_lines(self.unified_diff, False):
             self._bytes_processed += len(l) + 1
             m = re.match(r"^--- ([^\s]*)", l)
-            if m:
+            if m and in_header:
                 yield from self.empty_buffer()
                 continue
             m = re.match(r"^\+\+\+ ([^\s]*)", l)
-            if m:
+            if m and in_header:
                 yield from self.empty_buffer()
                 continue
 
             m = re.match(r"@@ -(\d+),?(\d*) \+(\d+),?(\d*)", l)
             if m:
+                in_header = False
                 yield from self.empty_buffer()
                 hunk_data = map(lambda x: x == "" and 1 or int(x), m.groups())
                 (
@@ -690,10 +691,8 @@ class SideBySideDiff:
                     self.hunk_off2,
                     self.hunk_size2,
                 )
-                break
+                continue
 
-        for l in diff_lines:
-            self._bytes_processed += len(l) + 1
             if re.match(r"^\[", l):
                 yield from self.empty_buffer()
                 yield "C", l
