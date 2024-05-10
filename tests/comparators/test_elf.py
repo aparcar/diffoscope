@@ -249,7 +249,7 @@ def dbgsym_differences(monkeypatch, dbgsym_dir1, dbgsym_dir2):
 @skip_unless_module_exists("debian.deb822")
 def test_differences_with_dbgsym(dbgsym_differences):
     assert dbgsym_differences.details[2].source1 == "data.tar.xz"
-    bin_details = dbgsym_differences.details[2].details[1].details[0]
+    bin_details = dbgsym_differences.details[2].details[0].details[0]
     assert bin_details.source1 == "./usr/bin/test"
     assert bin_details.details[1].source1.startswith("objdump")
     assert (
@@ -262,7 +262,7 @@ def test_differences_with_dbgsym(dbgsym_differences):
 @skip_if_binutils_does_not_support_x86()
 @skip_unless_module_exists("debian.deb822")
 def test_original_gnu_debuglink(dbgsym_differences):
-    bin_details = dbgsym_differences.details[2].details[1].details[0]
+    bin_details = dbgsym_differences.details[2].details[0].details[0]
     assert ".gnu_debuglink" in bin_details.details[2].source1
     assert_diff(bin_details.details[2], "gnu_debuglink_expected_diff")
 

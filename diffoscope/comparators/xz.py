@@ -70,9 +70,15 @@ class XzFile(File):
     FALLBACK_FILE_EXTENSION_SUFFIX = {".xz"}
     FALLBACK_FILE_TYPE_HEADER_PREFIX = b"\xfd7zXZ\x00"
 
-    def compare_details(self, other, source=None):
-        return [
-            Difference.from_operation(
+    def compare(self, other, source=None):
+        difference = super().compare(other, source)
+
+        # Append xz --list *after* showing any container differences.
+        if isinstance(other, XzFile):
+            xz_list = Difference.from_operation(
                 XZList, self.path, other.path, source="xz --list"
             )
-        ]
+            if xz_list:
+                difference.add_details([xz_list])
+
+        return difference
