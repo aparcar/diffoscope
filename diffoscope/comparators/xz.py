@@ -37,6 +37,12 @@ class XZList(Command):
     def cmdline(self):
         return ("xz", "--list", "--verbose", self.path)
 
+    def filter(self, line):
+        # Strip the first line
+        if line.startswith(self.path.encode("utf-8")):
+            return b""
+        return line
+
 
 class XzContainer(Archive):
     def open_archive(self):
