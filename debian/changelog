@@ -1,8 +1,19 @@
-diffoscope (266) UNRELEASED; urgency=medium
+diffoscope (266) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Use "xz --list" to supplement the output when comparing .xz archives;
+    essential when some underlying metadata differs. (Closes: #1069329)
+  * Actually append the xz --list after the container differences, as it
+    simplifies tests and the output.
+  * Add 7zip to <!nocheck> Build-Depends in debian/control.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 19 Apr 2024 10:16:49 +0100
+  [ James Addison ]
+  * Maintain an in-header boolean state to determine whether to drop
+    from-file/to-file lines. This fixes an issue where HTML differences were
+    being inadvertendly neglected. (Closes: reproducible-builds/diffoscope#372)
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 10 May 2024 13:49:03 +0100
 
 diffoscope (265) unstable; urgency=medium
 
