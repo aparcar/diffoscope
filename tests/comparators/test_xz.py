@@ -52,8 +52,6 @@ def differences(xz1, xz2):
 def test_content_source(differences):
     assert differences[0].source1 == "test1"
     assert differences[0].source2 == "test2"
-    assert differences[1].source1 == "xz --list"
-    assert differences[1].source2 == "xz --list"
 
 
 @skip_unless_tools_exist("xz")
@@ -67,14 +65,11 @@ def test_content_source_without_extension(tmpdir, xz1, xz2):
     difference = xz1.compare(xz2).details
     assert difference[0].source1 == "test1-content"
     assert difference[0].source2 == "test2-content"
-    assert difference[1].source1 == "xz --list"
-    assert difference[1].source2 == "xz --list"
 
 
 @skip_unless_tools_exist("xz")
 def test_content_diff(differences):
     assert_diff(differences[0], "text_ascii_expected_diff")
-    assert_diff(differences[1], "text_xz_list")
 
 
 @skip_unless_tools_exist("xz")

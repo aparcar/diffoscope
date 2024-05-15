@@ -80,7 +80,7 @@ class XzFile(File):
         difference = super().compare(other, source)
 
         # Append xz --list *after* showing any container differences.
-        if isinstance(other, XzFile):
+        if difference and not difference.details and isinstance(other, XzFile):
             xz_list = Difference.from_operation(
                 XZList, self.path, other.path, source="xz --list"
             )
