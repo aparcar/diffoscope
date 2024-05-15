@@ -30,6 +30,8 @@ from ..utils.nonexisting import assert_non_existing
 
 xz1 = load_fixture("test1.xz")
 xz2 = load_fixture("test2.xz")
+xz3 = load_fixture("test3.xz")
+xz4 = load_fixture("test4.xz")
 
 
 def test_identification(xz1):
@@ -78,3 +80,15 @@ def test_content_diff(differences):
 @skip_unless_tools_exist("xz")
 def test_compare_non_existing(monkeypatch, xz1):
     assert_non_existing(monkeypatch, xz1)
+
+
+@pytest.fixture
+def differences_verbose(xz3, xz4):
+    return xz3.compare(xz4).details
+
+
+@skip_unless_tools_exist("xz")
+def test_content_source_verbose(differences_verbose):
+    assert differences_verbose[0].source1 == "xz --list"
+    assert differences_verbose[0].source2 == "xz --list"
+    assert_diff(differences_verbose[0], "text_xz_list")

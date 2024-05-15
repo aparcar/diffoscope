@@ -35,7 +35,7 @@ logger = logging.getLogger(__name__)
 class XZList(Command):
     @tool_required("xz")
     def cmdline(self):
-        return ("xz", "--list", "--verbose", self.path)
+        return ("xz", "--list", "--verbose", "--verbose", self.path)
 
     def filter(self, line):
         # Strip the first line

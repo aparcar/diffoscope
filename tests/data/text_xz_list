@@ -1,19 +1,14 @@
-@@ -1,13 +1,13 @@
-   Streams:           1
-   Blocks:            1
--  Compressed size:   388 B
--  Uncompressed size: 446 B
--  Ratio:             0.870
-+  Compressed size:   532 B
-+  Uncompressed size: 671 B
-+  Ratio:             0.793
+@@ -6,11 +6,11 @@
    Check:             CRC64
    Stream Padding:    0 B
    Streams:
      Stream    Blocks      CompOffset    UncompOffset        CompSize      UncompSize  Ratio  Check      Padding
--         1         1               0               0             388             446  0.870  CRC64            0
-+         1         1               0               0             532             671  0.793  CRC64            0
+          1         1               0               0              60               4    ---  CRC64            0
    Blocks:
-     Stream     Block      CompOffset    UncompOffset       TotalSize      UncompSize  Ratio  Check
--         1         1              12               0             352             446  0.789  CRC64
-+         1         1              12               0             496             671  0.739  CRC64
+     Stream     Block      CompOffset    UncompOffset       TotalSize      UncompSize  Ratio  Check      CheckVal          Header  Flags        CompSize    MemUsage  Filters
+-         1         1              12               0              28               4  7.000  CRC64      f29c31305aacd7ff      12  --                  8       1 MiB  --lzma2=dict=256KiB
+-  Memory needed:     1 MiB
++         1         1              12               0              28               4  7.000  CRC64      f29c31305aacd7ff      12  --                  8      65 MiB  --lzma2=dict=64MiB
++  Memory needed:     65 MiB
+   Sizes in headers:  No
+   Minimum XZ Utils version: 5.0.0
