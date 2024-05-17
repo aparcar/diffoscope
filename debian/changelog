@@ -1,8 +1,11 @@
-diffoscope (267) UNRELEASED; urgency=medium
+diffoscope (267) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Include "xz --verbose --verbose" (ie. double --verbose) output, not just
+    the single --verbose. (Closes: #1069329)
+  * Only include "xz --list" output if the xz has no other differences.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 10 May 2024 15:01:40 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 17 May 2024 08:37:23 +0100
 
 diffoscope (266) unstable; urgency=medium
 
