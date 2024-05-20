@@ -18,6 +18,7 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import shutil
+import subprocess
 import pytest
 
 from diffoscope.comparators.xz import XzFile
@@ -25,13 +26,21 @@ from diffoscope.comparators.binary import FilesystemFile
 from diffoscope.comparators.utils.specialize import specialize
 
 from ..utils.data import load_fixture, assert_diff
-from ..utils.tools import skip_unless_tools_exist
+from ..utils.tools import skip_unless_tools_exist, skip_unless_tool_is_at_least
 from ..utils.nonexisting import assert_non_existing
 
 xz1 = load_fixture("test1.xz")
 xz2 = load_fixture("test2.xz")
 xz3 = load_fixture("test3.xz")
 xz4 = load_fixture("test4.xz")
+
+
+def xz_version():
+    try:
+        out = subprocess.check_output(["xz", "--version"])
+    except subprocess.CalledProcessError as e:
+        out = e.output
+    return out.decode("UTF-8").split()[3].strip()
 
 
 def test_identification(xz1):
@@ -83,6 +92,7 @@ def differences_verbose(xz3, xz4):
 
 
 @skip_unless_tools_exist("xz")
+@skip_unless_tool_is_at_least("xz", xz_version, "5.4.5")
 def test_content_source_verbose(differences_verbose):
     assert differences_verbose[0].source1 == "xz --list"
     assert differences_verbose[0].source2 == "xz --list"
