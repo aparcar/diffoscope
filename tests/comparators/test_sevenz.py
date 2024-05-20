@@ -16,8 +16,9 @@
 # You should have received a copy of the GNU General Public License
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
-import shutil
 import pytest
+import shutil
+import subprocess
 
 from diffoscope.comparators.gzip import GzipFile
 from diffoscope.comparators.sevenz import SevenZFile
@@ -25,11 +26,19 @@ from diffoscope.comparators.binary import FilesystemFile
 from diffoscope.comparators.utils.specialize import specialize
 
 from ..utils.data import load_fixture, assert_diff
-from ..utils.tools import skip_unless_tools_exist
+from ..utils.tools import skip_unless_tools_exist, skip_unless_tool_is_at_least
 from ..utils.nonexisting import assert_non_existing
 
 sevenza = load_fixture("test1.disk.gz")
 sevenzb = load_fixture("test2.disk.gz")
+
+
+def sevenz_version():
+    try:
+        out = subprocess.check_output(["7z"])
+    except subprocess.CalledProcessError as e:
+        out = e.output
+    return out.decode("UTF-8").split()[1].strip()
 
 
 def test_identification(sevenza):
@@ -69,6 +78,7 @@ def test_content_source_without_extension(tmpdir, sevenza, sevenzb):
 
 
 @skip_unless_tools_exist("7z")
+@skip_unless_tool_is_at_least("7z", sevenz_version, "24.05")
 def test_metadata_diff(differences):
     assert_diff(differences[0].details[0], "text_sevenzmetadata_expected_diff")
 
