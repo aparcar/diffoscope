@@ -92,7 +92,7 @@ def differences_verbose(xz3, xz4):
 
 
 @skip_unless_tools_exist("xz")
-@skip_unless_tool_is_at_least("xz", xz_version, "5.4.5")
+@skip_unless_tool_is_at_least("xz", xz_version, "5.4.1")
 def test_content_source_verbose(differences_verbose):
     assert differences_verbose[0].source1 == "xz --list"
     assert differences_verbose[0].source2 == "xz --list"
