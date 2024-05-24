@@ -1,8 +1,18 @@
-diffoscope (268) UNRELEASED; urgency=medium
+diffoscope (268) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Drop apktool from Build-Depends; we can still test our APK code
+    via autopkgtests. (Closes: #1071410)
+  * Fix tests for 7zip version 24.05.
+  * Add a versioned dependency for at least version 5.4.5 for the xz
+    tests; they fail under (at least xz 5.2.8).
+    (Closes: reproducible-builds/diffoscope#374)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 17 May 2024 08:40:22 +0100
+  [ Vagrant Cascadian ]
+  * Relax Chris' versioned xz test dependency (5.4.5) to also allow
+    version 5.4.1.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 24 May 2024 08:29:57 +0100
 
 diffoscope (267) unstable; urgency=medium
 
