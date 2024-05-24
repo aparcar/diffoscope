@@ -13,7 +13,6 @@ Build-Depends:
  androguard <!nocheck>,
  apksigcopier <!nocheck>,
  apksigner <!nocheck>,
- apktool [!ppc64el !s390x] <!nocheck>,
  bash-completion,
  binutils-multiarch <!nocheck>,
  black <!nocheck>,
