@@ -38,7 +38,12 @@ def sevenz_version():
         out = subprocess.check_output(["7z"])
     except subprocess.CalledProcessError as e:
         out = e.output
-    return out.decode("UTF-8").split()[1].strip()
+    words = out.decode("UTF-8").split()
+    # 7zip 17.04 returns version after "[64]" identifier:
+    #   "7-Zip [64] 17.05 : Copyright (c) 1999-2021 Igor Pavlov : 2017-08-28"
+    if words[1].startswith("["):
+        return words[2].strip()
+    return words[1].strip()
 
 
 def test_identification(sevenza):
