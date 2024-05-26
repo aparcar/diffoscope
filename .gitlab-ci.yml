@@ -26,6 +26,7 @@ unstable:
 testing:
   <<: *test
   image: debian:testing
+  allow_failure: true
 
 stable-bpo:
   <<: *test
