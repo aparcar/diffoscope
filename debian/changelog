@@ -1,8 +1,13 @@
-diffoscope (269) UNRELEASED; urgency=medium
+diffoscope (269) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Allow Debian testing continuous integration builds to fail right now.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 24 May 2024 08:35:07 +0100
+  [ Sergei Trofimovich ]
+  * Amend 7zip version test for older versions that include the "[64]" string.
+    (Closes: reproducible-builds/diffoscope#376)
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 31 May 2024 09:10:35 +0100
 
 diffoscope (268) unstable; urgency=medium
 
