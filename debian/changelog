@@ -1,8 +1,9 @@
-diffoscope (270) UNRELEASED; urgency=medium
+diffoscope (270) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * No-change release due to broken version 269 tarballs.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 31 May 2024 09:11:56 +0100
+ -- Chris Lamb <lamby@debian.org>  Tue, 04 Jun 2024 09:16:41 +0100
 
 diffoscope (269) unstable; urgency=medium
 
