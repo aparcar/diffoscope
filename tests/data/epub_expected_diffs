@@ -24,625 +24,701 @@
 
 @@ -1,15 +1,15 @@
  
- 0000 LOCAL HEADER #1       04034B50
- 0004 Extract Zip Spec      14 '2.0'
- 0005 Extract OS            00 'MS-DOS'
- 0006 General Purpose Flag  0802
+ 0000 LOCAL HEADER #1       04034B50 (67324752)
+ 0004 Extract Zip Spec      14 (20) '2.0'
+ 0005 Extract OS            00 (0) 'MS-DOS'
+ 0006 General Purpose Flag  0802 (2050)
       [Bit 11]              1 'Language Encoding'
- 0008 Compression Method    0000 'Stored'
--000A Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
-+000A Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
- 000E CRC                   2CAB616F
- 0012 Compressed Length     00000014
- 0016 Uncompressed Length   00000014
- 001A Filename Length       0008
- 001C Extra Length          0000
+ 0008 Compression Method    0000 (0) 'Stored'
+-000A Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
++000A Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
+ 000E CRC                   2CAB616F (749429103)
+ 0012 Compressed Size       00000014 (20)
+ 0016 Uncompressed Size     00000014 (20)
+ 001A Filename Length       0008 (8)
+ 001C Extra Length          0000 (0)
  001E Filename              'XXXXXXXX'
- 0026 PAYLOAD               XXXXXXXXXXXXXXXXXXXX
-@@ -17,15 +17,15 @@
- 003A LOCAL HEADER #2       04034B50
- 003E Extract Zip Spec      14 '2.0'
- 003F Extract OS            00 'MS-DOS'
- 0040 General Purpose Flag  0802
+ #
+@@ -21,15 +21,15 @@
+ 003A LOCAL HEADER #2       04034B50 (67324752)
+ 003E Extract Zip Spec      14 (20) '2.0'
+ 003F Extract OS            00 (0) 'MS-DOS'
+ 0040 General Purpose Flag  0802 (2050)
       [Bits 1-2]            1 'Maximum Compression'
       [Bit 11]              1 'Language Encoding'
- 0042 Compression Method    0008 'Deflated'
--0044 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
-+0044 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
- 0048 CRC                   E8E295AE
- 004C Compressed Length     000000A6
- 0050 Uncompressed Length   000000F6
- 0054 Filename Length       0016
- 0056 Extra Length          0000
- 0058 Filename              'XXXXXXXX/XXXXXXXXXXXXX'
- 006E PAYLOAD               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-@@ -37,15 +37,15 @@
- 0114 LOCAL HEADER #3       04034B50
- 0118 Extract Zip Spec      14 '2.0'
- 0119 Extract OS            00 'MS-DOS'
- 011A General Purpose Flag  0802
+ 0042 Compression Method    0008 (8) 'Deflated'
+-0044 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
++0044 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
+ 0048 CRC                   E8E295AE (3907163566)
+ 004C Compressed Size       000000A6 (166)
+ 0050 Uncompressed Size     000000F6 (246)
+ 0054 Filename Length       0016 (22)
+ 0056 Extra Length          0000 (0)
+ 0058 Filename              'XXXXXXXXXXXXXXXXXXXXXX'
+ #
+@@ -42,15 +42,15 @@
+ 0114 LOCAL HEADER #3       04034B50 (67324752)
+ 0118 Extract Zip Spec      14 (20) '2.0'
+ 0119 Extract OS            00 (0) 'MS-DOS'
+ 011A General Purpose Flag  0802 (2050)
       [Bits 1-2]            1 'Maximum Compression'
       [Bit 11]              1 'Language Encoding'
- 011C Compression Method    0008 'Deflated'
--011E Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
-+011E Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
- 0122 CRC                   D2F87677
- 0126 Compressed Length     00000077
- 012A Uncompressed Length   000000A0
- 012E Filename Length       002D
- 0130 Extra Length          0000
- 0132 Filename              'XXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                            XXXXXX'
-@@ -56,15 +56,15 @@
- 01D6 LOCAL HEADER #4       04034B50
- 01DA Extract Zip Spec      14 '2.0'
- 01DB Extract OS            00 'MS-DOS'
- 01DC General Purpose Flag  0802
+ 011C Compression Method    0008 (8) 'Deflated'
+-011E Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
++011E Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
+ 0122 CRC                   D2F87677 (3539498615)
+ 0126 Compressed Size       00000077 (119)
+ 012A Uncompressed Size     000000A0 (160)
+ 012E Filename Length       002D (45)
+ 0130 Extra Length          0000 (0)
+ 0132 Filename              'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+ #
+@@ -62,15 +62,15 @@
+ 01D6 LOCAL HEADER #4       04034B50 (67324752)
+ 01DA Extract Zip Spec      14 (20) '2.0'
+ 01DB Extract OS            00 (0) 'MS-DOS'
+ 01DC General Purpose Flag  0802 (2050)
       [Bits 1-2]            1 'Maximum Compression'
       [Bit 11]              1 'Language Encoding'
- 01DE Compression Method    0008 'Deflated'
--01E0 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
-+01E0 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
- 01E4 CRC                   36B16E47
- 01E8 Compressed Length     000000DD
- 01EC Uncompressed Length   000001B7
- 01F0 Filename Length       000E
- 01F2 Extra Length          0000
+ 01DE Compression Method    0008 (8) 'Deflated'
+-01E0 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
++01E0 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
+ 01E4 CRC                   36B16E47 (917597767)
+ 01E8 Compressed Size       000000DD (221)
+ 01EC Uncompressed Size     000001B7 (439)
+ 01F0 Filename Length       000E (14)
+ 01F2 Extra Length          0000 (0)
  01F4 Filename              'XXXXXXXXXXXXXX'
- 0202 PAYLOAD               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-@@ -77,15 +77,15 @@
- 02DF LOCAL HEADER #5       04034B50
- 02E3 Extract Zip Spec      14 '2.0'
- 02E4 Extract OS            00 'MS-DOS'
- 02E5 General Purpose Flag  0802
+ #
+@@ -83,15 +83,15 @@
+ 02DF LOCAL HEADER #5       04034B50 (67324752)
+ 02E3 Extract Zip Spec      14 (20) '2.0'
+ 02E4 Extract OS            00 (0) 'MS-DOS'
+ 02E5 General Purpose Flag  0802 (2050)
       [Bits 1-2]            1 'Maximum Compression'
       [Bit 11]              1 'Language Encoding'
- 02E7 Compression Method    0008 'Deflated'
--02E9 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
-+02E9 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
- 02ED CRC                   A3412ABF
- 02F1 Compressed Length     0000012E
- 02F5 Uncompressed Length   00000211
- 02F9 Filename Length       0010
- 02FB Extra Length          0000
+ 02E7 Compression Method    0008 (8) 'Deflated'
+-02E9 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
++02E9 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
+ 02ED CRC                   A3412ABF (2738956991)
+ 02F1 Compressed Size       0000012E (302)
+ 02F5 Uncompressed Size     00000211 (529)
+ 02F9 Filename Length       0010 (16)
+ 02FB Extra Length          0000 (0)
  02FD Filename              'XXXXXXXXXXXXXXXX'
- 030D PAYLOAD
-@@ -93,280 +93,280 @@
- 043B LOCAL HEADER #6       04034B50
- 043F Extract Zip Spec      14 '2.0'
- 0440 Extract OS            00 'MS-DOS'
- 0441 General Purpose Flag  0802
+ #
+@@ -103,334 +103,334 @@
+ 043B LOCAL HEADER #6       04034B50 (67324752)
+ 043F Extract Zip Spec      14 (20) '2.0'
+ 0440 Extract OS            00 (0) 'MS-DOS'
+ 0441 General Purpose Flag  0802 (2050)
       [Bits 1-2]            1 'Maximum Compression'
       [Bit 11]              1 'Language Encoding'
- 0443 Compression Method    0008 'Deflated'
--0445 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0449 CRC                   6F2D6A7B
--044D Compressed Length     000001DC
-+0445 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0449 CRC                   A618897D
-+044D Compressed Length     000001DB
- 0451 Uncompressed Length   00000469
- 0455 Filename Length       000B
- 0457 Extra Length          0000
+ 0443 Compression Method    0008 (8) 'Deflated'
+-0445 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0449 CRC                   6F2D6A7B (1865247355)
+-044D Compressed Size       000001DC (476)
++0445 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0449 CRC                   A618897D (2786625917)
++044D Compressed Size       000001DB (475)
+ 0451 Uncompressed Size     00000469 (1129)
+ 0455 Filename Length       000B (11)
+ 0457 Extra Length          0000 (0)
  0459 Filename              'XXXXXXXXXXX'
+ #
+ # WARNING: Offset 0x459: Filename 'XXXXXXXXXXX'
+ #          Zero length filename
+ #
  0464 PAYLOAD
  
--0640 LOCAL HEADER #7       04034B50
--0644 Extract Zip Spec      14 '2.0'
--0645 Extract OS            00 'MS-DOS'
--0646 General Purpose Flag  0802
+-0640 LOCAL HEADER #7       04034B50 (67324752)
+-0644 Extract Zip Spec      14 (20) '2.0'
+-0645 Extract OS            00 (0) 'MS-DOS'
+-0646 General Purpose Flag  0802 (2050)
 -     [Bits 1-2]            1 'Maximum Compression'
 -     [Bit 11]              1 'Language Encoding'
--0648 Compression Method    0008 'Deflated'
--064A Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--064E CRC                   165BC787
--0652 Compressed Length     0000013E
--0656 Uncompressed Length   000002E6
--065A Filename Length       0007
--065C Extra Length          0000
+-0648 Compression Method    0008 (8) 'Deflated'
+-064A Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-064E CRC                   165BC787 (375113607)
+-0652 Compressed Size       0000013E (318)
+-0656 Uncompressed Size     000002E6 (742)
+-065A Filename Length       0007 (7)
+-065C Extra Length          0000 (0)
 -065E Filename              'XXXXXXX'
+-#
+-# WARNING: Offset 0x65E: Filename 'XXXXXXX'
+-#          Zero length filename
+-#
 -0665 PAYLOAD
 -
--07A3 LOCAL HEADER #8       04034B50
--07A7 Extract Zip Spec      14 '2.0'
--07A8 Extract OS            00 'MS-DOS'
--07A9 General Purpose Flag  0802
+-07A3 LOCAL HEADER #8       04034B50 (67324752)
+-07A7 Extract Zip Spec      14 (20) '2.0'
+-07A8 Extract OS            00 (0) 'MS-DOS'
+-07A9 General Purpose Flag  0802 (2050)
 -     [Bits 1-2]            1 'Maximum Compression'
 -     [Bit 11]              1 'Language Encoding'
--07AB Compression Method    0008 'Deflated'
--07AD Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--07B1 CRC                   2539C443
--07B5 Compressed Length     0000015F
--07B9 Uncompressed Length   0000028F
--07BD Filename Length       0009
--07BF Extra Length          0000
+-07AB Compression Method    0008 (8) 'Deflated'
+-07AD Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-07B1 CRC                   2539C443 (624542787)
+-07B5 Compressed Size       0000015F (351)
+-07B9 Uncompressed Size     0000028F (655)
+-07BD Filename Length       0009 (9)
+-07BF Extra Length          0000 (0)
 -07C1 Filename              'XXXXXXXXX'
+-#
+-# WARNING: Offset 0x7C1: Filename 'XXXXXXXXX'
+-#          Zero length filename
+-#
 -07CA PAYLOAD
 -
--0929 LOCAL HEADER #9       04034B50
--092D Extract Zip Spec      14 '2.0'
--092E Extract OS            00 'MS-DOS'
--092F General Purpose Flag  0802
+-0929 LOCAL HEADER #9       04034B50 (67324752)
+-092D Extract Zip Spec      14 (20) '2.0'
+-092E Extract OS            00 (0) 'MS-DOS'
+-092F General Purpose Flag  0802 (2050)
 -     [Bits 1-2]            1 'Maximum Compression'
 -     [Bit 11]              1 'Language Encoding'
--0931 Compression Method    0008 'Deflated'
--0933 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0937 CRC                   EEB610EE
--093B Compressed Length     00000163
--093F Uncompressed Length   00000267
--0943 Filename Length       000B
--0945 Extra Length          0000
+-0931 Compression Method    0008 (8) 'Deflated'
+-0933 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0937 CRC                   EEB610EE (4004909294)
+-093B Compressed Size       00000163 (355)
+-093F Uncompressed Size     00000267 (615)
+-0943 Filename Length       000B (11)
+-0945 Extra Length          0000 (0)
 -0947 Filename              'XXXXXXXXXXX'
+-#
+-# WARNING: Offset 0x947: Filename 'XXXXXXXXXXX'
+-#          Zero length filename
+-#
 -0952 PAYLOAD
 -
--0AB9 CENTRAL HEADER #1     02014B50
--0ABD Created Zip Spec      00 '0.0'
--0ABE Created OS            00 'MS-DOS'
--0ABF Extract Zip Spec      14 '2.0'
--0AC0 Extract OS            00 'MS-DOS'
--0AC1 General Purpose Flag  0802
+-0AB5 CENTRAL HEADER #1     02014B50 (33639248)
+-0AB9 Created Zip Spec      00 (0) '0.0'
+-0ABA Created OS            00 (0) 'MS-DOS'
+-0ABB Extract Zip Spec      14 (20) '2.0'
+-0ABC Extract OS            00 (0) 'MS-DOS'
+-0ABD General Purpose Flag  0802 (2050)
 -     [Bit 11]              1 'Language Encoding'
--0AC3 Compression Method    0000 'Stored'
--0AC5 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0AC9 CRC                   2CAB616F
--0ACD Compressed Length     00000014
--0AD1 Uncompressed Length   00000014
--0AD5 Filename Length       0008
--0AD7 Extra Length          0000
--0AD9 Comment Length        0000
--0ADB Disk Start            0000
--0ADD Int File Attributes   0000
-+063F LOCAL HEADER #7       04034B50
-+0643 Extract Zip Spec      14 '2.0'
-+0644 Extract OS            00 'MS-DOS'
-+0645 General Purpose Flag  0802
+-0ABF Compression Method    0000 (0) 'Stored'
+-0AC1 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0AC5 CRC                   2CAB616F (749429103)
+-0AC9 Compressed Size       00000014 (20)
+-0ACD Uncompressed Size     00000014 (20)
+-0AD1 Filename Length       0008 (8)
+-0AD3 Extra Length          0000 (0)
+-0AD5 Comment Length        0000 (0)
+-0AD7 Disk Start            0000 (0)
+-0AD9 Int File Attributes   0000 (0)
++063F LOCAL HEADER #7       04034B50 (67324752)
++0643 Extract Zip Spec      14 (20) '2.0'
++0644 Extract OS            00 (0) 'MS-DOS'
++0645 General Purpose Flag  0802 (2050)
 +     [Bits 1-2]            1 'Maximum Compression'
 +     [Bit 11]              1 'Language Encoding'
-+0647 Compression Method    0008 'Deflated'
-+0649 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+064D CRC                   CF78BAE5
-+0651 Compressed Length     0000013C
-+0655 Uncompressed Length   000002E6
-+0659 Filename Length       0007
-+065B Extra Length          0000
++0647 Compression Method    0008 (8) 'Deflated'
++0649 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++064D CRC                   CF78BAE5 (3480795877)
++0651 Compressed Size       0000013C (316)
++0655 Uncompressed Size     000002E6 (742)
++0659 Filename Length       0007 (7)
++065B Extra Length          0000 (0)
 +065D Filename              'XXXXXXX'
++#
++# WARNING: Offset 0x65D: Filename 'XXXXXXX'
++#          Zero length filename
++#
 +0664 PAYLOAD
 +
-+07A0 LOCAL HEADER #8       04034B50
-+07A4 Extract Zip Spec      14 '2.0'
-+07A5 Extract OS            00 'MS-DOS'
-+07A6 General Purpose Flag  0802
++07A0 LOCAL HEADER #8       04034B50 (67324752)
++07A4 Extract Zip Spec      14 (20) '2.0'
++07A5 Extract OS            00 (0) 'MS-DOS'
++07A6 General Purpose Flag  0802 (2050)
 +     [Bits 1-2]            1 'Maximum Compression'
 +     [Bit 11]              1 'Language Encoding'
-+07A8 Compression Method    0008 'Deflated'
-+07AA Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+07AE CRC                   2539C443
-+07B2 Compressed Length     0000015F
-+07B6 Uncompressed Length   0000028F
-+07BA Filename Length       0009
-+07BC Extra Length          0000
++07A8 Compression Method    0008 (8) 'Deflated'
++07AA Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++07AE CRC                   2539C443 (624542787)
++07B2 Compressed Size       0000015F (351)
++07B6 Uncompressed Size     0000028F (655)
++07BA Filename Length       0009 (9)
++07BC Extra Length          0000 (0)
 +07BE Filename              'XXXXXXXXX'
++#
++# WARNING: Offset 0x7BE: Filename 'XXXXXXXXX'
++#          Zero length filename
++#
 +07C7 PAYLOAD
 +
-+0926 LOCAL HEADER #9       04034B50
-+092A Extract Zip Spec      14 '2.0'
-+092B Extract OS            00 'MS-DOS'
-+092C General Purpose Flag  0802
++0926 LOCAL HEADER #9       04034B50 (67324752)
++092A Extract Zip Spec      14 (20) '2.0'
++092B Extract OS            00 (0) 'MS-DOS'
++092C General Purpose Flag  0802 (2050)
 +     [Bits 1-2]            1 'Maximum Compression'
 +     [Bit 11]              1 'Language Encoding'
-+092E Compression Method    0008 'Deflated'
-+0930 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0934 CRC                   D2D6F3E6
-+0938 Compressed Length     00000163
-+093C Uncompressed Length   00000267
-+0940 Filename Length       000B
-+0942 Extra Length          0000
++092E Compression Method    0008 (8) 'Deflated'
++0930 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0934 CRC                   D2D6F3E6 (3537302502)
++0938 Compressed Size       00000163 (355)
++093C Uncompressed Size     00000267 (615)
++0940 Filename Length       000B (11)
++0942 Extra Length          0000 (0)
 +0944 Filename              'XXXXXXXXXXX'
++#
++# WARNING: Offset 0x944: Filename 'XXXXXXXXXXX'
++#          Zero length filename
++#
 +094F PAYLOAD
 +
-+0AB6 CENTRAL HEADER #1     02014B50
-+0ABA Created Zip Spec      00 '0.0'
-+0ABB Created OS            00 'MS-DOS'
-+0ABC Extract Zip Spec      14 '2.0'
-+0ABD Extract OS            00 'MS-DOS'
-+0ABE General Purpose Flag  0802
++0AB2 CENTRAL HEADER #1     02014B50 (33639248)
++0AB6 Created Zip Spec      00 (0) '0.0'
++0AB7 Created OS            00 (0) 'MS-DOS'
++0AB8 Extract Zip Spec      14 (20) '2.0'
++0AB9 Extract OS            00 (0) 'MS-DOS'
++0ABA General Purpose Flag  0802 (2050)
 +     [Bit 11]              1 'Language Encoding'
-+0AC0 Compression Method    0000 'Stored'
-+0AC2 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0AC6 CRC                   2CAB616F
-+0ACA Compressed Length     00000014
-+0ACE Uncompressed Length   00000014
-+0AD2 Filename Length       0008
-+0AD4 Extra Length          0000
-+0AD6 Comment Length        0000
-+0AD8 Disk Start            0000
-+0ADA Int File Attributes   0000
++0ABC Compression Method    0000 (0) 'Stored'
++0ABE Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0AC2 CRC                   2CAB616F (749429103)
++0AC6 Compressed Size       00000014 (20)
++0ACA Uncompressed Size     00000014 (20)
++0ACE Filename Length       0008 (8)
++0AD0 Extra Length          0000 (0)
++0AD2 Comment Length        0000 (0)
++0AD4 Disk Start            0000 (0)
++0AD6 Int File Attributes   0000 (0)
       [Bit 0]               0 'Binary Data'
--0ADF Ext File Attributes   00000000
--0AE3 Local Header Offset   00000000
--0AE7 Filename              'XXXXXXXX'
--
--0AEB CENTRAL HEADER #2     02014B50
--0AEF Created Zip Spec      00 '0.0'
--0AF0 Created OS            00 'MS-DOS'
--0AF1 Extract Zip Spec      14 '2.0'
--0AF2 Extract OS            00 'MS-DOS'
--0AF3 General Purpose Flag  0802
--     [Bits 1-2]            1 'Maximum Compression'
--     [Bit 11]              1 'Language Encoding'
--0AF5 Compression Method    0008 'Deflated'
--0AF7 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0AFB CRC                   E8E295AE
--0AFF Compressed Length     000000A6
--0B03 Uncompressed Length   000000F6
--0B07 Filename Length       0016
--0B09 Extra Length          0000
--0B0B Comment Length        0000
--0B0D Disk Start            0000
--0B0F Int File Attributes   0000
-+0ADC Ext File Attributes   00000000
-+0AE0 Local Header Offset   00000000
-+0AE4 Filename              'XXXXXXXX'
-+
-+0AE8 CENTRAL HEADER #2     02014B50
-+0AEC Created Zip Spec      00 '0.0'
-+0AED Created OS            00 'MS-DOS'
-+0AEE Extract Zip Spec      14 '2.0'
-+0AEF Extract OS            00 'MS-DOS'
-+0AF0 General Purpose Flag  0802
-+     [Bits 1-2]            1 'Maximum Compression'
-+     [Bit 11]              1 'Language Encoding'
-+0AF2 Compression Method    0008 'Deflated'
-+0AF4 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0AF8 CRC                   E8E295AE
-+0AFC Compressed Length     000000A6
-+0B00 Uncompressed Length   000000F6
-+0B04 Filename Length       0016
-+0B06 Extra Length          0000
-+0B08 Comment Length        0000
-+0B0A Disk Start            0000
-+0B0C Int File Attributes   0000
-      [Bit 0]               0 'Binary Data'
--0B11 Ext File Attributes   00000000
--0B15 Local Header Offset   0000003A
--0B19 Filename              'XXXXXXXX/XXXXXXXXXXXXX'
--
--0B2F CENTRAL HEADER #3     02014B50
--0B33 Created Zip Spec      00 '0.0'
--0B34 Created OS            00 'MS-DOS'
--0B35 Extract Zip Spec      14 '2.0'
--0B36 Extract OS            00 'MS-DOS'
--0B37 General Purpose Flag  0802
--     [Bits 1-2]            1 'Maximum Compression'
--     [Bit 11]              1 'Language Encoding'
--0B39 Compression Method    0008 'Deflated'
--0B3B Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0B3F CRC                   D2F87677
--0B43 Compressed Length     00000077
--0B47 Uncompressed Length   000000A0
--0B4B Filename Length       002D
--0B4D Extra Length          0000
--0B4F Comment Length        0000
--0B51 Disk Start            0000
--0B53 Int File Attributes   0000
-+0B0E Ext File Attributes   00000000
-+0B12 Local Header Offset   0000003A
-+0B16 Filename              'XXXXXXXX/XXXXXXXXXXXXX'
-+
-+0B2C CENTRAL HEADER #3     02014B50
-+0B30 Created Zip Spec      00 '0.0'
-+0B31 Created OS            00 'MS-DOS'
-+0B32 Extract Zip Spec      14 '2.0'
-+0B33 Extract OS            00 'MS-DOS'
-+0B34 General Purpose Flag  0802
-+     [Bits 1-2]            1 'Maximum Compression'
-+     [Bit 11]              1 'Language Encoding'
-+0B36 Compression Method    0008 'Deflated'
-+0B38 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0B3C CRC                   D2F87677
-+0B40 Compressed Length     00000077
-+0B44 Uncompressed Length   000000A0
-+0B48 Filename Length       002D
-+0B4A Extra Length          0000
-+0B4C Comment Length        0000
-+0B4E Disk Start            0000
-+0B50 Int File Attributes   0000
-      [Bit 0]               0 'Binary Data'
--0B55 Ext File Attributes   00000000
--0B59 Local Header Offset   00000114
--0B5D Filename              'XXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-+0B52 Ext File Attributes   00000000
-+0B56 Local Header Offset   00000114
-+0B5A Filename              'XXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                            XXXXXX'
+-0ADB Ext File Attributes   00000000 (0)
+-0ADF Local Header Offset   00000000 (0)
+-0AE3 Filename              'XXXXXXXX'
+-#
+-# WARNING: Offset 0xAE3: Filename 'XXXXXXXX'
++0AD8 Ext File Attributes   00000000 (0)
++0ADC Local Header Offset   00000000 (0)
++0AE0 Filename              'XXXXXXXX'
++#
++# WARNING: Offset 0xAE0: Filename 'XXXXXXXX'
+ #          Zero length filename
+ #
  
--0B8A CENTRAL HEADER #4     02014B50
--0B8E Created Zip Spec      00 '0.0'
--0B8F Created OS            00 'MS-DOS'
--0B90 Extract Zip Spec      14 '2.0'
--0B91 Extract OS            00 'MS-DOS'
--0B92 General Purpose Flag  0802
+-0AEB CENTRAL HEADER #2     02014B50 (33639248)
+-0AEF Created Zip Spec      00 (0) '0.0'
+-0AF0 Created OS            00 (0) 'MS-DOS'
+-0AF1 Extract Zip Spec      14 (20) '2.0'
+-0AF2 Extract OS            00 (0) 'MS-DOS'
+-0AF3 General Purpose Flag  0802 (2050)
 -     [Bits 1-2]            1 'Maximum Compression'
 -     [Bit 11]              1 'Language Encoding'
--0B94 Compression Method    0008 'Deflated'
--0B96 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0B9A CRC                   36B16E47
--0B9E Compressed Length     000000DD
--0BA2 Uncompressed Length   000001B7
--0BA6 Filename Length       000E
--0BA8 Extra Length          0000
--0BAA Comment Length        0000
--0BAC Disk Start            0000
--0BAE Int File Attributes   0000
-+0B87 CENTRAL HEADER #4     02014B50
-+0B8B Created Zip Spec      00 '0.0'
-+0B8C Created OS            00 'MS-DOS'
-+0B8D Extract Zip Spec      14 '2.0'
-+0B8E Extract OS            00 'MS-DOS'
-+0B8F General Purpose Flag  0802
+-0AF5 Compression Method    0008 (8) 'Deflated'
+-0AF7 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0AFB CRC                   E8E295AE (3907163566)
+-0AFF Compressed Size       000000A6 (166)
+-0B03 Uncompressed Size     000000F6 (246)
+-0B07 Filename Length       0016 (22)
+-0B09 Extra Length          0000 (0)
+-0B0B Comment Length        0000 (0)
+-0B0D Disk Start            0000 (0)
+-0B0F Int File Attributes   0000 (0)
++0AE8 CENTRAL HEADER #2     02014B50 (33639248)
++0AEC Created Zip Spec      00 (0) '0.0'
++0AED Created OS            00 (0) 'MS-DOS'
++0AEE Extract Zip Spec      14 (20) '2.0'
++0AEF Extract OS            00 (0) 'MS-DOS'
++0AF0 General Purpose Flag  0802 (2050)
 +     [Bits 1-2]            1 'Maximum Compression'
 +     [Bit 11]              1 'Language Encoding'
-+0B91 Compression Method    0008 'Deflated'
-+0B93 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0B97 CRC                   36B16E47
-+0B9B Compressed Length     000000DD
-+0B9F Uncompressed Length   000001B7
-+0BA3 Filename Length       000E
-+0BA5 Extra Length          0000
-+0BA7 Comment Length        0000
-+0BA9 Disk Start            0000
-+0BAB Int File Attributes   0000
++0AF2 Compression Method    0008 (8) 'Deflated'
++0AF4 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0AF8 CRC                   E8E295AE (3907163566)
++0AFC Compressed Size       000000A6 (166)
++0B00 Uncompressed Size     000000F6 (246)
++0B04 Filename Length       0016 (22)
++0B06 Extra Length          0000 (0)
++0B08 Comment Length        0000 (0)
++0B0A Disk Start            0000 (0)
++0B0C Int File Attributes   0000 (0)
       [Bit 0]               0 'Binary Data'
--0BB0 Ext File Attributes   00000000
--0BB4 Local Header Offset   000001D6
+-0B11 Ext File Attributes   00000000 (0)
+-0B15 Local Header Offset   0000003A (58)
+-0B19 Filename              'XXXXXXXXXXXXXXXXXXXXXX'
+-#
+-# WARNING: Offset 0xB19: Filename 'XXXXXXXXXXXXXXXXXXXXXX'
++0B0E Ext File Attributes   00000000 (0)
++0B12 Local Header Offset   0000003A (58)
++0B16 Filename              'XXXXXXXXXXXXXXXXXXXXXX'
++#
++# WARNING: Offset 0xB16: Filename 'XXXXXXXXXXXXXXXXXXXXXX'
+ #          Zero length filename
+ #
+ 
+-0B2F CENTRAL HEADER #3     02014B50 (33639248)
+-0B33 Created Zip Spec      00 (0) '0.0'
+-0B34 Created OS            00 (0) 'MS-DOS'
+-0B35 Extract Zip Spec      14 (20) '2.0'
+-0B36 Extract OS            00 (0) 'MS-DOS'
+-0B37 General Purpose Flag  0802 (2050)
+-     [Bits 1-2]            1 'Maximum Compression'
+-     [Bit 11]              1 'Language Encoding'
+-0B39 Compression Method    0008 (8) 'Deflated'
+-0B3B Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0B3F CRC                   D2F87677 (3539498615)
+-0B43 Compressed Size       00000077 (119)
+-0B47 Uncompressed Size     000000A0 (160)
+-0B4B Filename Length       002D (45)
+-0B4D Extra Length          0000 (0)
+-0B4F Comment Length        0000 (0)
+-0B51 Disk Start            0000 (0)
+-0B53 Int File Attributes   0000 (0)
++0B2C CENTRAL HEADER #3     02014B50 (33639248)
++0B30 Created Zip Spec      00 (0) '0.0'
++0B31 Created OS            00 (0) 'MS-DOS'
++0B32 Extract Zip Spec      14 (20) '2.0'
++0B33 Extract OS            00 (0) 'MS-DOS'
++0B34 General Purpose Flag  0802 (2050)
++     [Bits 1-2]            1 'Maximum Compression'
++     [Bit 11]              1 'Language Encoding'
++0B36 Compression Method    0008 (8) 'Deflated'
++0B38 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0B3C CRC                   D2F87677 (3539498615)
++0B40 Compressed Size       00000077 (119)
++0B44 Uncompressed Size     000000A0 (160)
++0B48 Filename Length       002D (45)
++0B4A Extra Length          0000 (0)
++0B4C Comment Length        0000 (0)
++0B4E Disk Start            0000 (0)
++0B50 Int File Attributes   0000 (0)
+      [Bit 0]               0 'Binary Data'
+-0B55 Ext File Attributes   00000000 (0)
+-0B59 Local Header Offset   00000114 (276)
+-0B5D Filename              'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+-#
+-# WARNING: Offset 0xB5D: Filename 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
++0B52 Ext File Attributes   00000000 (0)
++0B56 Local Header Offset   00000114 (276)
++0B5A Filename              'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
++#
++# WARNING: Offset 0xB5A: Filename 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+ #          Zero length filename
+ #
+ 
+-0B8A CENTRAL HEADER #4     02014B50 (33639248)
+-0B8E Created Zip Spec      00 (0) '0.0'
+-0B8F Created OS            00 (0) 'MS-DOS'
+-0B90 Extract Zip Spec      14 (20) '2.0'
+-0B91 Extract OS            00 (0) 'MS-DOS'
+-0B92 General Purpose Flag  0802 (2050)
+-     [Bits 1-2]            1 'Maximum Compression'
+-     [Bit 11]              1 'Language Encoding'
+-0B94 Compression Method    0008 (8) 'Deflated'
+-0B96 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0B9A CRC                   36B16E47 (917597767)
+-0B9E Compressed Size       000000DD (221)
+-0BA2 Uncompressed Size     000001B7 (439)
+-0BA6 Filename Length       000E (14)
+-0BA8 Extra Length          0000 (0)
+-0BAA Comment Length        0000 (0)
+-0BAC Disk Start            0000 (0)
+-0BAE Int File Attributes   0000 (0)
++0B87 CENTRAL HEADER #4     02014B50 (33639248)
++0B8B Created Zip Spec      00 (0) '0.0'
++0B8C Created OS            00 (0) 'MS-DOS'
++0B8D Extract Zip Spec      14 (20) '2.0'
++0B8E Extract OS            00 (0) 'MS-DOS'
++0B8F General Purpose Flag  0802 (2050)
++     [Bits 1-2]            1 'Maximum Compression'
++     [Bit 11]              1 'Language Encoding'
++0B91 Compression Method    0008 (8) 'Deflated'
++0B93 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0B97 CRC                   36B16E47 (917597767)
++0B9B Compressed Size       000000DD (221)
++0B9F Uncompressed Size     000001B7 (439)
++0BA3 Filename Length       000E (14)
++0BA5 Extra Length          0000 (0)
++0BA7 Comment Length        0000 (0)
++0BA9 Disk Start            0000 (0)
++0BAB Int File Attributes   0000 (0)
+      [Bit 0]               0 'Binary Data'
+-0BB0 Ext File Attributes   00000000 (0)
+-0BB4 Local Header Offset   000001D6 (470)
 -0BB8 Filename              'XXXXXXXXXXXXXX'
--
--0BC6 CENTRAL HEADER #5     02014B50
--0BCA Created Zip Spec      00 '0.0'
--0BCB Created OS            00 'MS-DOS'
--0BCC Extract Zip Spec      14 '2.0'
--0BCD Extract OS            00 'MS-DOS'
--0BCE General Purpose Flag  0802
--     [Bits 1-2]            1 'Maximum Compression'
--     [Bit 11]              1 'Language Encoding'
--0BD0 Compression Method    0008 'Deflated'
--0BD2 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0BD6 CRC                   A3412ABF
--0BDA Compressed Length     0000012E
--0BDE Uncompressed Length   00000211
--0BE2 Filename Length       0010
--0BE4 Extra Length          0000
--0BE6 Comment Length        0000
--0BE8 Disk Start            0000
--0BEA Int File Attributes   0000
-+0BAD Ext File Attributes   00000000
-+0BB1 Local Header Offset   000001D6
+-#
+-# WARNING: Offset 0xBB8: Filename 'XXXXXXXXXXXXXX'
++0BAD Ext File Attributes   00000000 (0)
++0BB1 Local Header Offset   000001D6 (470)
 +0BB5 Filename              'XXXXXXXXXXXXXX'
-+
-+0BC3 CENTRAL HEADER #5     02014B50
-+0BC7 Created Zip Spec      00 '0.0'
-+0BC8 Created OS            00 'MS-DOS'
-+0BC9 Extract Zip Spec      14 '2.0'
-+0BCA Extract OS            00 'MS-DOS'
-+0BCB General Purpose Flag  0802
++#
++# WARNING: Offset 0xBB5: Filename 'XXXXXXXXXXXXXX'
+ #          Zero length filename
+ #
+ 
+-0BC6 CENTRAL HEADER #5     02014B50 (33639248)
+-0BCA Created Zip Spec      00 (0) '0.0'
+-0BCB Created OS            00 (0) 'MS-DOS'
+-0BCC Extract Zip Spec      14 (20) '2.0'
+-0BCD Extract OS            00 (0) 'MS-DOS'
+-0BCE General Purpose Flag  0802 (2050)
+-     [Bits 1-2]            1 'Maximum Compression'
+-     [Bit 11]              1 'Language Encoding'
+-0BD0 Compression Method    0008 (8) 'Deflated'
+-0BD2 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0BD6 CRC                   A3412ABF (2738956991)
+-0BDA Compressed Size       0000012E (302)
+-0BDE Uncompressed Size     00000211 (529)
+-0BE2 Filename Length       0010 (16)
+-0BE4 Extra Length          0000 (0)
+-0BE6 Comment Length        0000 (0)
+-0BE8 Disk Start            0000 (0)
+-0BEA Int File Attributes   0000 (0)
++0BC3 CENTRAL HEADER #5     02014B50 (33639248)
++0BC7 Created Zip Spec      00 (0) '0.0'
++0BC8 Created OS            00 (0) 'MS-DOS'
++0BC9 Extract Zip Spec      14 (20) '2.0'
++0BCA Extract OS            00 (0) 'MS-DOS'
++0BCB General Purpose Flag  0802 (2050)
 +     [Bits 1-2]            1 'Maximum Compression'
 +     [Bit 11]              1 'Language Encoding'
-+0BCD Compression Method    0008 'Deflated'
-+0BCF Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0BD3 CRC                   A3412ABF
-+0BD7 Compressed Length     0000012E
-+0BDB Uncompressed Length   00000211
-+0BDF Filename Length       0010
-+0BE1 Extra Length          0000
-+0BE3 Comment Length        0000
-+0BE5 Disk Start            0000
-+0BE7 Int File Attributes   0000
++0BCD Compression Method    0008 (8) 'Deflated'
++0BCF Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0BD3 CRC                   A3412ABF (2738956991)
++0BD7 Compressed Size       0000012E (302)
++0BDB Uncompressed Size     00000211 (529)
++0BDF Filename Length       0010 (16)
++0BE1 Extra Length          0000 (0)
++0BE3 Comment Length        0000 (0)
++0BE5 Disk Start            0000 (0)
++0BE7 Int File Attributes   0000 (0)
       [Bit 0]               0 'Binary Data'
--0BEC Ext File Attributes   00000000
--0BF0 Local Header Offset   000002DF
+-0BEC Ext File Attributes   00000000 (0)
+-0BF0 Local Header Offset   000002DF (735)
 -0BF4 Filename              'XXXXXXXXXXXXXXXX'
--
--0C04 CENTRAL HEADER #6     02014B50
--0C08 Created Zip Spec      00 '0.0'
--0C09 Created OS            00 'MS-DOS'
--0C0A Extract Zip Spec      14 '2.0'
--0C0B Extract OS            00 'MS-DOS'
--0C0C General Purpose Flag  0802
--     [Bits 1-2]            1 'Maximum Compression'
--     [Bit 11]              1 'Language Encoding'
--0C0E Compression Method    0008 'Deflated'
--0C10 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0C14 CRC                   6F2D6A7B
--0C18 Compressed Length     000001DC
--0C1C Uncompressed Length   00000469
--0C20 Filename Length       000B
--0C22 Extra Length          0000
--0C24 Comment Length        0000
--0C26 Disk Start            0000
--0C28 Int File Attributes   0000
-+0BE9 Ext File Attributes   00000000
-+0BED Local Header Offset   000002DF
+-#
+-# WARNING: Offset 0xBF4: Filename 'XXXXXXXXXXXXXXXX'
++0BE9 Ext File Attributes   00000000 (0)
++0BED Local Header Offset   000002DF (735)
 +0BF1 Filename              'XXXXXXXXXXXXXXXX'
-+
-+0C01 CENTRAL HEADER #6     02014B50
-+0C05 Created Zip Spec      00 '0.0'
-+0C06 Created OS            00 'MS-DOS'
-+0C07 Extract Zip Spec      14 '2.0'
-+0C08 Extract OS            00 'MS-DOS'
-+0C09 General Purpose Flag  0802
++#
++# WARNING: Offset 0xBF1: Filename 'XXXXXXXXXXXXXXXX'
+ #          Zero length filename
+ #
+ 
+-0C04 CENTRAL HEADER #6     02014B50 (33639248)
+-0C08 Created Zip Spec      00 (0) '0.0'
+-0C09 Created OS            00 (0) 'MS-DOS'
+-0C0A Extract Zip Spec      14 (20) '2.0'
+-0C0B Extract OS            00 (0) 'MS-DOS'
+-0C0C General Purpose Flag  0802 (2050)
+-     [Bits 1-2]            1 'Maximum Compression'
+-     [Bit 11]              1 'Language Encoding'
+-0C0E Compression Method    0008 (8) 'Deflated'
+-0C10 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0C14 CRC                   6F2D6A7B (1865247355)
+-0C18 Compressed Size       000001DC (476)
+-0C1C Uncompressed Size     00000469 (1129)
+-0C20 Filename Length       000B (11)
+-0C22 Extra Length          0000 (0)
+-0C24 Comment Length        0000 (0)
+-0C26 Disk Start            0000 (0)
+-0C28 Int File Attributes   0000 (0)
++0C01 CENTRAL HEADER #6     02014B50 (33639248)
++0C05 Created Zip Spec      00 (0) '0.0'
++0C06 Created OS            00 (0) 'MS-DOS'
++0C07 Extract Zip Spec      14 (20) '2.0'
++0C08 Extract OS            00 (0) 'MS-DOS'
++0C09 General Purpose Flag  0802 (2050)
 +     [Bits 1-2]            1 'Maximum Compression'
 +     [Bit 11]              1 'Language Encoding'
-+0C0B Compression Method    0008 'Deflated'
-+0C0D Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0C11 CRC                   A618897D
-+0C15 Compressed Length     000001DB
-+0C19 Uncompressed Length   00000469
-+0C1D Filename Length       000B
-+0C1F Extra Length          0000
-+0C21 Comment Length        0000
-+0C23 Disk Start            0000
-+0C25 Int File Attributes   0000
++0C0B Compression Method    0008 (8) 'Deflated'
++0C0D Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0C11 CRC                   A618897D (2786625917)
++0C15 Compressed Size       000001DB (475)
++0C19 Uncompressed Size     00000469 (1129)
++0C1D Filename Length       000B (11)
++0C1F Extra Length          0000 (0)
++0C21 Comment Length        0000 (0)
++0C23 Disk Start            0000 (0)
++0C25 Int File Attributes   0000 (0)
       [Bit 0]               0 'Binary Data'
--0C2A Ext File Attributes   00000000
--0C2E Local Header Offset   0000043B
+-0C2A Ext File Attributes   00000000 (0)
+-0C2E Local Header Offset   0000043B (1083)
 -0C32 Filename              'XXXXXXXXXXX'
--
--0C3D CENTRAL HEADER #7     02014B50
--0C41 Created Zip Spec      00 '0.0'
--0C42 Created OS            00 'MS-DOS'
--0C43 Extract Zip Spec      14 '2.0'
--0C44 Extract OS            00 'MS-DOS'
--0C45 General Purpose Flag  0802
--     [Bits 1-2]            1 'Maximum Compression'
--     [Bit 11]              1 'Language Encoding'
--0C47 Compression Method    0008 'Deflated'
--0C49 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0C4D CRC                   165BC787
--0C51 Compressed Length     0000013E
--0C55 Uncompressed Length   000002E6
--0C59 Filename Length       0007
--0C5B Extra Length          0000
--0C5D Comment Length        0000
--0C5F Disk Start            0000
--0C61 Int File Attributes   0000
-+0C27 Ext File Attributes   00000000
-+0C2B Local Header Offset   0000043B
+-#
+-# WARNING: Offset 0xC32: Filename 'XXXXXXXXXXX'
++0C27 Ext File Attributes   00000000 (0)
++0C2B Local Header Offset   0000043B (1083)
 +0C2F Filename              'XXXXXXXXXXX'
-+
-+0C3A CENTRAL HEADER #7     02014B50
-+0C3E Created Zip Spec      00 '0.0'
-+0C3F Created OS            00 'MS-DOS'
-+0C40 Extract Zip Spec      14 '2.0'
-+0C41 Extract OS            00 'MS-DOS'
-+0C42 General Purpose Flag  0802
++#
++# WARNING: Offset 0xC2F: Filename 'XXXXXXXXXXX'
+ #          Zero length filename
+ #
+ 
+-0C3D CENTRAL HEADER #7     02014B50 (33639248)
+-0C41 Created Zip Spec      00 (0) '0.0'
+-0C42 Created OS            00 (0) 'MS-DOS'
+-0C43 Extract Zip Spec      14 (20) '2.0'
+-0C44 Extract OS            00 (0) 'MS-DOS'
+-0C45 General Purpose Flag  0802 (2050)
+-     [Bits 1-2]            1 'Maximum Compression'
+-     [Bit 11]              1 'Language Encoding'
+-0C47 Compression Method    0008 (8) 'Deflated'
+-0C49 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0C4D CRC                   165BC787 (375113607)
+-0C51 Compressed Size       0000013E (318)
+-0C55 Uncompressed Size     000002E6 (742)
+-0C59 Filename Length       0007 (7)
+-0C5B Extra Length          0000 (0)
+-0C5D Comment Length        0000 (0)
+-0C5F Disk Start            0000 (0)
+-0C61 Int File Attributes   0000 (0)
++0C3A CENTRAL HEADER #7     02014B50 (33639248)
++0C3E Created Zip Spec      00 (0) '0.0'
++0C3F Created OS            00 (0) 'MS-DOS'
++0C40 Extract Zip Spec      14 (20) '2.0'
++0C41 Extract OS            00 (0) 'MS-DOS'
++0C42 General Purpose Flag  0802 (2050)
 +     [Bits 1-2]            1 'Maximum Compression'
 +     [Bit 11]              1 'Language Encoding'
-+0C44 Compression Method    0008 'Deflated'
-+0C46 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0C4A CRC                   CF78BAE5
-+0C4E Compressed Length     0000013C
-+0C52 Uncompressed Length   000002E6
-+0C56 Filename Length       0007
-+0C58 Extra Length          0000
-+0C5A Comment Length        0000
-+0C5C Disk Start            0000
-+0C5E Int File Attributes   0000
++0C44 Compression Method    0008 (8) 'Deflated'
++0C46 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0C4A CRC                   CF78BAE5 (3480795877)
++0C4E Compressed Size       0000013C (316)
++0C52 Uncompressed Size     000002E6 (742)
++0C56 Filename Length       0007 (7)
++0C58 Extra Length          0000 (0)
++0C5A Comment Length        0000 (0)
++0C5C Disk Start            0000 (0)
++0C5E Int File Attributes   0000 (0)
       [Bit 0]               0 'Binary Data'
--0C63 Ext File Attributes   00000000
--0C67 Local Header Offset   00000640
+-0C63 Ext File Attributes   00000000 (0)
+-0C67 Local Header Offset   00000640 (1600)
 -0C6B Filename              'XXXXXXX'
--
--0C72 CENTRAL HEADER #8     02014B50
--0C76 Created Zip Spec      00 '0.0'
--0C77 Created OS            00 'MS-DOS'
--0C78 Extract Zip Spec      14 '2.0'
--0C79 Extract OS            00 'MS-DOS'
--0C7A General Purpose Flag  0802
--     [Bits 1-2]            1 'Maximum Compression'
--     [Bit 11]              1 'Language Encoding'
--0C7C Compression Method    0008 'Deflated'
--0C7E Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0C82 CRC                   2539C443
--0C86 Compressed Length     0000015F
--0C8A Uncompressed Length   0000028F
--0C8E Filename Length       0009
--0C90 Extra Length          0000
--0C92 Comment Length        0000
--0C94 Disk Start            0000
--0C96 Int File Attributes   0000
-+0C60 Ext File Attributes   00000000
-+0C64 Local Header Offset   0000063F
+-#
+-# WARNING: Offset 0xC6B: Filename 'XXXXXXX'
++0C60 Ext File Attributes   00000000 (0)
++0C64 Local Header Offset   0000063F (1599)
 +0C68 Filename              'XXXXXXX'
-+
-+0C6F CENTRAL HEADER #8     02014B50
-+0C73 Created Zip Spec      00 '0.0'
-+0C74 Created OS            00 'MS-DOS'
-+0C75 Extract Zip Spec      14 '2.0'
-+0C76 Extract OS            00 'MS-DOS'
-+0C77 General Purpose Flag  0802
-+     [Bits 1-2]            1 'Maximum Compression'
-+     [Bit 11]              1 'Language Encoding'
-+0C79 Compression Method    0008 'Deflated'
-+0C7B Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0C7F CRC                   2539C443
-+0C83 Compressed Length     0000015F
-+0C87 Uncompressed Length   0000028F
-+0C8B Filename Length       0009
-+0C8D Extra Length          0000
-+0C8F Comment Length        0000
-+0C91 Disk Start            0000
-+0C93 Int File Attributes   0000
-      [Bit 0]               0 'Binary Data'
--0C98 Ext File Attributes   00000000
--0C9C Local Header Offset   000007A3
--0CA0 Filename              'XXXXXXXXX'
--
--0CA9 CENTRAL HEADER #9     02014B50
--0CAD Created Zip Spec      00 '0.0'
--0CAE Created OS            00 'MS-DOS'
--0CAF Extract Zip Spec      14 '2.0'
--0CB0 Extract OS            00 'MS-DOS'
--0CB1 General Purpose Flag  0802
++#
++# WARNING: Offset 0xC68: Filename 'XXXXXXX'
+ #          Zero length filename
+ #
+ 
+-0C72 CENTRAL HEADER #8     02014B50 (33639248)
+-0C76 Created Zip Spec      00 (0) '0.0'
+-0C77 Created OS            00 (0) 'MS-DOS'
+-0C78 Extract Zip Spec      14 (20) '2.0'
+-0C79 Extract OS            00 (0) 'MS-DOS'
+-0C7A General Purpose Flag  0802 (2050)
 -     [Bits 1-2]            1 'Maximum Compression'
 -     [Bit 11]              1 'Language Encoding'
--0CB3 Compression Method    0008 'Deflated'
--0CB5 Last Mod Time         475B5C1B 'Tue Oct 27 11:32:54 2015'
--0CB9 CRC                   EEB610EE
--0CBD Compressed Length     00000163
--0CC1 Uncompressed Length   00000267
--0CC5 Filename Length       000B
--0CC7 Extra Length          0000
--0CC9 Comment Length        0000
--0CCB Disk Start            0000
--0CCD Int File Attributes   0000
-+0C95 Ext File Attributes   00000000
-+0C99 Local Header Offset   000007A0
-+0C9D Filename              'XXXXXXXXX'
-+
-+0CA6 CENTRAL HEADER #9     02014B50
-+0CAA Created Zip Spec      00 '0.0'
-+0CAB Created OS            00 'MS-DOS'
-+0CAC Extract Zip Spec      14 '2.0'
-+0CAD Extract OS            00 'MS-DOS'
-+0CAE General Purpose Flag  0802
+-0C7C Compression Method    0008 (8) 'Deflated'
+-0C7E Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0C82 CRC                   2539C443 (624542787)
+-0C86 Compressed Size       0000015F (351)
+-0C8A Uncompressed Size     0000028F (655)
+-0C8E Filename Length       0009 (9)
+-0C90 Extra Length          0000 (0)
+-0C92 Comment Length        0000 (0)
+-0C94 Disk Start            0000 (0)
+-0C96 Int File Attributes   0000 (0)
++0C6F CENTRAL HEADER #8     02014B50 (33639248)
++0C73 Created Zip Spec      00 (0) '0.0'
++0C74 Created OS            00 (0) 'MS-DOS'
++0C75 Extract Zip Spec      14 (20) '2.0'
++0C76 Extract OS            00 (0) 'MS-DOS'
++0C77 General Purpose Flag  0802 (2050)
 +     [Bits 1-2]            1 'Maximum Compression'
 +     [Bit 11]              1 'Language Encoding'
-+0CB0 Compression Method    0008 'Deflated'
-+0CB2 Last Mod Time         475B5C2A 'Tue Oct 27 11:33:20 2015'
-+0CB6 CRC                   D2D6F3E6
-+0CBA Compressed Length     00000163
-+0CBE Uncompressed Length   00000267
-+0CC2 Filename Length       000B
-+0CC4 Extra Length          0000
-+0CC6 Comment Length        0000
-+0CC8 Disk Start            0000
-+0CCA Int File Attributes   0000
++0C79 Compression Method    0008 (8) 'Deflated'
++0C7B Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0C7F CRC                   2539C443 (624542787)
++0C83 Compressed Size       0000015F (351)
++0C87 Uncompressed Size     0000028F (655)
++0C8B Filename Length       0009 (9)
++0C8D Extra Length          0000 (0)
++0C8F Comment Length        0000 (0)
++0C91 Disk Start            0000 (0)
++0C93 Int File Attributes   0000 (0)
       [Bit 0]               0 'Binary Data'
--0CCF Ext File Attributes   00000000
--0CD3 Local Header Offset   00000929
+-0C98 Ext File Attributes   00000000 (0)
+-0C9C Local Header Offset   000007A3 (1955)
+-0CA0 Filename              'XXXXXXXXX'
+-#
+-# WARNING: Offset 0xCA0: Filename 'XXXXXXXXX'
++0C95 Ext File Attributes   00000000 (0)
++0C99 Local Header Offset   000007A0 (1952)
++0C9D Filename              'XXXXXXXXX'
++#
++# WARNING: Offset 0xC9D: Filename 'XXXXXXXXX'
+ #          Zero length filename
+ #
+ 
+-0CA9 CENTRAL HEADER #9     02014B50 (33639248)
+-0CAD Created Zip Spec      00 (0) '0.0'
+-0CAE Created OS            00 (0) 'MS-DOS'
+-0CAF Extract Zip Spec      14 (20) '2.0'
+-0CB0 Extract OS            00 (0) 'MS-DOS'
+-0CB1 General Purpose Flag  0802 (2050)
+-     [Bits 1-2]            1 'Maximum Compression'
+-     [Bit 11]              1 'Language Encoding'
+-0CB3 Compression Method    0008 (8) 'Deflated'
+-0CB5 Modification Time     475B5C1B (1197169691) 'Tue Oct 27 11:32:54 2015'
+-0CB9 CRC                   EEB610EE (4004909294)
+-0CBD Compressed Size       00000163 (355)
+-0CC1 Uncompressed Size     00000267 (615)
+-0CC5 Filename Length       000B (11)
+-0CC7 Extra Length          0000 (0)
+-0CC9 Comment Length        0000 (0)
+-0CCB Disk Start            0000 (0)
+-0CCD Int File Attributes   0000 (0)
++0CA6 CENTRAL HEADER #9     02014B50 (33639248)
++0CAA Created Zip Spec      00 (0) '0.0'
++0CAB Created OS            00 (0) 'MS-DOS'
++0CAC Extract Zip Spec      14 (20) '2.0'
++0CAD Extract OS            00 (0) 'MS-DOS'
++0CAE General Purpose Flag  0802 (2050)
++     [Bits 1-2]            1 'Maximum Compression'
++     [Bit 11]              1 'Language Encoding'
++0CB0 Compression Method    0008 (8) 'Deflated'
++0CB2 Modification Time     475B5C2A (1197169706) 'Tue Oct 27 11:33:20 2015'
++0CB6 CRC                   D2D6F3E6 (3537302502)
++0CBA Compressed Size       00000163 (355)
++0CBE Uncompressed Size     00000267 (615)
++0CC2 Filename Length       000B (11)
++0CC4 Extra Length          0000 (0)
++0CC6 Comment Length        0000 (0)
++0CC8 Disk Start            0000 (0)
++0CCA Int File Attributes   0000 (0)
+      [Bit 0]               0 'Binary Data'
+-0CCF Ext File Attributes   00000000 (0)
+-0CD3 Local Header Offset   00000929 (2345)
 -0CD7 Filename              'XXXXXXXXXXX'
--
--0CE2 END CENTRAL HEADER    06054B50
--0CE6 Number of this disk   0000
--0CE8 Central Dir Disk no   0000
--0CEA Entries in this disk  0009
--0CEC Total Entries         0009
--0CEE Size of Central Dir   0000022D
--0CF2 Offset to Central Dir 00000AB5
--0CF6 Comment Length        0000
-+0CCC Ext File Attributes   00000000
-+0CD0 Local Header Offset   00000926
+-#
+-# WARNING: Offset 0xCD7: Filename 'XXXXXXXXXXX'
++0CCC Ext File Attributes   00000000 (0)
++0CD0 Local Header Offset   00000926 (2342)
 +0CD4 Filename              'XXXXXXXXXXX'
-+
-+0CDF END CENTRAL HEADER    06054B50
-+0CE3 Number of this disk   0000
-+0CE5 Central Dir Disk no   0000
-+0CE7 Entries in this disk  0009
-+0CE9 Total Entries         0009
-+0CEB Size of Central Dir   0000022D
-+0CEF Offset to Central Dir 00000AB2
-+0CF3 Comment Length        0000
- Done
++#
++# WARNING: Offset 0xCD4: Filename 'XXXXXXXXXXX'
+ #          Zero length filename
+ #
+ 
+-0CE2 END CENTRAL HEADER    06054B50 (101010256)
+-0CE6 Number of this disk   0000 (0)
+-0CE8 Central Dir Disk no   0000 (0)
+-0CEA Entries in this disk  0009 (9)
+-0CEC Total Entries         0009 (9)
+-0CEE Size of Central Dir   0000022D (557)
+-0CF2 Offset to Central Dir 00000AB5 (2741)
+-0CF6 Comment Length        0000 (0)
++0CDF END CENTRAL HEADER    06054B50 (101010256)
++0CE3 Number of this disk   0000 (0)
++0CE5 Central Dir Disk no   0000 (0)
++0CE7 Entries in this disk  0009 (9)
++0CE9 Total Entries         0009 (9)
++0CEB Size of Central Dir   0000022D (557)
++0CEF Offset to Central Dir 00000AB2 (2738)
++0CF3 Comment Length        0000 (0)
+ #
+ # Warning Count: 18
+ #
+ # Done
 
 @@ -1,13 +1,13 @@
  <?xml version="1.0" encoding="utf-8"?>

@@ -24,7 +24,9 @@ from diffoscope.comparators.zip import ZipFile
 from diffoscope.comparators.missing_file import MissingFile
 
 from ..utils.data import load_fixture, get_data
-from ..utils.tools import skip_unless_tools_exist
+from ..utils.tools import skip_unless_tools_exist, skip_unless_tool_is_at_least
+
+from .test_zip import zipdetails_version
 
 
 epub1 = load_fixture("test1.epub")
@@ -46,6 +48,7 @@ def differences(epub1, epub2):
 
 
 @skip_unless_tools_exist("zipinfo", "zipdetails")
+@skip_unless_tool_is_at_least("zipdetails", zipdetails_version, "4.004")
 def test_differences(differences):
     assert differences[0].source1 == "zipinfo {}"
     assert differences[0].source2 == "zipinfo {}"

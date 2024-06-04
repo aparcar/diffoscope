@@ -18,11 +18,12 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import pytest
+import subprocess
 
 from diffoscope.comparators.zip import ZipFile, MozillaZipFile, JmodJavaModule
 
 from ..utils.data import load_fixture, assert_diff
-from ..utils.tools import skip_unless_tools_exist
+from ..utils.tools import skip_unless_tools_exist, skip_unless_tool_is_at_least
 from ..utils.nonexisting import assert_non_existing
 
 
@@ -37,6 +38,10 @@ jmod1 = load_fixture("test1.jmod")
 jmod2 = load_fixture("test2.jmod")
 test_comment1 = load_fixture("test_comment1.zip")
 test_comment2 = load_fixture("test_comment2.zip")
+
+
+def zipdetails_version():
+    return subprocess.check_output(["zipdetails", "--version"]).decode("UTF-8")
 
 
 def test_identification(zip1):
@@ -59,6 +64,7 @@ def differences2(zip1, zip3):
 
 
 @skip_unless_tools_exist("zipinfo", "zipdetails")
+@skip_unless_tool_is_at_least("zipdetails", zipdetails_version, "4.004")
 def test_metadata(differences):
     assert_diff(differences[0], "zip_zipinfo_expected_diff")
     assert_diff(differences[1], "zip_zipdetails_expected_diff")
@@ -144,6 +150,7 @@ def comment_differences(test_comment1, test_comment2):
 
 
 @skip_unless_tools_exist("zipnote", "zipdetails")
+@skip_unless_tool_is_at_least("zipdetails", zipdetails_version, "4.004")
 def test_commented(comment_differences):
     assert_diff(comment_differences[1], "comment_zipinfo_expected_diff")
     assert_diff(comment_differences[2], "comment_zipdetails_expected_diff")
