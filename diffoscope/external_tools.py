@@ -129,7 +129,7 @@ EXTERNAL_TOOLS = {
         "FreeBSD": "e2fsprogs",
         "guix": "e2fsprogs",
     },
-    "lz4": {"debian": "lz4 | liblz4-tool", "FreeBSD": "lz4", "guix": "lz4"},
+    "lz4": {"debian": "lz4", "FreeBSD": "lz4", "guix": "lz4"},
     "lzip": {"debian": "lzip", "guix": "lzip"},
     "msgunfmt": {
         "debian": "gettext",

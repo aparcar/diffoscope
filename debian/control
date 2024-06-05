@@ -53,7 +53,7 @@ Build-Depends:
  libjs-jquery-throttle-debounce <!nocheck>,
  linux-image-amd64 [amd64] <!nocheck> | linux-image-generic [amd64] <!nocheck>,
  llvm <!nocheck>,
- lz4 <!nocheck> | liblz4-tool <!nocheck>,
+ lz4 <!nocheck>,
  lzip <!nocheck>,
  mono-utils <!nocheck>,
  ocaml-nox <!nocheck>,
