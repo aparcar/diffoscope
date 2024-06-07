@@ -1,8 +1,12 @@
-diffoscope (271) UNRELEASED; urgency=medium
+diffoscope (271) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb]
+  * Drop Build-Depends on liblz4-tool. Thanks, Chris Peterson.
+    (Closes: #1072575)
+  * Update tests to support zipdetails version 4.004 shipped with Perl 5.40.
+    (Closes: reproducible-builds/diffoscope#377)
 
- -- Chris Lamb <lamby@debian.org>  Tue, 04 Jun 2024 09:17:49 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 07 Jun 2024 09:33:33 +0100
 
 diffoscope (270) unstable; urgency=medium
 
