@@ -1,8 +1,12 @@
-diffoscope (272) UNRELEASED; urgency=medium
+diffoscope (272) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb]
+  * Move away from using DSA OpenSSH keys in tests; support has been removed
+    in OpenSSH 9.8p1. (Closes: reproducible-builds/diffoscope#382)
+  * Move to assert_diff helper in test_openssh_pub_key.py
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 07 Jun 2024 09:34:59 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 05 Jul 2024 07:16:14 -0700
 
 diffoscope (271) unstable; urgency=medium
 
