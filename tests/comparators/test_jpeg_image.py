@@ -33,8 +33,8 @@ image1_meta = load_fixture("test1_meta.jpg")
 image2_meta = load_fixture("test2_meta.jpg")
 
 
-def identify_version():
-    out = subprocess.check_output(["identify", "-version"]).decode("utf-8")
+def imagemagick_version(command):
+    out = subprocess.check_output([command, "-version"]).decode("utf-8")
     # First line is expected to look like
     # "Version: ImageMagick 6.9.6-6 Q16 x86_64 20161125 ..."
     if not out.startswith("Version: ImageMagick "):
@@ -75,7 +75,9 @@ def differences_meta(image1_meta, image2_meta):
 
 
 @skip_unless_tools_exist("img2txt", "identify")
-@skip_unless_tool_is_between("identify", identify_version, "6.9.6", "7.0.0")
+@skip_unless_tool_is_between(
+    "identify", lambda: imagemagick_version("identify"), "6.9.6", "7.0.0"
+)
 def test_diff_meta(differences_meta):
     assert_diff(differences_meta[-1], "jpeg_image_meta_expected_diff")
 
