@@ -82,6 +82,9 @@ def test_diff_meta(differences_meta):
     assert_diff(differences_meta[-1], "jpeg_image_meta_expected_diff")
 
 
+@skip_unless_tool_is_between(
+    "convert", lambda: imagemagick_version("convert"), "6.9.6", "7.0.0"
+)
 @skip_unless_tools_exist("img2txt", "convert", "identify")
 def test_has_visuals(monkeypatch, image1, image2):
     monkeypatch.setattr(Config(), "compute_visual_diffs", True)
