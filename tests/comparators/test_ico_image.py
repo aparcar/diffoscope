@@ -26,7 +26,7 @@ from ..utils.tools import (
     skip_unless_tools_exist,
     skip_unless_tool_is_between,
 )
-from .test_jpeg_image import identify_version
+from .test_jpeg_image import imagemagick_version
 
 
 image1 = load_fixture("test1.ico")
@@ -61,7 +61,7 @@ def differences_meta(image1_meta, image2_meta):
 
 @skip_unless_tools_exist("img2txt", "identify")
 @skip_unless_tool_is_between(
-    "identify", identify_version, "6.9.10-23", "7.0.0"
+    "identify", lambda: imagemagick_version("identify"), "6.9.10-23", "7.0.0"
 )
 def test_diff_meta(differences_meta):
     assert_diff(differences_meta[-1], "ico_image_meta_expected_diff")
@@ -69,7 +69,7 @@ def test_diff_meta(differences_meta):
 
 @skip_unless_tools_exist("img2txt", "identify")
 @skip_unless_tool_is_between(
-    "identify", identify_version, "6.9.10-23", "7.0.0"
+    "identify", lambda: imagemagick_version("identify"), "6.9.10-23", "7.0.0"
 )
 def test_diff_meta2(differences_meta):
     assert_diff(differences_meta[-1], "ico_image_meta_expected_diff_v2")
