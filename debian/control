@@ -8,7 +8,7 @@ Uploaders:
  Mattia Rizzolo <mattia@debian.org>,
 Build-Depends:
  7zip <!nocheck>,
- aapt <!nocheck>,
+# aapt <!nocheck>,
  abootimg <!nocheck>,
  androguard <!nocheck>,
  apksigcopier <!nocheck>,

@@ -24,4 +24,6 @@ sed -i "s,fp-utils,fp-utils [!ppc64el !s390x]," debian/tests/control.tmp
 sed -i "s,oggvideotools,oggvideotools [!s390x]," debian/tests/control.tmp
 sed -i "s,python3-androguard,androguard," debian/tests/control.tmp
 sed -i "s,dexdump,dexdump [amd64 arm64 armhf i386]," debian/tests/control.tmp
-sed -i "s,aapt,aapt [amd64 arm64 armel armhf i386 mips64el mipsel]," debian/tests/control.tmp
+# aapt removed due to not being in trixie atma - #1070416
+#sed -i "s,aapt,aapt [amd64 arm64 armel armhf i386 mips64el mipsel]," debian/tests/control.tmp
+sed -i "s#aapt, ##" debian/tests/control.tmp
