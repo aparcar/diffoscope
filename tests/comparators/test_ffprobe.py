@@ -21,7 +21,7 @@ import subprocess
 
 from diffoscope.comparators.ffprobe import FfprobeFile
 
-from ..utils.data import load_fixture, assert_diff
+from ..utils.data import load_fixture, get_data
 from ..utils.tools import skip_unless_tools_exist, skip_unless_tool_is_at_least
 from ..utils.nonexisting import assert_non_existing
 
@@ -54,7 +54,11 @@ def differences(mp3_1, mp3_2):
 @skip_unless_tools_exist("ffprobe")
 @skip_unless_tool_is_at_least("ffprobe", ffprobe_version, "4.4")
 def test_diff(differences):
-    assert_diff(differences[0], "mp3_expected_diff")
+    # >= 7 adds a "(mp3float)" annotation
+    computed_diff = differences[0].unified_diff.replace(
+        "mp3 (mp3float)", "mp3"
+    )
+    assert computed_diff == get_data("mp3_expected_diff")
 
 
 @skip_unless_tools_exist("ffprobe")
