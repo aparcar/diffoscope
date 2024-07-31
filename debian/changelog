@@ -1,8 +1,28 @@
-diffoscope (273) UNRELEASED; urgency=medium
+diffoscope (273) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Factor out version detection in test_jpeg_image. (Re:
+    reproducible-builds/diffoscope#384)
+  * Ensure that 'convert' is from Imagemagick 6.x; we will need to update a
+    few things with IM7. (Closes: reproducible-builds/diffoscope#384)
+  * Correct import of identify_version after refactoring change in 037bdcbb0.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 05 Jul 2024 07:17:15 -0700
+  [ Mattia Rizzolo ]
+  * tests:
+    + Add OpenSSH key test with a ed25519 key.
+    + Skip the OpenSSH test with DSA key if openssh is >> 9.7
+    + Support ffmpeg >= 7 that adds some extra context to the diff
+  * Do not ignore testing in gitlab-ci.
+  * debian:
+    + Temporarily remove aapt, androguard and dexdump from the build/test
+      dependencies as they are not available in testin/trixie.  Closes: #1070416
+    + Bump Standards-Version to 4.7.0, no changes needed.
+    + Adjust options to make sure not to pack the python s-dist directory
+      into the debian source package.
+    + Adjust the lintian overrides.
+
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 31 Jul 2024 15:31:22 +0900
 
 diffoscope (272) unstable; urgency=medium
 
