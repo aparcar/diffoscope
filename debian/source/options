@@ -9,3 +9,5 @@
 --tar-ignore=.gitattributes
 --tar-ignore=.gitignore
 --tar-ignore=.gitmodules
+--tar-ignore=.git-blame-ignore-revs
+--tar-ignore=dist
