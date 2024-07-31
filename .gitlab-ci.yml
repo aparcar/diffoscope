@@ -26,7 +26,14 @@ unstable:
 testing:
   <<: *test
   image: debian:testing
-  allow_failure: true
+# Whenever this "testing" test fails, we risk receiving #1070416
+# so please let's not ignore these failures.
+# Solutions range from temporarily remove the build-dependencies (also adjust
+# autopkgtest dependencies and expectations in the `pytst` test), to fixing the
+# problematic dependencies.
+# See c6bba336606ca6f44036b65e479521a126f080dc for an example on how to disable
+# a dependency.
+  allow_failure: false
 
 stable-bpo:
   <<: *test
