@@ -19,6 +19,8 @@ source-is-missing [tests/data/test1.o]
 source-is-missing [tests/data/test2.o]
 source-is-missing [tests/data/test1.debug]
 source-is-missing [tests/data/test2.debug]
+source-contains-prebuilt-binary [tests/data/test1.o]
+source-contains-prebuilt-binary [tests/data/test2.o]
 source-contains-prebuilt-binary [tests/data/test1.debug]
 source-contains-prebuilt-binary [tests/data/test2.debug]
 source-contains-prebuilt-windows-binary [tests/data/test1.exe]
@@ -30,6 +32,9 @@ source-contains-prebuilt-wasm-binary [tests/data/hello2.wasm]
 # left here for convinience when reenabling them again
 #source-is-missing [tests/data/test1.pyc-renamed]
 #source-is-missing [tests/data/test2.pyc-renamed]
+
+# another test artefact
+source-is-missing [tests/data/output_expected_363.html]
 
 # override warning we can fix nicely with python-debian from bookworm or later.
 # (= so once we don't maintain diffoscope in bullseye-backports anymore)
