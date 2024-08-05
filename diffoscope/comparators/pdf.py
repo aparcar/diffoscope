@@ -96,15 +96,17 @@ class PdfFile(File):
     def compare_details(self, other, source=None):
         xs = []
 
-        xs.extend(self.gen_metadata_differences(other))
         xs.append(Difference.from_operation(Pdftotext, self.path, other.path))
 
-        # Don't include verbose dumppdf output unless we won't see any
-        # differences without it.
+        # Include verbose dumppdf output unless we won't see any differences
+        # without it.
         if not any(xs):
             xs.append(
                 Difference.from_operation(Dumppdf, self.path, other.path)
             )
+
+        # Always preppend metadata differences
+        xs[:0] = self.gen_metadata_differences(other)
 
         return xs
 
