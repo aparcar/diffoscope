@@ -86,7 +86,7 @@ class Pdftotext(Command):
 class Dumppdf(Command):
     @tool_required("dumppdf")
     def cmdline(self):
-        return ["dumppdf", "-adt", self.path]
+        return ["dumppdf", "-at", self.path]
 
 
 class PdfFile(File):
