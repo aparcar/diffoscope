@@ -44,6 +44,20 @@ def zipdetails_version():
     return subprocess.check_output(["zipdetails", "--version"]).decode("UTF-8")
 
 
+def io_compress_zip_version():
+    try:
+        return subprocess.check_output(
+            [
+                "perl",
+                "-MIO::Compress::Zip",
+                "-e",
+                "print $IO::Compress::Zip::VERSION",
+            ]
+        ).decode("UTF-8")
+    except subprocess.CalledProcessError:
+        return "-1"
+
+
 def test_identification(zip1):
     assert isinstance(zip1, ZipFile)
 
@@ -65,6 +79,7 @@ def differences2(zip1, zip3):
 
 @skip_unless_tools_exist("zipinfo", "zipdetails")
 @skip_unless_tool_is_at_least("zipdetails", zipdetails_version, "4.004")
+@skip_unless_tool_is_at_least("perl", io_compress_zip_version, "2.212")
 def test_metadata(differences):
     assert_diff(differences[0], "zip_zipinfo_expected_diff")
     assert_diff(differences[1], "zip_zipdetails_expected_diff")
@@ -134,6 +149,7 @@ def jmod_differences(jmod1, jmod2):
 
 
 @skip_unless_tools_exist("zipinfo", "zipdetails")
+@skip_unless_tool_is_at_least("perl", io_compress_zip_version, "2.212")
 def test_jmod_metadata(jmod_differences, jmod1, jmod2):
     assert_diff(jmod_differences[0], "jmod_zipinfo_expected_diff")
     assert_diff(jmod_differences[1], "jmod_zipdetails_expected_diff")
