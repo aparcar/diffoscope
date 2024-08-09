@@ -1,8 +1,16 @@
-diffoscope (274) UNRELEASED; urgency=medium
+diffoscope (274) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Add support for IO::Compress::Zip >= 2.212. (Closes: #1078050)
+  * Don't include debug output when calling dumppdf(1).
+  * Append output from dumppdf(1) in more cases.
+    (Closes: reproducible-builds/diffoscope#387)
+  * Update copyright years.
 
- -- Mattia Rizzolo <mattia@debian.org>  Wed, 31 Jul 2024 16:07:27 +0900
+  [ Mattia Rizzolo ]
+  * Update the available architectures for test dependencies.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 09 Aug 2024 12:52:36 +0100
 
 diffoscope (273) unstable; urgency=medium
 
