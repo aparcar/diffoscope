@@ -18,14 +18,11 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import binascii
-import dis
 import io
-import marshal
 import os
 import re
 import struct
 import time
-import types
 
 from diffoscope.difference import Difference
 
@@ -85,55 +82,10 @@ def parse_pyc(f):
     filesz = struct.unpack("<L", filesz)
     yield f"files sz: {filesz[0]}"
 
-    code = marshal.load(f)
-    yield from show_code(code)
-
-
-def show_code(code, indent=""):
-    yield f"{indent}code"
-
-    indent += "   "
-
-    for x in ("argcount", "nlocals", "stacksize", "flags"):
-        yield "{}{: <10}: {!r}".format(indent, x, getattr(code, f"co_{x}"))
-
-    yield from show_hex("code", code.co_code, indent=indent)
-    s = io.StringIO()
-    dis.disassemble(code, file=s)
-    for x in s.getvalue().splitlines():
-        yield "{}{}".format(indent, re_memory_address.sub("", x))
-
-    yield f"{indent}consts"
-    for const in code.co_consts:
-        if isinstance(const, types.CodeType):
-            yield from show_code(const, f"{indent}   ")
-        else:
-            yield f"   {indent}{const!r}"
-
-    for x in (
-        "names",
-        "varnames",
-        "freevars",
-        "cellvars",
-        "filename",
-        "name",
-        "firstlineno",
-    ):
-        yield "{}{: <10} {!r}".format(indent, x, getattr(code, f"co_{x}"))
-
-    yield from show_hex("lnotab", code.co_lnotab, indent=indent)
-
-
-def show_hex(label, val, indent):
-    val = hexlify(val)
-
-    if len(val) < 60:
-        yield f"{indent}{label} {val}"
-        return
-
-    yield f"{indent}{label}"
-    for i in range(0, len(val), 60):
-        yield "{}   {}".format(indent, val[i : i + 60])
+    start = f.tell()
+    f.seek(0, os.SEEK_END)
+    size = f.tell() - start
+    yield f"code:     starts at offset {start} (size: {size} bytes)"
 
 
 def hexlify(val):

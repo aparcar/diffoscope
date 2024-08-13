@@ -32,13 +32,24 @@ pyc1 = load_fixture("test1.pyc-renamed")
 pyc2 = load_fixture("test2.pyc-renamed")
 
 
+def skip_unless_correct_python_version():
+    TEST_FIXTURES_GENERATED_BY = (3, 12)
+
+    display = ".".join(str(x) for x in TEST_FIXTURES_GENERATED_BY)
+
+    return skipif(
+        sys.version_info[:2] != TEST_FIXTURES_GENERATED_BY,
+        reason=f"Only Python {display} can de-marshal test1.pyc-renamed",
+    )
+
+
 @skip_unless_file_version_is_at_least("5.39")
 def test_identification(pyc1, pyc2):
     assert isinstance(pyc1, PycFile)
     assert isinstance(pyc2, PycFile)
 
 
-@skipif(sys.version_info >= (3, 10), reason="Unstable on 3.10+")
+@skip_unless_correct_python_version()
 def test_no_differences(pyc1):
     # Disassembling bytecode prior to Python 3.10 is stable when applied to
     # itself, otherwise various memory offsets (or memory addresses?) are
@@ -52,15 +63,9 @@ def differences(pyc1, pyc2):
 
 
 @skip_unless_file_version_is_at_least("5.39")
-@skipif(
-    sys.version_info[:2] not in {(3, 9), (3, 10)},
-    reason="Only Python 3.9 and 3.10 can de-marshal test1.pyc-renamed",
-)
+@skip_unless_correct_python_version()
 def test_diff(differences):
-    assert_diff_startswith(
-        differences[0],
-        "pyc_expected_diff",
-    )
+    assert_diff_startswith(differences[0], "pyc_expected_diff")
 
 
 def test_compare_non_existing(monkeypatch, pyc1):
