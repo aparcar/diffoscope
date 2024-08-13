@@ -93,6 +93,7 @@ def test_compressed_files(differences):
 
 
 @skip_unless_tools_exist("zipinfo", "bsdtar", "zipdetails")
+@skip_unless_tool_is_at_least("perl", io_compress_zip_version, "2.212")
 def test_extra_fields(differences2):
     assert_diff(differences2[0], "zip_bsdtar_expected_diff")
     assert_diff(differences2[1], "zip2_zipdetails_expected_diff")
@@ -148,11 +149,14 @@ def jmod_differences(jmod1, jmod2):
     return jmod1.compare(jmod2).details
 
 
-@skip_unless_tools_exist("zipinfo", "zipdetails")
+@skip_unless_tools_exist("zipinfo", "zipdetails", "zipnote")
 @skip_unless_tool_is_at_least("perl", io_compress_zip_version, "2.212")
 def test_jmod_metadata(jmod_differences, jmod1, jmod2):
+    assert jmod_differences[0].source1 == "zipinfo {}"
+    assert jmod_differences[1].source1.startswith("zipnote")
+    assert jmod_differences[2].source1.startswith("zipdetails")
     assert_diff(jmod_differences[0], "jmod_zipinfo_expected_diff")
-    assert_diff(jmod_differences[1], "jmod_zipdetails_expected_diff")
+    assert_diff(jmod_differences[2], "jmod_zipdetails_expected_diff")
 
 
 def test_encrypted(encrypted_zip1, encrypted_zip2):
