@@ -17,30 +17,15 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import pytest
-import sys
 
 from diffoscope.comparators.python import PycFile
 
 from ..utils.data import assert_diff_startswith, load_fixture
 from ..utils.nonexisting import assert_non_existing
-from ..utils.tools import (
-    skipif,
-    skip_unless_file_version_is_at_least,
-)
+from ..utils.tools import skip_unless_file_version_is_at_least
 
 pyc1 = load_fixture("test1.pyc-renamed")
 pyc2 = load_fixture("test2.pyc-renamed")
-
-
-def skip_unless_correct_python_version():
-    TEST_FIXTURES_GENERATED_BY = (3, 12)
-
-    display = ".".join(str(x) for x in TEST_FIXTURES_GENERATED_BY)
-
-    return skipif(
-        sys.version_info[:2] != TEST_FIXTURES_GENERATED_BY,
-        reason=f"Only Python {display} can de-marshal test1.pyc-renamed",
-    )
 
 
 @skip_unless_file_version_is_at_least("5.39")
@@ -49,7 +34,6 @@ def test_identification(pyc1, pyc2):
     assert isinstance(pyc2, PycFile)
 
 
-@skip_unless_correct_python_version()
 def test_no_differences(pyc1):
     # Disassembling bytecode prior to Python 3.10 is stable when applied to
     # itself, otherwise various memory offsets (or memory addresses?) are
@@ -63,7 +47,6 @@ def differences(pyc1, pyc2):
 
 
 @skip_unless_file_version_is_at_least("5.39")
-@skip_unless_correct_python_version()
 def test_diff(differences):
     assert_diff_startswith(differences[0], "pyc_expected_diff")
 
