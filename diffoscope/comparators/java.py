@@ -27,7 +27,7 @@ from diffoscope.difference import Difference
 from diffoscope.exc import RequiredToolNotFound
 
 from .utils.file import File
-from .utils.command import Command
+from .utils.command import Command, strip_ansi_escapes
 
 logger = logging.getLogger(__name__)
 
@@ -44,7 +44,7 @@ class ProcyonDecompiler(Command):
     def filter(self, line):
         if re.match(r"^(//)", line.decode("utf-8")):
             return b""
-        return line
+        return strip_ansi_escapes(line)
 
 
 class Javap(Command):
