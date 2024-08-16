@@ -27,9 +27,7 @@ from diffoscope.tempfiles import get_named_temporary_file
 from diffoscope.difference import Difference, VisualDifference
 
 from .utils.file import File
-from .utils.command import Command, our_check_output
-
-re_ansi_escapes = re.compile(r"\x1b[^m]*m")
+from .utils.command import Command, our_check_output, strip_ansi_escapes
 
 logger = logging.getLogger(__name__)
 
@@ -40,8 +38,7 @@ class Img2Txt(Command):
         return ["img2txt", "--width", "60", "--format", "utf8", self.path]
 
     def filter(self, line):
-        # Strip ANSI escapes
-        return re_ansi_escapes.sub("", line.decode("utf-8")).encode("utf-8")
+        return strip_ansi_escapes(line)
 
 
 class Identify(Command):

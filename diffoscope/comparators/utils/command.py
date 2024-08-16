@@ -19,10 +19,13 @@
 import abc
 import signal
 import logging
+import re
 import subprocess
 
 from .operation import Operation
 from ...utils import format_cmdline
+
+re_ansi_escapes = re.compile(rb"\x1b[^m]*m")
 
 logger = logging.getLogger(__name__)
 
@@ -115,3 +118,7 @@ def our_check_output(cmd, *args, **kwargs):
     logger.debug("Calling external command: %s", " ".join(cmd))
 
     return subprocess.check_output(cmd, *args, **kwargs)
+
+
+def strip_ansi_escapes(val):
+    return re_ansi_escapes.sub(b"", val)
