@@ -1,8 +1,16 @@
-diffoscope (275) UNRELEASED; urgency=medium
+diffoscope (275) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Update the test_zip.py text fixtures and definitions to support new changes
+    to IO::Compress. (Closes: #1078050)
+  * Do not call marshal.loads(...) of precompiled Python bytecode as it is
+    inherently unsafe. Replace, at least for now, with a brief summary of the
+    code section of .pyc files. (Re: reproducible-builds/diffoscope#371)
+  * Don't bother to check the Python version number in test_python.py: the
+    fixture for this test is deterministic/fixed.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 09 Aug 2024 12:56:33 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 16 Aug 2024 11:07:34 +0100
 
 diffoscope (274) unstable; urgency=medium
 
