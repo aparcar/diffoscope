@@ -72,7 +72,7 @@ try:
             # PyPDF 1.x
             from PyPDF2.utils import PdfReadError
 
-except ImportError:  # noqa
+except (ImportError, RuntimeError):  # noqa
     python_module_missing("pypdf")
     pypdf = None
 

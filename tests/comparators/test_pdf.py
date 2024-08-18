@@ -42,7 +42,7 @@ def skip_unless_pypdf3():
     def fn():
         try:
             import pypdf
-        except ImportError:
+        except (ImportError, RuntimeError):
             return True
 
         return not pypdf.__version__.startswith("3.")
