@@ -1,8 +1,14 @@
-diffoscope (276) UNRELEASED; urgency=medium
+diffoscope (276) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Also catch RuntimeError when importing PyPDF so that PyPDF or, crucially,
+    its transitive dependencies do not cause diffoscope to traceback at runtime
+    and build time. (Closes: #1078944, reproducible-builds/diffoscope#389)
+  * Factor out a method for stripping ANSI escapes.
+  * Strip ANSI escapes from the output of Procyon. Thanks, Aman Sharma!
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 16 Aug 2024 11:13:37 +0100
+ -- Chris Lamb <lamby@debian.org>  Sun, 18 Aug 2024 18:41:14 +0100
 
 diffoscope (275) unstable; urgency=medium
 
