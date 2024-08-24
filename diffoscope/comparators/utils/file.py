@@ -364,11 +364,15 @@ class File(metaclass=abc.ABCMeta):
                     # eg. invalid symlink
                     return None
 
-                h = tlsh.Tlsh()
-                with open(self.path, "rb") as f:
-                    for buf in iter(lambda: f.read(32768), b""):
-                        h.update(buf)
-                h.final()
+                try:
+                    h = tlsh.Tlsh()
+                    with open(self.path, "rb") as f:
+                        for buf in iter(lambda: f.read(32768), b""):
+                            h.update(buf)
+                    h.final()
+                except IsADirectoryError:
+                    # file is a symlink to a directory
+                    return None
 
                 try:
                     return h.hexdigest()
