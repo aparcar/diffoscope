@@ -63,7 +63,7 @@ Build-Depends:
  openssl <!nocheck>,
  pgpdump <!nocheck>,
  poppler-utils <!nocheck>,
- procyon-decompiler <!nocheck>,
+# procyon-decompiler <!nocheck>,
  python3-all,
  python3-argcomplete,
  python3-binwalk <!nocheck>,
