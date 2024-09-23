@@ -32,8 +32,10 @@ except:
 from diffoscope.changes import Changes
 from diffoscope.changes import ChangesFileException
 from diffoscope.difference import Difference
+from diffoscope.tools import get_comment_for_missing_python_module
 
 from .utils.file import File
+from .utils.fuzzy import tlsh
 from .utils.container import Container
 
 logger = logging.getLogger(__name__)
@@ -43,6 +45,13 @@ class DebControlMember(File):
     def __init__(self, container, member_name):
         super().__init__(container)
         self._name = member_name
+        if tlsh is None and ".orig." in member_name:
+            self.add_comment(
+                "Fuzzy matching not enabled; file listings of of .orig "
+                "tarballs may be overly verbose. {}".format(
+                    get_comment_for_missing_python_module("tlsh")
+                )
+            )
         self._path = None
 
     @property
