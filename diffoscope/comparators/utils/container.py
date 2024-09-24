@@ -164,8 +164,12 @@ class Container(metaclass=abc.ABCMeta):
             for my_name, other_name, score in self.perform_fuzzy_matching(
                 my_members, other_members
             ):
-                score_display = score / 400.0 * 100
-                comment = f"Files {score_display:.0f}% similar despite different names"
+                percentage = (1 - (score / 400.0)) * 100
+                if percentage >= 99:
+                    percentage = 99
+                comment = (
+                    f"Files {percentage:.0f}% similar despite different names"
+                )
                 if score == 0:
                     comment = "Files identical despite different names"
                 yield prep_yield(my_name, other_name, comment)
