@@ -1,8 +1,16 @@
-diffoscope (278) UNRELEASED; urgency=medium
+diffoscope (278) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Temporarily remove procyon-decompiler from Build-Depends as it was removed
+    from testing (#1057532). (Closes: #1082636)
+  * Add a helpful contextual message to the output if comparing Debian .orig
+    tarballs within .dsc files without the ability to "fuzzy-match" away the
+    leading directory. (Closes: reproducible-builds/diffoscope#386)
+  * Correctly invert "X% similar" value and do not emit "100% similar".
+    (Closes: reproducible-builds/diffoscope#391)
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 30 Aug 2024 09:53:58 +0100
+ -- Chris Lamb <lamby@debian.org>  Fri, 27 Sep 2024 08:08:56 -0700
 
 diffoscope (277) unstable; urgency=medium
 
