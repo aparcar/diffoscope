@@ -59,10 +59,6 @@ logger = logging.getLogger(__name__)
 class Readelf(Command):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # we don't care about the name of the archive
-        self._path_re = re.compile(
-            r"\b%s/\b" % re.escape(os.path.dirname(self.path))
-        )
         self._archive_re = re.compile(r"^File: %s\(" % re.escape(self.path))
 
     @tool_required("readelf")
@@ -84,9 +80,6 @@ class Readelf(Command):
 
         # we don't care about the name of the archive
         val = self._archive_re.sub("File: lib.a(", val)
-
-        # the full path can appear in the output, we need to remove it
-        val = self._path_re.sub("/", val)
 
         return val.encode("utf-8")
 
