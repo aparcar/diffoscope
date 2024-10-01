@@ -89,6 +89,7 @@ Build-Depends:
  sng <!nocheck>,
  sqlite3 <!nocheck>,
  squashfs-tools <!nocheck>,
+ systemd-ukify <!nocheck>,
  tcpdump <!nocheck>,
  u-boot-tools <!nocheck>,
  unzip <!nocheck>,

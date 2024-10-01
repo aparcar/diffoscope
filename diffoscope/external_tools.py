@@ -224,6 +224,10 @@ EXTERNAL_TOOLS = {
     "tar": {"debian": "tar", "arch": "tar", "guix": "tar"},
     "tcpdump": {"debian": "tcpdump", "arch": "tcpdump", "guix": "tcpdump"},
     "ttx": {"debian": "fonttools", "guix": "python-fonttools"},
+    "ukify": {
+        "debian": "systemd-ukify",
+        "arch": "systemd-ukify",
+    },
     "unsquashfs": {
         "debian": "squashfs-tools",
         "arch": "squashfs-tools",
