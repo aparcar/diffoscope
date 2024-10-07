@@ -107,7 +107,6 @@ Vcs-Browser: https://salsa.debian.org/reproducible-builds/diffoscope
 Package: diffoscope-minimal
 Architecture: all
 Depends:
- python3-pkg-resources,
  ${misc:Depends},
  ${python3:Depends},
 Recommends:
