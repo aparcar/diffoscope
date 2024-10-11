@@ -1,8 +1,9 @@
-diffoscope (280) UNRELEASED; urgency=medium
+diffoscope (280) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Drop Depends on deprecated python3-pkg-resources. (Closes: #1083362)
 
- -- Chris Lamb <lamby@debian.org>  Mon, 07 Oct 2024 12:27:03 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 11 Oct 2024 08:07:17 -0700
 
 diffoscope (279) unstable; urgency=medium
 
