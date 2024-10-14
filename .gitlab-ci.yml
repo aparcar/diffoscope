@@ -39,7 +39,7 @@ stable-bpo:
   <<: *test
   image: debian:stable-backports
   before_script:
-    - set -e; for pkg in coreboot-utils python3-pypdf; do
+    - set -e; for pkg in coreboot-utils python3-pypdf systemd-ukify; do
         sed -i "/$pkg/d" debian/control ;
       done
 
