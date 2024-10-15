@@ -17,6 +17,7 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 
+import subprocess
 import re
 import logging
 
