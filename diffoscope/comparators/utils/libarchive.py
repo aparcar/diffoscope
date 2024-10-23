@@ -122,6 +122,14 @@ libarchive.ArchiveEntry.pathname = property(
 
 
 def list_libarchive(path, ignore_errors=False):
+    """
+    NB. Despite this method's contents being wrapped entirely in a try/except,
+    the use of yield operator means that the setting `ignore_errors` to `True`
+    will emit valid entries until there is an error, rather than a) masking all
+    entries if there is any error or b) skipping *over* errors to the next
+    entry.
+    """
+
     def force_str(val):
         # libarchive ~5 began to return uname and gname as UTF-8 whilst
         # previous versions returned bytes that required decoding.

@@ -69,8 +69,8 @@ class ArFile(File):
                 ArSymbolTableDumper, self.path, other.path
             ),
             Difference.from_text_readers(
-                list_libarchive(self.path),
-                list_libarchive(other.path),
+                list_libarchive(self.path, ignore_errors=True),
+                list_libarchive(other.path, ignore_errors=True),
                 self.path,
                 other.path,
                 source="file list",
