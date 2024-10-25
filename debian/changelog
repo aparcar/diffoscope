@@ -1,8 +1,10 @@
-diffoscope (282) UNRELEASED; urgency=medium
+diffoscope (282) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Ignore errors when listing .ar archives. (Closes: #1085257)
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 18 Oct 2024 10:33:56 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 25 Oct 2024 10:16:04 -0700
 
 diffoscope (281) unstable; urgency=medium
 
