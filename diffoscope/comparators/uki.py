@@ -21,7 +21,7 @@ import subprocess
 import re
 import logging
 
-from diffoscope.tools import tool_required
+from diffoscope.tools import tool_required, tool_check_installed
 from diffoscope.difference import Difference
 
 from .utils.file import File
@@ -44,6 +44,9 @@ class UKIFile(File):
     @classmethod
     def recognizes(cls, file):
         if not super().recognizes(file):
+            return False
+
+        if not tool_check_installed("objdump"):
             return False
 
         try:
