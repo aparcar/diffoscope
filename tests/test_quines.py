@@ -22,7 +22,7 @@ from diffoscope.comparators.deb import DebFile
 from diffoscope.comparators.zip import ZipFile
 from diffoscope.comparators.gzip import GzipFile
 
-from .utils.data import load_fixture, get_data
+from .utils.data import load_fixture, assert_diff
 from .utils.tools import (
     skip_unless_file_version_is_at_least,
     file_version_is_ge,
@@ -54,13 +54,9 @@ def differences(quine1, quine2):
     return quine1.compare(quine2).details
 
 
-@skip_unless_file_version_is_at_least("5.37")
+@skip_unless_file_version_is_at_least("5.45")
 def test_difference(differences):
-    expected_diff = get_data("quine_expected_diff")
-    if file_version_is_ge("5.40"):
-        expected_diff = expected_diff[:-1]
-        expected_diff += ", compression method=deflate\n"
-    assert differences[0].unified_diff == expected_diff
+    assert_diff(differences[0], "quine_expected_diff")
 
 
 def test_identification_deb(quine3, quine4):
@@ -74,5 +70,4 @@ def differences_deb(quine3, quine4):
 
 
 def test_differences_deb(differences_deb):
-    expected_diff = get_data("quine_deb_expected_diff")
-    assert differences_deb[0].unified_diff == expected_diff
+    assert_diff(differences_deb[0], "quine_deb_expected_diff")
