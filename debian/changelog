@@ -1,8 +1,12 @@
-diffoscope (284) UNRELEASED; urgency=medium
+diffoscope (284) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Simplify tests_quines.py::test_{differences,differences_deb} to use
+    assert_diff and not mangle the expected test output.
+  * Update some tests to support file(1) version 5.46.
+    (Closes: reproducible-builds/diffoscope#395)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 08 Nov 2024 12:11:53 -0800
+ -- Chris Lamb <lamby@debian.org>  Fri, 06 Dec 2024 10:37:15 +0000
 
 diffoscope (283) unstable; urgency=medium
 
