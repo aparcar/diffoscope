@@ -30,6 +30,7 @@ EXTERNAL_TOOLS = {
     "apksigcopier": {"debian": "apksigcopier"},
     "apktool": {"debian": "apktool"},
     "apksigner": {"debian": "apksigner"},
+    "asar": {"arch": "asar"},
     "db_dump": {"debian": "db-util", "guix": "bdb"},
     "bsdtar": {
         "debian": "libarchive-tools",
