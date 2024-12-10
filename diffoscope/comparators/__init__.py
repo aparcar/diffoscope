@@ -125,6 +125,7 @@ class ComparatorManager:
         ("vmlinuz.VmlinuzFile",),
         ("arsc.ArscFile",),
         ("xar.XarFile",),
+        ("asar.AsarFile",),
     )
 
     _singleton = {}
