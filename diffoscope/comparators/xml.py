@@ -18,6 +18,7 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import re
+import pyexpat
 
 from xml.parsers.expat import ExpatError
 
@@ -34,6 +35,29 @@ except ImportError:
     defusedxml = False
     python_module_missing("defusedxml")
     from xml.dom import minidom
+
+
+def is_vulnerable_xml_parser():
+    # We assume defusedxml is safe
+    if defusedxml:
+        return False
+
+    """
+    As described in Pythons module documentation versions of expat <= 2.4.1
+    (released on 2021-05-23) are vulnerable to exponential/quadratic entity
+    expansion while versions <= 2.6.0 (released on 2024-02-06) are vulnerable to
+    large tokens. Since expat is usually provided by the system and not
+    directly bundled with Python, even recent Python installations can still be
+    vulnerable due to old expat versions.
+
+        <https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/397>
+    """
+
+    pyexpat_version = tuple(
+        int(x) for x in pyexpat.EXPAT_VERSION.split("_", 1)[1].split(".")
+    )
+
+    return pyexpat_version <= (2, 6, 0)
 
 
 def _format(node):
@@ -101,6 +125,11 @@ class XMLFile(File):
 
         # Emulate FALLBACK_FILE_EXTENSION_SUFFIX = {".xml"}
         if not super().recognizes(file) and not file.name.endswith(".xml"):
+            return False
+
+        # Check that we aren't about to open an untrusted file with an old, and
+        # potentially vulnerable, version of pyexpat.
+        if is_vulnerable_xml_parser():
             return False
 
         with open(file.path) as f:

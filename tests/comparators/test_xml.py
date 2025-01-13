@@ -20,9 +20,13 @@
 import sys
 import pytest
 
-from diffoscope.comparators.xml import XMLFile
+from diffoscope.comparators.xml import XMLFile, is_vulnerable_xml_parser
 
 from ..utils.data import load_fixture, assert_diff
+
+skip_if_vulnerable_xml_parser = pytest.mark.skipif(
+    is_vulnerable_xml_parser(), reason="Vulnerable XML parser"
+)
 
 
 xml_a = load_fixture("test1.xml")
@@ -32,14 +36,17 @@ xml_d = load_fixture("test4.xml")
 invalid_xml = load_fixture("test_invalid.xml")
 
 
+@skip_if_vulnerable_xml_parser
 def test_identification(xml_a):
     assert isinstance(xml_a, XMLFile)
 
 
+@skip_if_vulnerable_xml_parser
 def test_invalid(invalid_xml):
     assert not isinstance(invalid_xml, XMLFile)
 
 
+@skip_if_vulnerable_xml_parser
 def test_no_differences(xml_a):
     assert xml_a.compare(xml_a) is None
 
@@ -52,6 +59,7 @@ def differences(xml_a, xml_b):
 @pytest.mark.skipif(
     sys.version_info < (3, 8), reason="requires Python 3.8 or higher"
 )
+@skip_if_vulnerable_xml_parser
 def test_diff(differences):
     assert_diff(differences[0], "test_xml_expected_diff")
 
@@ -59,6 +67,7 @@ def test_diff(differences):
 @pytest.mark.skipif(
     sys.version_info < (3, 8), reason="requires Python 3.8 or higher"
 )
+@skip_if_vulnerable_xml_parser
 def test_ordering_differences(xml_c, xml_d):
     diff = xml_c.compare(xml_d)
     assert diff.details[0].comments == ["Ordering differences only"]
