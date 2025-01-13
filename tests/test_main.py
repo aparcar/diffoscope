@@ -191,3 +191,31 @@ def test_usage(capsys):
 
     assert out == ""
     assert "usage:" in err
+
+
+def test_valid_css(capsys):
+    ret, out, err = run(
+        capsys,
+        "--css",
+        "http://example.tld/file.css",
+        TEST_TAR1_PATH,
+        TEST_TAR1_PATH,
+    )
+
+    assert ret == 0
+    assert err == ""
+    assert out == ""
+
+
+def test_invalid_css(capsys):
+    ret, out, err = run(
+        capsys,
+        "--css",
+        '"><svg/onload=alert(43433)>',
+        TEST_TAR1_PATH,
+        TEST_TAR1_PATH,
+    )
+
+    assert ret == 2
+    assert "is not a valid CSS" in err
+    assert out == ""

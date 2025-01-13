@@ -28,6 +28,8 @@ import textwrap
 import argparse
 import traceback
 
+from urllib.parse import urlparse
+
 from . import VERSION
 from .path import set_path
 from .tools import (
@@ -734,6 +736,14 @@ def sigterm_handler(signo, stack_frame):
     os._exit(2)
 
 
+def is_valid_url(val):
+    try:
+        result = urlparse(val)
+        return all([result.scheme, result.netloc])
+    except AttributeError:
+        return False
+
+
 def main(args=None):
     if args is None:
         args = sys.argv[1:]
@@ -758,6 +768,9 @@ def main(args=None):
         with profile("main", "parse_args"):
             parser, post_parse = create_parser()
             parsed_args = parser.parse_args(args)
+
+        if parsed_args.css_url and not is_valid_url(parsed_args.css_url):
+            parser.error(f"{parsed_args.css_url!r} is not a valid CSS URL.")
 
         log_handler = ProgressManager().setup(parsed_args)
 
