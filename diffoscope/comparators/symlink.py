@@ -18,14 +18,11 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import os
-import logging
 
 from diffoscope.tempfiles import get_named_temporary_file
 from diffoscope.difference import Difference
 
 from .utils.file import File
-
-logger = logging.getLogger(__name__)
 
 
 class Symlink(File):

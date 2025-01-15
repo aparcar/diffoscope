@@ -18,7 +18,6 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 import hashlib
 import re
-import logging
 import struct
 import xml.etree.ElementTree as ET
 import zlib
@@ -27,8 +26,6 @@ import os
 from .utils.file import File
 from .utils.archive import Archive
 from diffoscope.difference import Difference
-
-logger = logging.getLogger(__name__)
 
 
 class XarContainer(Archive):
