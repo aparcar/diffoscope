@@ -19,6 +19,7 @@
 
 import re
 import pyexpat
+import logging
 
 from xml.parsers.expat import ExpatError
 
@@ -58,6 +59,13 @@ def is_vulnerable_xml_parser():
     )
 
     return pyexpat_version < (2, 6, 0)
+
+
+logger = logging.getLogger(__name__)
+if is_vulnerable_xml_parser():
+    logger.warning(
+        "Vulnerable version of pyexpat detected; disabling comparison of XML documents. Install defusedxml or upgrade your pyexpat."
+    )
 
 
 def _format(node):
