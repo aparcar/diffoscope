@@ -57,7 +57,7 @@ def is_vulnerable_xml_parser():
         int(x) for x in pyexpat.EXPAT_VERSION.split("_", 1)[1].split(".")
     )
 
-    return pyexpat_version <= (2, 6, 0)
+    return pyexpat_version < (2, 6, 0)
 
 
 def _format(node):
