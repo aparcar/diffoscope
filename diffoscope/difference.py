@@ -403,7 +403,7 @@ class Difference:
         self._visuals.extend(visuals)
         self._size_cache = None
 
-    def has_ordering_differences_only(self):
+    def check_for_ordering_differences(self):
         """
         Check if difference is only in line ordering.
         """
@@ -420,15 +420,11 @@ class Difference:
 
         # Faster check: does number of lines match?
         if len(added_lines) != len(removed_lines):
-            return False
+            return
 
         if added_lines == removed_lines:
-            return True
-
-        return sorted(added_lines) == sorted(removed_lines)
-
-    def check_for_ordering_differences(self):
-        if self.has_ordering_differences_only():
+            self.add_comment("Line-ending differences only")
+        elif sorted(added_lines) == sorted(removed_lines):
             self.add_comment("Ordering differences only")
 
 

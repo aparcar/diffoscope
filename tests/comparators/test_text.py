@@ -89,12 +89,20 @@ def test_compare_non_existing(monkeypatch, ascii1):
 
 text_order1 = load_fixture("text_order1")
 text_order2 = load_fixture("text_order2")
+text_endings1 = load_fixture("text_endings1")
+text_endings2 = load_fixture("text_endings2")
 
 
 def test_ordering_differences(text_order1, text_order2):
     difference = text_order1.compare(text_order2)
     assert difference.comments == ["Ordering differences only"]
     assert_diff(difference, "text_order_expected_diff")
+
+
+def test_ending_differences(text_endings1, text_endings2):
+    difference = text_endings1.compare(text_endings2)
+    assert difference.comments == ["Line-ending differences only"]
+    assert_diff(difference, "text_endings_expected_diff")
 
 
 def test_text_fallback(tmp_path):
