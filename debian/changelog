@@ -1,8 +1,16 @@
-diffoscope (285) UNRELEASED; urgency=medium
+diffoscope (285) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Validate --css command-line argument. Thanks to Daniel Schmidt @ SRLabs for
+    the report. (Closes: #396)
+  * Prevent XML entity expansion attacks through vulnerable versions of
+    pyexpat. Thanks to Florian Wilkens @ SRLabs for the report. (Closes: #397)
+  * Print a warning if we have disabled XML comparisons due to a potentially
+    vulnerable version of pyexpat.
+  * Remove (unused) logging facility from a few comparators.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 06 Dec 2024 10:38:35 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 17 Jan 2025 09:39:49 +0000
 
 diffoscope (284) unstable; urgency=medium
 
