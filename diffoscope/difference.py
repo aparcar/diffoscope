@@ -409,7 +409,7 @@ class Difference:
         """
 
         if not self.unified_diff:
-            return False
+            return
 
         diff_lines = self.unified_diff.splitlines()
 
