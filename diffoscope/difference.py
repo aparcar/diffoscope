@@ -411,7 +411,8 @@ class Difference:
         if not self.unified_diff:
             return
 
-        diff_lines = self.unified_diff.splitlines()
+        # Split the diff, but retain the original line endings
+        diff_lines = self.unified_diff.splitlines(True)
 
         added_lines = [line[1:] for line in diff_lines if line.startswith("+")]
         removed_lines = [
@@ -422,10 +423,22 @@ class Difference:
         if len(added_lines) != len(removed_lines):
             return
 
-        if added_lines == removed_lines:
-            self.add_comment("Line-ending differences only")
-        elif sorted(added_lines) == sorted(removed_lines):
+        if added_lines == removed_lines or sorted(added_lines) == sorted(
+            removed_lines
+        ):
             self.add_comment("Ordering differences only")
+            return
+
+        # Now strip off any trailing newlines, thus effectively normalising
+        # "\r\n" and "\n"...
+        added_lines = [x.rstrip("\r\n") for x in added_lines]
+        removed_lines = [x.rstrip("\r\n") for x in removed_lines]
+
+        # ... and re-run the same checks.
+        if added_lines == removed_lines or sorted(added_lines) == sorted(
+            removed_lines
+        ):
+            self.add_comment("Line-ending differences only")
 
 
 class VisualDifference:
