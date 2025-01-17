@@ -52,7 +52,7 @@ def data(filename):
 
 
 def get_data(filename):
-    with open(data(filename), encoding="utf-8") as f:
+    with open(data(filename), newline="", encoding="utf-8") as f:
         return f.read()
 
 
