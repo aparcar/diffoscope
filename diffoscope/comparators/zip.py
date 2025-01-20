@@ -54,7 +54,7 @@ class Zipinfo(Command):
 
         # Strip paths from errors and warnings
         # eg: "warning [/full/path]: 472 extra bytes at beginning or within zipfile"
-        m = self.re_strip_path.match(line.decode("utf-8"))
+        m = self.re_strip_path.match(line.decode("utf-8", "surrogateescape"))
         if m is not None:
             return "{}: {}\n".format(m.group(1), m.group(2)).encode("utf-8")
 
