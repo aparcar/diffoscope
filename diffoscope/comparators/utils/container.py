@@ -198,9 +198,13 @@ class Container(metaclass=abc.ABCMeta):
                 difference.add_comment(msg)
                 return difference
 
-            difference = compare_files(
-                file1, file2, source=None, diff_content_only=no_recurse
-            )
+            try:
+                difference = compare_files(
+                    file1, file2, source=None, diff_content_only=no_recurse
+                )
+            except PermissionError as exc:
+                logger.warning(f"Skipping {exc.filename} ({exc.strerror})")
+                return
 
             if isinstance(file1, AbstractMissingType) or isinstance(
                 file2, AbstractMissingType

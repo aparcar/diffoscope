@@ -58,16 +58,29 @@ def format_bytes(size, decimal_places=2):
     return f"{size:.{decimal_places}f} {unit}"
 
 
-def exit_if_paths_do_not_exist(*paths):
+def exit_if_paths_inaccessible(*paths):
+    """
+    Exit if the specified *paths are inaccessible, either by:
+
+        a) simply being missing
+        b) being a dangling symbolic links
+        c) being inaccessible (directly or via a symbolic link
+    """
+
     flag = False
     for path in paths:
-        if os.path.lexists(path):
-            continue
-        flag = True
-        print(
-            f"{sys.argv[0]}: {path}: No such file or directory",
-            file=sys.stderr,
-        )
+        if not os.path.lexists(path):
+            flag = True
+            print(
+                f"{sys.argv[0]}: {path}: No such file or directory",
+                file=sys.stderr,
+            )
+        elif not os.access(path, os.R_OK):
+            flag = True
+            print(
+                f"{sys.argv[0]}: {path}: Permission denied",
+                file=sys.stderr,
+            )
 
     if flag:
         sys.exit(2)

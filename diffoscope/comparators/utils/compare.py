@@ -25,7 +25,7 @@ import subprocess
 
 from diffoscope.tools import tool_required
 from diffoscope.exc import RequiredToolNotFound
-from diffoscope.utils import exit_if_paths_do_not_exist
+from diffoscope.utils import exit_if_paths_inaccessible
 from diffoscope.config import Config
 from diffoscope.excludes import any_excluded
 from diffoscope.profiling import profile
@@ -55,7 +55,7 @@ def compare_root_paths(path1, path2):
     )
 
     if not Config().new_file:
-        exit_if_paths_do_not_exist(path1, path2)
+        exit_if_paths_inaccessible(path1, path2)
     if any_excluded(path1, path2):
         return None
 
