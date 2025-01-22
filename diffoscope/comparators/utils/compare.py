@@ -110,12 +110,11 @@ def compare_files(file1, file2, source=None, diff_content_only=False):
         specialize(file1)
         specialize(file2)
 
-    force_details = Config().force_details
     with profile("has_same_content_as", file1):
         has_same_content = file1.has_same_content_as(file2)
 
     if has_same_content:
-        if not force_details:
+        if not Config().force_details:
             logger.debug(
                 "has_same_content_as returned True; skipping further comparisons"
             )
