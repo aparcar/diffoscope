@@ -87,11 +87,7 @@ class CbfsContainer(Archive):
             dest_path,
         ]
         logger.debug("cbfstool extract %s to %s", member_name, dest_path)
-        try:
-            our_check_output(cmd, stderr=subprocess.DEVNULL)
-        except subprocess.CalledProcessError:
-            logger.error("unable to extract %s", member_name)
-            return None
+        our_check_output(cmd, stderr=subprocess.DEVNULL)
         return dest_path
 
 
