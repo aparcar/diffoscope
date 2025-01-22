@@ -63,9 +63,14 @@ def compare_root_paths(path1, path2):
         return compare_directories(path1, path2)
 
     container1 = FilesystemDirectory(os.path.dirname(path1)).as_container
-    file1 = specialize(FilesystemFile(path1, container=container1))
+    file1 = FilesystemFile(path1, container=container1)
     container2 = FilesystemDirectory(os.path.dirname(path2)).as_container
-    file2 = specialize(FilesystemFile(path2, container=container2))
+    file2 = FilesystemFile(path2, container=container2)
+
+    with profile("has_same_content_as", file1):
+        if file1.has_same_content_as(file2):
+            return None
+
     difference = compare_files(file1, file2)
 
     if Config().exclude_directory_metadata in ("no", "recursive"):
