@@ -1,8 +1,30 @@
-diffoscope (286) UNRELEASED; urgency=medium
+diffoscope (286) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Bug fixes:
+    - When passing files on the command line, don't call specialize(..) before
+      we've checked that the files are identical. In the worst case, this was
+      resulting in spinning up binwalk and extracting two entire filesystem
+      images merely to confirm that they were indeed filesystem images..
+      before simply concluding that they were identical anyway.
+    - Do not exit with a traceback if paths are inaccessible, either directly,
+      via symbolic links or within a directory. (Closes: #1065498)
+    - Correctly identify changes to only the line-endings of files; don't mark
+      them as "Ordering differences only".
+    - Use the "surrogateescape" mechanism of str.{decode,encode} to avoid a
+      UnicodeDecodeError and crash when decoding zipinfo output that is not
+      valid UTF-8. (Closes: #1093484)
+  * Testsuite changes:
+    - Don't mangle newlines when opening test fixtures; we want them untouched.
+    - Move to assert_diff in test_text.py.
+  * Misc:
+    - Remove unnecessary return value from check_for_ordering_differences in
+      the Difference class.
+    - Drop an unused function in iso9600.py
+    - Inline a call/check of Config().force_details; no need for an additional
+      variable.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 17 Jan 2025 09:42:15 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 24 Jan 2025 12:07:52 +0000
 
 diffoscope (285) unstable; urgency=medium
 
