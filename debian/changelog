@@ -1,8 +1,13 @@
-diffoscope (287) UNRELEASED; urgency=medium
+diffoscope (287) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Drop an unused subprocess import.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 24 Jan 2025 12:09:16 +0000
+  [ fridtjof ]
+  * Add ASAR comparator.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 31 Jan 2025 11:22:37 +0000
 
 diffoscope (286) unstable; urgency=medium
 
