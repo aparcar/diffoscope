@@ -9,7 +9,7 @@ fi
 
 export LIBGUESTFS_MEMSIZE=128
 if [ "$(basename "$0")" = "pytest-with-recommends" ]; then
-    export DIFFOSCOPE_FAIL_TESTS_ON_MISSING_TOOLS="aapt2 androguard apktool dexdump zipinfo pedump oggDump ppudump otool lipo radare2"
+    export DIFFOSCOPE_FAIL_TESTS_ON_MISSING_TOOLS="aapt2 androguard apktool asar dexdump zipinfo pedump oggDump ppudump otool lipo radare2"
 fi
 
 for py in $(py3versions -s); do
