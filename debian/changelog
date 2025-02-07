@@ -1,8 +1,11 @@
-diffoscope (288) UNRELEASED; urgency=medium
+diffoscope (288) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Add 'asar' to DIFFOSCOPE_FAIL_TESTS_ON_MISSING_TOOLS. (Closes: #1095057)
+  * Update minimal 'black' version.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 31 Jan 2025 11:27:12 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 07 Feb 2025 10:11:11 +0000
 
 diffoscope (287) unstable; urgency=medium
 
