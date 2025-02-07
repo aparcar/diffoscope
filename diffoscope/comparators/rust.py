@@ -3,7 +3,7 @@
 #
 # Copyright © 2014-2015 Jérémy Bobbio <lunar@debian.org>
 # Copyright © 2016 Ximin Luo <infinity0@debian.org>
-# Copyright © 2016-2020 Chris Lamb <lamby@debian.org>
+# Copyright © 2016-2020, 2025 Chris Lamb <lamby@debian.org>
 #
 # diffoscope is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
