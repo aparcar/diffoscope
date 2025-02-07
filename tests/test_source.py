@@ -34,7 +34,7 @@ def black_version():
     ]
 
 
-@skip_unless_tool_is_at_least("black", black_version, "24.1.1")
+@skip_unless_tool_is_at_least("black", black_version, "25.1.0")
 def test_code_is_black_clean():
     output = subprocess.check_output(
         ("black", "--diff", "."), stderr=subprocess.PIPE

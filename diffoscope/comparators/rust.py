@@ -29,7 +29,7 @@ from .utils.file import File
 
 RLIB_BYTECODE_OBJECT_V1_DATASIZE_OFFSET = 15
 RLIB_BYTECODE_OBJECT_V1_DATA_OFFSET = 23
-ZLIB_DEFAULT_COMPRESSION = b"\x78\x9C"
+ZLIB_DEFAULT_COMPRESSION = b"\x78\x9c"
 
 logger = logging.getLogger(__name__)
 
