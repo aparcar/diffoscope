@@ -1,8 +1,10 @@
-diffoscope (289) UNRELEASED; urgency=medium
+diffoscope (289) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Catch CalledProcessError when calling html2text.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 07 Feb 2025 10:14:52 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 21 Feb 2025 12:39:56 +0000
 
 diffoscope (288) unstable; urgency=medium
 
