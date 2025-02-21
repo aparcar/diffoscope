@@ -17,6 +17,7 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import re
+import subprocess
 
 from diffoscope.difference import Difference
 from diffoscope.exc import RequiredToolNotFound
@@ -49,5 +50,7 @@ class HtmlFile(TextFile):
                 difference.add_details([text])
         except RequiredToolNotFound as exc:  # noqa
             difference.add_comment(exc.get_comment())
+        except subprocess.CalledProcessError:
+            pass
 
         return difference
