@@ -5,32 +5,11 @@ import json
 import sys
 
 from setuptools import setup, find_packages
-from setuptools.command.test import test as TestCommand
 
 
 if sys.version_info < (3, 7):
     print("diffoscope requires at least python 3.7", file=sys.stderr)
     sys.exit(1)
-
-
-class PyTest(TestCommand):
-    user_options = [("pytest-args=", "a", "Arguments to pass to py.test")]
-
-    def initialize_options(self):
-        super().initialize_options()
-        self.pytest_args = []
-
-    def finalize_options(self):
-        super().finalize_options()
-        if self.pytest_args:
-            self.pytest_args = [self.pytest_args]
-
-    def run_tests(self):
-        # Inline import, otherwise the eggs aren't loaded
-        import pytest
-
-        errno = pytest.main(self.pytest_args)
-        sys.exit(errno)
 
 
 # Load extras_require dict from external JSON file. This allows it to be easily
@@ -50,8 +29,6 @@ setup(
     url="https://diffoscope.org/",
     packages=find_packages(exclude=["tests", "tests.*"]),
     package_data={"diffoscope": ["scripts/*"]},
-    tests_require=["pytest"],
-    cmdclass={"test": PyTest},
     entry_points={
         "console_scripts": ["diffoscope=diffoscope.main:main"],
     },
