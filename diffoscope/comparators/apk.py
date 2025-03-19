@@ -238,7 +238,7 @@ class ApkFile(ZipFileBase):
     DESCRIPTION = "Android APK files"
     FILE_TYPE_HEADER_PREFIX = b"PK\x03\x04"
     FILE_TYPE_RE = re.compile(r"^(Android package|(Java|Zip) archive data)\b")
-    FILE_EXTENSION_SUFFIX = {".apk"}
+    FILE_EXTENSION_SUFFIX = {".apk", ".aar"}
     CONTAINER_CLASSES = [ApkContainer, ZipContainer]
 
     @property
