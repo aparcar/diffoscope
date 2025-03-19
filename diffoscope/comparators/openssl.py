@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
+import logging
 import plistlib
 
 from diffoscope.tools import tool_required
@@ -23,6 +24,8 @@ from diffoscope.difference import Difference
 
 from .utils.file import File
 from .utils.command import Command, our_check_output
+
+logger = logging.getLogger(__name__)
 
 
 class OpenSSLPKCS7(Command):
@@ -53,18 +56,23 @@ class MobileProvisionFile(File):
     @staticmethod
     @tool_required("openssl")
     def _get_structured_profile_text(path):
-        openssl_output = our_check_output(
-            [
-                "openssl",
-                "smime",
-                "-inform",
-                "der",
-                "-verify",
-                "-noverify",
-                "-in",
-                path,
-            ]
-        )
+        try:
+            openssl_output = our_check_output(
+                [
+                    "openssl",
+                    "smime",
+                    "-inform",
+                    "der",
+                    "-verify",
+                    "-noverify",
+                    "-in",
+                    path,
+                ]
+            )
+        except subprocess.CalledProcessError as exc:
+            logger.warning("Failed to execute openssl to analayse Xcode file", exc)
+            return "[Could not parse output]"
+
         return plistlib.dumps(plistlib.loads(openssl_output), sort_keys=True)
 
     def compare_details(self, other, source=None):
