@@ -167,10 +167,14 @@ class ReadElfSection(Readelf):
     @staticmethod
     def base_options():
         if not hasattr(ReadElfSection, "_base_options"):
-            output = our_check_output(
-                [get_tool_name("readelf"), "--help"],
-                stderr=subprocess.DEVNULL,
-            ).decode("us-ascii", errors="replace")
+            try:
+                output = our_check_output(
+                    [get_tool_name("readelf"), "--help"],
+                    stderr=subprocess.DEVNULL,
+                ).decode("us-ascii", errors="replace")
+            except subprocess.CalledProcessError as e:
+                logger.warning("Unable to get readelf options", e)
+                output = ""
 
             ReadElfSection._base_options = []
             for x in ("--decompress",):
@@ -513,7 +517,10 @@ class ElfContainer(DecompilableContainer):
             raise OutputParsingError(command, self)
 
         if not has_debug_symbols:
-            self._install_debug_symbols()
+            try:
+                self._install_debug_symbols()
+            except subprocess.CalledProcessError as e:
+                logger.warning("Error when installing ELF debug symbols", e)
 
         if has_build_id:
             try:
