@@ -70,7 +70,9 @@ class MobileProvisionFile(File):
                 ]
             )
         except subprocess.CalledProcessError as exc:
-            logger.warning("Failed to execute openssl to analayse Xcode file", exc)
+            logger.warning(
+                "Failed to execute openssl to analayse Xcode file", exc
+            )
             return "[Could not parse output]"
 
         return plistlib.dumps(plistlib.loads(openssl_output), sort_keys=True)
