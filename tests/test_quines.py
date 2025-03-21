@@ -54,7 +54,7 @@ def differences(quine1, quine2):
     return quine1.compare(quine2).details
 
 
-@skip_unless_file_version_is_at_least("5.46")
+@skip_unless_file_version_is_at_least("5.47")
 def test_difference(differences):
     assert_diff(differences[0], "quine_expected_diff")
 
