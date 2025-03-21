@@ -1,8 +1,19 @@
-diffoscope (291) UNRELEASED; urgency=medium
+diffoscope (291) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Make two required adjustments for the new version of the src:file package:
+    - file(1) version 5.46 now emits "XHTML document" for .xhtml files, such as
+      those found nested within our .epub tests. Therefore, match this string
+      when detecting XML files. This was causing an FTBFS due to inconsistent
+      indentation in diffoscope's output.
+    - Require the new, upcoming, version of file(1) for a quine-related
+      testcase after adjusting the expected output. Previous versions of
+      file(1) had a duplicated "last modified, last modified" string for some
+      Zip archives that has now been removed.
+  * Add a missing subprocess import.
+  * Bump Standards-Version to 4.7.2.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 21 Mar 2025 09:13:21 +0000
+ -- Chris Lamb <lamby@debian.org>  Fri, 21 Mar 2025 14:11:47 +0000
 
 diffoscope (290) unstable; urgency=medium
 
