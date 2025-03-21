@@ -1,8 +1,18 @@
-diffoscope (290) UNRELEASED; urgency=medium
+diffoscope (290) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Also consider .aar files as APK files for the sake of not falling back to a
+    binary diff. (Closes: #1099632)
+  * Ensure all calls to out_check_output in the ELF comparator have the
+    potential CalledProcessError exception caught. (Re: #398)
+  * Ensure a potential CalledProcessError is caught in the OpenSSL comparator
+    as well.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 21 Feb 2025 12:41:37 +0000
+  [ Eli Schwartz ]
+  * Drop deprecated and no longer functional "setup.py test" command.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 21 Mar 2025 09:06:58 +0000
 
 diffoscope (289) unstable; urgency=medium
 
