@@ -117,7 +117,9 @@ class XMLFile(File):
     """
 
     DESCRIPTION = "XML files"
-    FILE_TYPE_RE = re.compile(r"^(XML \S+ document|GnuCash file)")
+    FILE_TYPE_RE = re.compile(
+        r"^(XML \S+ document|GnuCash file|XHTML document)"
+    )
 
     @classmethod
     def recognizes(cls, file):
