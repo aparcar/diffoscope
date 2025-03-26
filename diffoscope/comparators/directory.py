@@ -21,6 +21,7 @@ import os
 import re
 import logging
 import subprocess
+from stat import S_ISDIR
 
 from diffoscope.exc import RequiredToolNotFound
 from diffoscope.tools import python_module_missing, tool_required
@@ -76,15 +77,19 @@ else:
 
 # compare only what matters
 def stat_results_same(stat1, stat2):
-    return all(
-        getattr(stat1, i) == getattr(stat2, i)
-        for i in [
-            "st_mode",
-            "st_uid",
-            "st_gid",
-            "st_size",
-            "st_mtime",
-        ]
+    return stat_result_to_tuple(stat1) == stat_result_to_tuple(stat2)
+
+
+def stat_result_to_tuple(stat):
+    return (
+        stat.st_mode,
+        stat.st_uid,
+        stat.st_gid,
+        # Directory sizes are arbitrary, file system dependent, and may differ,
+        # depending on the history of the directory.
+        # E.g. see https://github.com/NixOS/nixpkgs/issues/393375
+        stat.st_size if not S_ISDIR(stat.st_mode) else None,
+        stat.st_mtime,
     )
 
 
