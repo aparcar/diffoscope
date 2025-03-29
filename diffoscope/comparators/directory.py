@@ -80,16 +80,16 @@ def stat_results_same(stat1, stat2):
     return stat_result_to_tuple(stat1) == stat_result_to_tuple(stat2)
 
 
-def stat_result_to_tuple(stat):
+def stat_result_to_tuple(s):
     return (
-        stat.st_mode,
-        stat.st_uid,
-        stat.st_gid,
+        s.st_mode,
+        s.st_uid,
+        s.st_gid,
         # Directory sizes are essentially arbitrary and filesystem dependent,
         # and may even differ, depending on the history of the directory.
         # (See MR !150)
-        stat.st_size if not stat.S_ISDIR(stat.st_mode) else None,
-        stat.st_mtime,
+        s.st_size if not stat.S_ISDIR(s.st_mode) else None,
+        s.st_mtime,
     )
 
 
