@@ -17,11 +17,11 @@
 # You should have received a copy of the GNU General Public License
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
+import logging
 import os
 import re
-import logging
+import stat
 import subprocess
-from stat import S_ISDIR
 
 from diffoscope.exc import RequiredToolNotFound
 from diffoscope.tools import python_module_missing, tool_required
@@ -85,10 +85,10 @@ def stat_result_to_tuple(stat):
         stat.st_mode,
         stat.st_uid,
         stat.st_gid,
-        # Directory sizes are arbitrary, file system dependent, and may differ,
-        # depending on the history of the directory.
-        # E.g. see https://github.com/NixOS/nixpkgs/issues/393375
-        stat.st_size if not S_ISDIR(stat.st_mode) else None,
+        # Directory sizes are essentially arbitrary and filesystem dependent,
+        # and may even differ, depending on the history of the directory.
+        # (See MR !150)
+        stat.st_size if not stat.S_ISDIR(stat.st_mode) else None,
         stat.st_mtime,
     )
 
