@@ -1,8 +1,9 @@
-diffoscope (293) UNRELEASED; urgency=medium
+diffoscope (293) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Correct import masking issue.
 
- -- Chris Lamb <lamby@debian.org>  Sat, 29 Mar 2025 17:21:19 +0000
+ -- Chris Lamb <lamby@debian.org>  Sat, 29 Mar 2025 18:05:20 +0000
 
 diffoscope (292) unstable; urgency=medium
 
