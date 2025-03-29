@@ -1,8 +1,13 @@
-diffoscope (292) UNRELEASED; urgency=medium
+diffoscope (292) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Ivan Trubach ]
+  * Ignore st_size entry for directories to avoid spurious diffs as this value
+    is essentially filesystem dependent.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 21 Mar 2025 14:13:45 +0000
+  [ Chris Lamb ]
+  * Update copyright years.
+
+ -- Chris Lamb <lamby@debian.org>  Sat, 29 Mar 2025 17:19:49 +0000
 
 diffoscope (291) unstable; urgency=medium
 
