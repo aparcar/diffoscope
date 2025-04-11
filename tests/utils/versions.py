@@ -101,3 +101,6 @@ class Version(str):
 
     def __lt__(self, other):
         return self._cmp(other) < 0
+
+    def __gt__(self, other):
+        return self._cmp(other) > 0
