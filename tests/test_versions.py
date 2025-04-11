@@ -172,6 +172,6 @@ def test_version_gt(a, b):
 
 
 @pytest.mark.parametrize("a,b", [c[:2] for c in cases if c[2] == 0])
-def test_version_gt(a, b):
+def test_version_eq(a, b):
     assert Version(a) == b
     assert Version(a) == Version(b)
