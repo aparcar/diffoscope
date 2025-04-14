@@ -342,6 +342,13 @@ class MozillaZipFile(ZipFile):
         return file.file_header[4:8] == b"PK\x01\x02"
 
 
+class NuGetPackageFile(ZipFile):
+    DESCRIPTION = "NuGet packages"
+    CONTAINER_CLASSES = [ZipContainer]
+    FILE_TYPE_HEADER_PREFIX = b"PK\x03\x04"
+    FILE_EXTENSION_SUFFIX = {".nupkg"}
+
+
 class JmodJavaModule(ZipFile):
     DESCRIPTION = "Java .jmod modules"
     FILE_TYPE_RE = re.compile(r"^(Zip archive data|Java jmod module)")

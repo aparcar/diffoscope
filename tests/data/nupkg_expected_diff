@@ -1,0 +1,11 @@
+@@ -1,7 +1,7 @@
+-Zip file size: 3163 bytes, number of entries: 5
++Zip file size: 3162 bytes, number of entries: 5
+ -rw-r--r--  2.0 unx      502 b- defN 25-Apr-14 18:14 _rels/.rels
+ -rw-r--r--  2.0 unx      407 b- defN 25-Apr-14 18:14 ClassLibrary.nuspec
+ -rw-r--r--  2.0 unx     3584 b- defN 25-Apr-14 22:14 lib/net8.0/ClassLibrary.dll
+ -rw-r--r--  2.0 unx      459 b- defN 25-Apr-14 18:14 [Content_Types].xml
+--rw-r--r--  2.0 unx      625 b- defN 25-Apr-14 18:14 package/services/metadata/core-properties/b44ebb537bbf4983b9527f9e3820fda6.psmdcp
+-5 files, 5577 bytes uncompressed, 2447 bytes compressed:  56.1%
++-rw-r--r--  2.0 unx      625 b- defN 25-Apr-14 18:14 package/services/metadata/core-properties/08f1f9d8789a4668a128f78560bd0107.psmdcp
++5 files, 5577 bytes uncompressed, 2446 bytes compressed:  56.1%

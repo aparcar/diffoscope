@@ -98,6 +98,7 @@ class ComparatorManager:
         ("ocaml.OcamlInterfaceFile",),
         ("docx.DocxFile",),
         ("zip.MozillaZipFile",),
+        ("zip.NuGetPackageFile",),
         ("zip.JmodJavaModule",),
         ("zip.ZipFile",),
         ("image.JPEGImageFile",),

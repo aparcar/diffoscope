@@ -20,7 +20,12 @@
 import pytest
 import subprocess
 
-from diffoscope.comparators.zip import ZipFile, MozillaZipFile, JmodJavaModule
+from diffoscope.comparators.zip import (
+    ZipFile,
+    MozillaZipFile,
+    NuGetPackageFile,
+    JmodJavaModule,
+)
 
 from ..utils.data import load_fixture, assert_diff
 from ..utils.tools import skip_unless_tools_exist, skip_unless_tool_is_at_least
@@ -34,6 +39,8 @@ encrypted_zip1 = load_fixture("encrypted1.zip")
 encrypted_zip2 = load_fixture("encrypted2.zip")
 mozzip1 = load_fixture("test1.mozzip")
 mozzip2 = load_fixture("test2.mozzip")
+nupkg1 = load_fixture("test1.nupkg")
+nupkg2 = load_fixture("test2.nupkg")
 jmod1 = load_fixture("test1.jmod")
 jmod2 = load_fixture("test2.jmod")
 test_comment1 = load_fixture("test_comment1.zip")
@@ -133,6 +140,42 @@ def test_mozzip_compressed_files(mozzip_differences):
 @skip_unless_tools_exist("zipinfo")
 def test_mozzip_compare_non_existing(monkeypatch, mozzip1):
     assert_non_existing(monkeypatch, mozzip1)
+
+
+def test_nupkg_identification(nupkg1):
+    assert isinstance(nupkg1, NuGetPackageFile)
+
+
+def test_nupkg_no_differences(nupkg1):
+    difference = nupkg1.compare(nupkg1)
+    assert difference is None
+
+
+@pytest.fixture
+def nupkg_differences(nupkg1, nupkg2):
+    return nupkg1.compare(nupkg2).details
+
+
+@skip_unless_tools_exist("zipinfo")
+def test_nupkg_metadata(nupkg_differences, nupkg1, nupkg2):
+    assert_diff(nupkg_differences[0], "nupkg_expected_diff")
+
+
+@skip_unless_tools_exist("zipinfo")
+def test_nupkg_compressed_files(nupkg_differences):
+    assert (
+        nupkg_differences[-1].source1
+        == "package/services/metadata/core-properties/b44ebb537bbf4983b9527f9e3820fda6.psmdcp"
+    )
+    assert (
+        nupkg_differences[-1].source2
+        == "package/services/metadata/core-properties/08f1f9d8789a4668a128f78560bd0107.psmdcp"
+    )
+
+
+@skip_unless_tools_exist("zipinfo")
+def test_nupkg_compare_non_existing(monkeypatch, nupkg1):
+    assert_non_existing(monkeypatch, nupkg1)
 
 
 def test_jmod_identification(jmod1):
