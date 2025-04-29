@@ -157,7 +157,9 @@ def zipinfo_differences(file, other):
 class Zipdetails(Command):
     @tool_required("zipdetails")
     def cmdline(self):
-        return ["zipdetails", "--redact", "--scan", "--utc", self.path]
+        # See <https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/406>
+        # for discussion of zipdetails command line arguments.
+        return ["zipdetails", "--redact", "--walk", "--utc", self.path]
 
 
 class ZipDirectory(Directory, ArchiveMember):
