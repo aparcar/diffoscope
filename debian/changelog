@@ -1,8 +1,10 @@
-diffoscope (295) UNRELEASED; urgency=medium
+diffoscope (295) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Use --walk over the potentially dangerous --scan argument of zipdetails(1).
+    (Closes: reproducible-builds/diffoscope#406)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 11 Apr 2025 12:27:25 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 09 May 2025 09:13:39 -0700
 
 diffoscope (294) unstable; urgency=medium
 
