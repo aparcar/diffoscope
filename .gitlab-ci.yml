@@ -42,7 +42,6 @@ stable-bpo:
     - set -e; for pkg in coreboot-utils python3-pypdf systemd-ukify; do
         sed -i "/$pkg/d" debian/control ;
       done
-  allow_failure: true
 
 ubuntu-devel:
   <<: *test
