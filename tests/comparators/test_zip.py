@@ -25,6 +25,7 @@ from diffoscope.comparators.zip import (
     MozillaZipFile,
     NuGetPackageFile,
     JmodJavaModule,
+    zipdetails_version,
 )
 
 from ..utils.data import load_fixture, assert_diff
@@ -45,10 +46,6 @@ jmod1 = load_fixture("test1.jmod")
 jmod2 = load_fixture("test2.jmod")
 test_comment1 = load_fixture("test_comment1.zip")
 test_comment2 = load_fixture("test_comment2.zip")
-
-
-def zipdetails_version():
-    return subprocess.check_output(["zipdetails", "--version"]).decode("UTF-8")
 
 
 def io_compress_zip_version():

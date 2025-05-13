@@ -32,7 +32,11 @@ from diffoscope.tempfiles import get_named_temporary_file
 from .utils.file import File
 from .directory import Directory
 from .utils.archive import Archive, ArchiveMember
-from .utils.command import Command
+from .utils.command import Command, our_check_output
+
+
+def zipdetails_version():
+    return our_check_output(["zipdetails", "--version"]).decode("UTF-8")
 
 
 class Zipinfo(Command):
@@ -159,6 +163,16 @@ class Zipdetails(Command):
     def cmdline(self):
         # See <https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/406>
         # for discussion of zipdetails command line arguments.
+        #
+        # Older zipdetails does not support --walk; added in Debian
+        # 5.40.0~rc1-1, but "zipdetails --version" shipped in, say, perl
+        # 5.36.0-7+deb12u1 returns "2.104".
+        #
+        # See <https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/408>
+        #
+        if float(zipdetails_version()) < 4.0:
+            return ["zipdetails", "--redact", "--utc", self.path]
+
         return ["zipdetails", "--redact", "--walk", "--utc", self.path]
 
 
