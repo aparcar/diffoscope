@@ -1,8 +1,16 @@
-diffoscope (296) UNRELEASED; urgency=medium
+diffoscope (296) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Don't rely on zipdetails' --walk functionality to be available; only add
+    that argument after testing for a new enough versions.
+    (Closes: reproducible-builds/diffoscope#408)
+  * Disable and then re-enable failing on stable-bpo.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 09 May 2025 09:22:01 -0700
+  [ Omair Majid ]
+  * Add NuGet package support.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 16 May 2025 08:41:37 -0700
 
 diffoscope (295) unstable; urgency=medium
 
