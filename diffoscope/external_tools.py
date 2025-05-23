@@ -132,6 +132,7 @@ EXTERNAL_TOOLS = {
     },
     "lz4": {"debian": "lz4", "FreeBSD": "lz4", "guix": "lz4"},
     "lzip": {"debian": "lzip", "guix": "lzip"},
+    "lzma": {"debian": "xz-utils", "arch": "xz", "guix": "xz"},
     "msgunfmt": {
         "debian": "gettext",
         "arch": "gettext",

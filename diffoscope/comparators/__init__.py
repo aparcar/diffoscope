@@ -82,6 +82,7 @@ class ComparatorManager:
         ("java.ClassFile",),
         ("lz4.Lz4File",),
         ("lzip.LzipFile",),
+        ("lzma.LzmaFile",),
         ("mono.MonoExeFile",),
         ("pdf.PdfFile",),
         ("png.PngFile",),
