@@ -1,8 +1,9 @@
-diffoscope (297) UNRELEASED; urgency=medium
+diffoscope (297) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Will Hollywood ]
+  * Add a LZMA comparator and tests.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 16 May 2025 08:43:33 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 30 May 2025 09:34:34 -0700
 
 diffoscope (296) unstable; urgency=medium
 
