@@ -1,3 +1,9 @@
+diffoscope (298) UNRELEASED; urgency=medium
+
+  * WIP (generated upon release).
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 30 May 2025 09:36:27 -0700
+
 diffoscope (297) unstable; urgency=medium
 
   [ Will Hollywood ]
