@@ -71,6 +71,23 @@ def get_rpm_header(path, ts):
         for rpmtag in sorted(rpm.tagnames):
             if rpmtag not in hdr:
                 continue
+
+            if rpmtag in {
+                rpm.RPMTAG_HEADERSIGNATURES,
+                rpm.RPMTAG_HEADERIMMUTABLE,
+            }:
+                # Handle HEADERSIGNATURES and HEADERIMMUTABLE differently to
+                # avoid unnecessarily large diffs. (#410)
+                region = hdr[rpmtag]
+                # First 4 bytes are the index count
+                idx_count = int.from_bytes(region[:4], "big")
+                # ... the next 4 bytes are the data length
+                data_len = int.from_bytes(region[4:8], "big")
+                s.write(
+                    f"{rpm.tagnames[rpmtag]}: [{idx_count} indexes, {data_len} bytes]\n"
+                )
+                continue
+
             s.write("{}: ".format(rpm.tagnames[rpmtag]))
             convert_header_field(s, hdr[rpmtag])
             s.write("\n")
