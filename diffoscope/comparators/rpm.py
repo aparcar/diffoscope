@@ -61,6 +61,7 @@ def convert_header_field(io, header):
 
 def get_rpm_header(path, ts):
     s = io.StringIO()
+
     with open(path, "r") as f:
         try:
             hdr = ts.hdrFromFdno(f)
@@ -73,6 +74,7 @@ def get_rpm_header(path, ts):
             s.write("{}: ".format(rpm.tagnames[rpmtag]))
             convert_header_field(s, hdr[rpmtag])
             s.write("\n")
+
     return s.getvalue()
 
 
