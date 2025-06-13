@@ -1,8 +1,12 @@
-diffoscope (298) UNRELEASED; urgency=medium
+diffoscope (298) experimental; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Handle RPM's HEADERSIGNATURES and HEADERIMMUTABLE specially to avoid
+    unncessarily large diffs. Based almost entirely on code by Daniel Duan.
+    (Closes: reproducible-builds/diffoscope#410)
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 30 May 2025 09:36:27 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 13 Jun 2025 09:49:56 -0700
 
 diffoscope (297) unstable; urgency=medium
 
