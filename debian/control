@@ -68,6 +68,7 @@ Build-Depends:
  python3-argcomplete,
  python3-binwalk <!nocheck>,
  python3-debian <!nocheck>,
+ python3-defusedxml <!nocheck>,
  python3-distro <!nocheck>,
  python3-docutils,
  python3-guestfs <!nocheck>,
