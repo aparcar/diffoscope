@@ -4,7 +4,7 @@ diffoscope (299) experimental; urgency=medium
   * Add python3-defusedxml to the Build-Depends in order to include it in the
     Docker image. (Closes: #407)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 20 Jun 2025 09:08:09 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 20 Jun 2025 09:08:17 -0700
 
 diffoscope (298) experimental; urgency=medium
 
