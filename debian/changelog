@@ -1,8 +1,10 @@
-diffoscope (300) UNRELEASED; urgency=medium
+diffoscope (300) experimental; urgency=medium
 
-  * WIP (generated upon release).
+  [ "Alex" ]
+  * Fix a regression and add a test so that diffoscope picks up differences
+    in metadata for identical files again. (Closes: reproducible-builds/diffoscope#411)
 
- -- Chris Lamb <lamby@debian.org>  Fri, 20 Jun 2025 09:10:28 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 27 Jun 2025 10:29:56 -0700
 
 diffoscope (299) experimental; urgency=medium
 
