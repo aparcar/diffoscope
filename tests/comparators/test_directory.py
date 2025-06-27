@@ -19,12 +19,15 @@
 
 import os
 import shutil
+import time
+
 import pytest
 
 from diffoscope.comparators.binary import FilesystemFile
 from diffoscope.comparators.directory import compare_directories
 from diffoscope.comparators.utils.compare import compare_root_paths
 from diffoscope.comparators.utils.specialize import specialize
+from diffoscope.config import Config
 
 from ..utils.data import data, get_data, assert_diff
 
@@ -125,3 +128,20 @@ def test_compare_both_ways(tmpdir):
 
     assert_diff(compare_root_paths(a, b), "test_directory_a_b_diff")
     assert_diff(compare_root_paths(b, a), "test_directory_b_a_diff")
+
+
+def test_identical_files_different_mtime(monkeypatch, tmpdir):
+
+    monkeypatch.setattr(Config(), "exclude_directory_metadata", "no")
+
+    file1_path = str(tmpdir.join("file1"))
+    file2_path = str(tmpdir.join("file2"))
+
+    now = time.time()
+    for path, t in ((file1_path, now - 3600), (file2_path, now)):
+        with open(path, "w") as f:
+            f.write("identical content")
+        os.utime(path, (t, t))
+
+    difference = compare_root_paths(file1_path, file2_path)
+    assert difference is not None
