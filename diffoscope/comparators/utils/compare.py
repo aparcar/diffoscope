@@ -68,10 +68,12 @@ def compare_root_paths(path1, path2):
     file2 = FilesystemFile(path2, container=container2)
 
     with profile("has_same_content_as", file1):
-        if file1.has_same_content_as(file2):
-            return None
+        is_binary_identical = file1.has_same_content_as(file2)
 
-    difference = compare_files(file1, file2)
+    if is_binary_identical:
+        difference = None
+    else:
+        difference = compare_files(file1, file2)
 
     if Config().exclude_directory_metadata in ("no", "recursive"):
         meta = compare_meta(path1, path2)
