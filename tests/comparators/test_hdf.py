@@ -16,21 +16,18 @@
 # You should have received a copy of the GNU General Public License
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
-import re
 import pytest
 
 from diffoscope.comparators.hdf import Hdf5File
 from diffoscope.comparators.binary import FilesystemFile
 from diffoscope.comparators.utils.specialize import specialize
 
-from ..utils.data import load_fixture, get_data
+from ..utils.data import load_fixture, assert_diff
 from ..utils.tools import skip_unless_tools_exist, skip_unless_module_exists
 from ..utils.nonexisting import assert_non_existing
 
 hdf5_1 = load_fixture("test1.hdf5")
 hdf5_2 = load_fixture("test2.hdf5")
-
-re_normalise = re.compile(r'(HDF5 ")[^\"]+/([^\"]+")')
 
 
 def hdf5_fixture(prefix):
@@ -41,8 +38,8 @@ def hdf5_fixture(prefix):
         # Listed in debian/tests/control.in
         import h5py
 
-        with h5py.File(filename, "w"):
-            pass
+        with h5py.File(filename, "w") as f:
+            f.create_dataset(prefix, (100,), dtype="i")
 
         return specialize(FilesystemFile(filename))
 
@@ -72,12 +69,7 @@ def differences(hdf5_1, hdf5_2):
 @skip_unless_tools_exist("h5dump")
 @skip_unless_module_exists("h5py")
 def test_diff(differences):
-    expected_diff = get_data("hdf5_expected_diff")
-    # Remove absolute build path
-    normalised = re_normalise.sub(
-        lambda m: m.group(1) + m.group(2), differences[0].unified_diff
-    )
-    assert normalised == expected_diff
+    assert_diff(differences[0], "hdf5_expected_diff")
 
 
 @skip_unless_tools_exist("h5dump")

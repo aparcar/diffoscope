@@ -30,6 +30,12 @@ class H5dump(Command):
     def cmdline(self):
         return ["h5dump", self.path]
 
+    def filter(self, line):
+        # Strip absolute `HDF5 "/path/to/filename.db"`
+        return re.sub(
+            r"^(HDF5) \"[^\"]+\"", "\\1", line.decode("utf-8")
+        ).encode("utf-8")
+
 
 class Hdf5File(File):
     DESCRIPTION = "Hierarchical Data Format database"
