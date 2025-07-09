@@ -23,7 +23,7 @@ from diffoscope.tools import tool_required
 from diffoscope.difference import Difference
 
 from .utils.file import File
-from .utils.command import Command
+from .utils.command import Command, our_check_output
 
 
 class Odt2txt(Command):
