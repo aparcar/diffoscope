@@ -39,7 +39,7 @@ class Odt2txt(Command):
     @staticmethod
     def odt2txt_variant():
         try:
-            out = subprocess.check_output(["odt2txt", "--version"])
+            out = our_check_output(["odt2txt", "--version"])
         except subprocess.CalledProcessError as e:
             out = e.output
         return out.decode("UTF-8").splitlines()[0].split()[0].strip()
