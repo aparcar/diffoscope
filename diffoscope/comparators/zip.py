@@ -17,6 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
+
+import functools
 import re
 import sys
 import shutil
@@ -35,6 +37,7 @@ from .utils.archive import Archive, ArchiveMember
 from .utils.command import Command, our_check_output
 
 
+@functools.lru_cache()
 def zipdetails_version():
     return our_check_output(["zipdetails", "--version"]).decode("UTF-8")
 

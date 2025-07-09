@@ -17,6 +17,7 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import re
+import functools
 import subprocess
 
 from diffoscope.tools import tool_required
@@ -37,6 +38,7 @@ class Odt2txt(Command):
         return ("odt2txt", "--width=-1", self.path)
 
     @staticmethod
+    @functools.lru_cache
     def odt2txt_variant():
         try:
             out = our_check_output(["odt2txt", "--version"])
