@@ -1,8 +1,13 @@
-diffoscope (301) UNRELEASED; urgency=medium
+diffoscope (301) experimental; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Avoid spurious differences in h5dump output caused by exposure of absolute
+    internal extraction paths. (Closes: #1108690)
+  * Use our_check_output in the ODT comparator.
+  * Memoize a number of calls to --version. Thanks, Jade! (Closes: #412)
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 27 Jun 2025 10:31:00 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 11 Jul 2025 08:52:31 -0700
 
 diffoscope (300) experimental; urgency=medium
 
