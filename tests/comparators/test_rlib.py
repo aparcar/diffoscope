@@ -100,8 +100,8 @@ def test_num_items(differences):
 @skip_unless_tools_exist("nm")
 @skip_if_binutils_does_not_support_x86()
 def test_item0_armap(differences):
-    assert differences[0].source1 == "nm -s {}"
-    assert differences[0].source2 == "nm -s {}"
+    assert differences[0].source1 == "nm --print-armap {}"
+    assert differences[0].source2 == "nm --print-armap {}"
     expected_diff = get_data("rlib_armap_expected_diff")
     assert differences[0].unified_diff == expected_diff
 

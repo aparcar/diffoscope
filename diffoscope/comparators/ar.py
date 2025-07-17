@@ -55,7 +55,7 @@ class ArContainer(LibarchiveContainer):
 class ArSymbolTableDumper(Command):
     @tool_required("nm")
     def cmdline(self):
-        return ["nm", "-s", self.path]
+        return ["nm", "--print-armap", self.path]
 
 
 class ArFile(File):
