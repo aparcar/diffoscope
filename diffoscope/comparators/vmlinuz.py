@@ -53,7 +53,7 @@ class VmlinuzContainer(Archive):
             subprocess.check_call(
                 [script, self.source.path],
                 stdout=f,
-                stderr=None,
+                stderr=subprocess.DEVNULL,
             )
 
         return dest_path
