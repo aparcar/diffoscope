@@ -62,3 +62,5 @@ check_vmlinux $img
 
 # Bail out:
 echo "$me: Cannot find vmlinux." >&2
+
+return 0
