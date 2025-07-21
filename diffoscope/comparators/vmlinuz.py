@@ -1,7 +1,7 @@
 #
 # diffoscope: in-depth comparison of files, archives, and directories
 #
-# Copyright © 2022 Chris Lamb <lamby@debian.org>
+# Copyright © 2022, 2025 Chris Lamb <lamby@debian.org>
 #
 # diffoscope is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,49 +17,35 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import logging
-import os.path
 import pathlib
 import re
-import subprocess
 
-from diffoscope.tools import tool_required
+from diffoscope.difference import Difference
 
 from .utils.file import File
-from .utils.archive import Archive
+from .utils.command import Command
+
 
 logger = logging.getLogger(__name__)
 
 
-class VmlinuzContainer(Archive):
-    def open_archive(self):
-        return self
-
-    def close_archive(self):
-        pass
-
-    def get_member_names(self):
-        return [self.get_compressed_content_name(".vmlinuz")]
-
-    @tool_required("readelf")
-    def extract(self, member_name, dest_dir):
-        dest_path = os.path.join(dest_dir, member_name)
-        logger.debug("extracting vmlinuz to %s", dest_path)
-
+class ExtractVmlinux(Command):
+    def cmdline(self):
         # Locate extract-vmlinux script
-        script = pathlib.Path(__file__).parent.parent.joinpath(
-            "scripts", "extract-vmlinux"
-        )
-        with open(dest_path, "wb") as f:
-            subprocess.check_call(
-                [script, self.source.path],
-                stdout=f,
-                stderr=subprocess.DEVNULL,
+        script = str(
+            pathlib.Path(__file__).parent.parent.joinpath(
+                "scripts", "extract-vmlinux"
             )
+        )
 
-        return dest_path
+        return [script, self.path]
 
 
 class VmlinuzFile(File):
     DESCRIPTION = "Linux kernel images"
-    CONTAINER_CLASSES = [VmlinuzContainer]
     FILE_TYPE_RE = re.compile(r"^Linux kernel\b")
+
+    def compare_details(self, other, source=None):
+        return [
+            Difference.from_operation(ExtractVmlinux, self.path, other.path)
+        ]
