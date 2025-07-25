@@ -1,8 +1,19 @@
-diffoscope (302) UNRELEASED; urgency=medium
+diffoscope (302) experimental; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Mask stderr from the extract-vmlinux script.
+  * Make it much more explicit that we return 'success' from the
+    extract-vmlinux script instead of just falling through to the bottom of the
+    script.
+  * Use Difference.from_operation in an attempt to pipeline the output of
+    extract-vmlinux, potentially avoiding it all residing in memory. This is an
+    attempt to prevent out of memory issues on try.diffoscope.org.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 11 Jul 2025 08:53:59 -0700
+  [ Siva Mahadevan ]
+  * Use --print-armap long option with nm in the "ar" comparator for wider
+    compatibility.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 25 Jul 2025 09:44:26 -0700
 
 diffoscope (301) experimental; urgency=medium
 
