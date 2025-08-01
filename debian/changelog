@@ -1,8 +1,13 @@
-diffoscope (303) UNRELEASED; urgency=medium
+diffoscope (303) experimental; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Don't check for PyPDF version 3 specifically, check for >= 3. Thanks,
+    Vagrant, for the patch. (Closes: reproducible-builds/diffoscope#413)
+  * Ensure that Java class files are named .class on the filesystem before
+    passing them to javap(1).
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 25 Jul 2025 09:45:20 -0700
+ -- Chris Lamb <lamby@debian.org>  Fri, 01 Aug 2025 11:50:45 -0700
 
 diffoscope (302) experimental; urgency=medium
 
