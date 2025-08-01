@@ -45,7 +45,7 @@ def skip_unless_pypdf3():
         except (ImportError, RuntimeError):
             return True
 
-        return not pypdf.__version__.startswith("3.")
+        return not int(pypdf.__version__.split(".")[0]) >= 3
 
     return skipif(fn(), reason="pypdf not installed or not version 3.x+")
 
