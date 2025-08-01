@@ -21,10 +21,12 @@
 import re
 import os.path
 import logging
+import shutil
 
-from diffoscope.tools import tool_required
 from diffoscope.difference import Difference
 from diffoscope.exc import RequiredToolNotFound
+from diffoscope.tempfiles import get_named_temporary_file
+from diffoscope.tools import tool_required
 
 from .utils.file import File
 from .utils.command import Command, strip_ansi_escapes
@@ -49,8 +51,18 @@ class ProcyonDecompiler(Command):
 
 class Javap(Command):
     def __init__(self, path, *args, **kwargs):
-        super().__init__(path, *args, **kwargs)
+        # Ensure that class files are named .class on the filesystem as javap
+        # will not accept files with other extensions.
+        if not path.endswith(".class"):
+            self.tempfile = get_named_temporary_file(suffix=".class")
+            logger.debug(f"Copying {path} to {self.tempfile.name}")
+            shutil.copy(path, self.tempfile.name)
+            path = self.tempfile.name
+
+        # Save the realpath for filter()
         self.real_path = os.path.realpath(path)
+
+        super().__init__(path, *args, **kwargs)
 
     @tool_required("javap")
     def cmdline(self):
