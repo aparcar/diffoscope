@@ -17,7 +17,6 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import sys
-import codecs
 import collections
 import contextlib
 import string
@@ -93,7 +92,7 @@ def make_printer(path):
     output = sys.stdout
 
     if path != "-":
-        output = codecs.open(path, "w", encoding="utf-8")
+        output = open(path, "w", encoding="utf-8")
 
     def fn(*args, **kwargs):
         kwargs["file"] = output

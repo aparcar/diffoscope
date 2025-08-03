@@ -17,7 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
-import codecs
 import os
 import pytest
 import threading
@@ -72,7 +71,7 @@ def skip_unless_tool_is_at_least():
 @skip_unless_module_exists("tlsh")
 def test_fuzzy_matching(fuzzy_tar1, fuzzy_tar2):
     differences = fuzzy_tar1.compare(fuzzy_tar2).details
-    expected_diff = codecs.open(
+    expected_diff = open(
         data("text_iso8859_expected_diff"), encoding="utf-8"
     ).read()
     assert differences[1].source1 == "./matching"
