@@ -35,6 +35,9 @@ from .utils.archive import Archive
 
 logger = logging.getLogger(__name__)
 
+RPMTAG_HEADERSIGNATURES = 62  # Removed in rpm 5.99
+RPMTAG_HEADERIMMUTABLE = 63
+
 
 def convert_header_field(io, header):
     if isinstance(header, list):
@@ -73,8 +76,8 @@ def get_rpm_header(path, ts):
                 continue
 
             if rpmtag in {
-                rpm.RPMTAG_HEADERSIGNATURES,
-                rpm.RPMTAG_HEADERIMMUTABLE,
+                RPMTAG_HEADERSIGNATURES,
+                RPMTAG_HEADERIMMUTABLE,
             }:
                 # Handle HEADERSIGNATURES and HEADERIMMUTABLE differently to
                 # avoid unnecessarily large diffs. (#410)
