@@ -25,6 +25,18 @@ from diffoscope.difference import Difference
 from .utils.file import File
 
 
+def _open_with_codec(filename, encoding):
+    info = codecs.lookup(encoding)
+    # codecs.open added 'b' to the mode if encoding was specified
+    file = open(filename, "rb")
+    srw = codecs.StreamReaderWriter(
+        file, info.streamreader, info.streamwriter, errors="strict"
+    )
+    # Add attributes to simplify introspection
+    srw.encoding = encoding
+    return srw
+
+
 class TextFile(File):
     DESCRIPTION = "text files"
     FILE_TYPE_RE = re.compile(r"\btext\b")
@@ -39,10 +51,10 @@ class TextFile(File):
         my_encoding = self.encoding or "utf-8"
         other_encoding = other.encoding or "utf-8"
         try:
-            with codecs.open(
-                self.path, "r", encoding=my_encoding
-            ) as my_content, codecs.open(
-                other.path, "r", encoding=other_encoding
+            with _open_with_codec(
+                self.path, my_encoding
+            ) as my_content, _open_with_codec(
+                other.path, other_encoding
             ) as other_content:
                 difference = Difference.from_text_readers(
                     my_content, other_content, self.name, other.name, source
