@@ -18,6 +18,7 @@
 
 import re
 import json
+import os
 import pprint
 import logging
 import collections
@@ -83,6 +84,15 @@ class JSONFile(File):
 
     def compare_with_jsondiff(self, difference, other):
         if jsondiff is None:
+            return
+
+        # Ignore files over 100 KiB as jsondiff scales in O(n^2) time.
+        # <https://github.com/xlwings/jsondiff/issues/73>
+        limit = 100 * 1024
+        if (
+            os.stat(self.path).st_size > limit
+            or os.stat(other.path).st_size > limit
+        ):
             return
 
         logger.debug(f"Comparing using jsondiff {jsondiff.__version__}")
