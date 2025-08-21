@@ -10,7 +10,7 @@ EOF
 
 cat debian/tests/control.in >> debian/tests/control.tmp
 
-sed -i "s#%RECOMMENDS%#$(bin/diffoscope --list-debian-substvars | awk -F= '/diffoscope:Recommends/ { print $2 }')#" debian/tests/control.tmp
+sed -i "s#%RECOMMENDS%#$(bin/diffoscope --list-debian-substvars | sed -ne 's,^diffoscope:Recommends=,,p')#" debian/tests/control.tmp
 
 sed -i "s#%PYRECOMMENDS%#$(debian/tests/generate-recommends.py)#" debian/tests/control.tmp
 
