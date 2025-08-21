@@ -743,7 +743,7 @@ class HTMLPresenter(Presenter):
                     format(report_current, ","),
                     format(self.report_limit, ","),
                     format(page_current, ","),
-                    format(page_limit, ","),
+                    format(page_limit, ",") if page_limit else "-",
                     want_to_add,
                 )
                 if report_current + want_to_add > self.report_limit:
