@@ -17,6 +17,8 @@
 # along with diffoscope.  If not, see <https://www.gnu.org/licenses/>.
 
 import pytest
+import re
+import subprocess
 
 from diffoscope.comparators.binary import FilesystemFile
 from diffoscope.comparators.uki import UKIFile
@@ -24,9 +26,15 @@ from diffoscope.comparators.utils.command import our_check_output
 from diffoscope.comparators.utils.specialize import specialize
 
 from ..utils.data import assert_diff, load_fixture
-from ..utils.tools import skip_unless_tools_exist
+from ..utils.tools import skip_unless_tools_exist, skip_unless_tool_is_at_least
 
 efi_stub = load_fixture("dummyx64.efi.stub")
+
+
+def ukify_version():
+    line = subprocess.check_output(("ukify", "--version")).decode("utf-8")
+
+    return re.search(r"\((.*)\)", line).group(1)
 
 
 def uki_fixture(prefix, os_release, uname):
@@ -70,6 +78,7 @@ def differences(uki1, uki2):
 
 @skip_unless_tools_exist("objdump")
 @skip_unless_tools_exist("ukify")
+@skip_unless_tool_is_at_least("ukify", ukify_version, "258~rc3")
 def test_no_differences(uki1):
     difference = uki1.compare(uki1)
     assert difference is None
@@ -77,5 +86,6 @@ def test_no_differences(uki1):
 
 @skip_unless_tools_exist("objdump")
 @skip_unless_tools_exist("ukify")
+@skip_unless_tool_is_at_least("ukify", ukify_version, "258~rc3")
 def test_diff(differences):
     assert_diff(differences[0], "uki_expected_diff")
