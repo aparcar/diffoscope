@@ -172,7 +172,7 @@ EXTERNAL_TOOLS = {
         "guix": "poppler",
     },
     "pedump": {
-        "debian": "mono-utils",
+        "debian": "mono-devel (>= 6.14.1+ds-3) | mono-utils (<< 6.14.1+ds-3)",
         "arch": "mono",
         "FreeBSD": "mono",
     },

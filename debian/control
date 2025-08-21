@@ -55,7 +55,7 @@ Build-Depends:
  llvm <!nocheck>,
  lz4 <!nocheck>,
  lzip <!nocheck>,
- mono-utils <!nocheck>,
+ mono-devel (>= 6.14.1+ds-3) <!nocheck> | mono-utils (<< 6.14.1+ds-3) <!nocheck>,
  ocaml-nox <!nocheck>,
  odt2txt <!nocheck>,
  oggvideotools [!s390x] <!nocheck>,

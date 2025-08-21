@@ -21,8 +21,9 @@ sed -i "s,python3-python-debian,python3-debian," debian/tests/control.tmp
 sed -i "s,python3-rpm-python,python3-rpm," debian/tests/control.tmp
 sed -i "s,coreboot-utils,coreboot-utils [!risv64]," debian/tests/control.tmp
 sed -i "s,fp-utils,fp-utils [!riscv64 !s390x]," debian/tests/control.tmp
-sed -i "s,mono-utils,mono-utils [!riscv64]," debian/tests/control.tmp
 sed -i "s,oggvideotools,oggvideotools [!s390x]," debian/tests/control.tmp
+sed -i "s,\(mono-devel (>= 6.14.1+ds-3)\),\1 [!riscv64]," debian/tests/control.tmp
+sed -i "s,\(mono-utils (<< 6.14.1+ds-3)\),\1 [!riscv64]," debian/tests/control.tmp
 #sed -i "s,python3-androguard,androguard," debian/tests/control.tmp
 #sed -i "s,dexdump,dexdump [amd64 arm64 armhf i386]," debian/tests/control.tmp
 # aapt removed due to not being in trixie atma - #1070416
