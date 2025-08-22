@@ -1,8 +1,22 @@
-diffoscope (304) UNRELEASED; urgency=medium
+diffoscope (304) experimental; urgency=medium
 
-  * WIP (generated upon release).
+  [ Chris Lamb ]
+  * Do not run jsondiff on files over 100KiB as the algorithm runs in O(n^2)
+    time. (Closes: reproducible-builds/diffoscope#414)
+  * Fix test after the upload of systemd-ukify 258~rc3 (vs. 258~rc2).
+  * Move from a mono-utils dependency to versioned "mono-devel | mono-utils"
+    dependency, taking care to maintain the [!riscv64] architecture
+    restriction. (Closes: #1111742)
+  * Use sed -ne over awk -F= to to avoid mangling dependency lines containing
+    equals signs (=), for example version restrictions.
+  * Use sed backreferences when generating debian/tests/control to avoid DRY
+    violations.
+  * Update copyright years.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 01 Aug 2025 11:53:27 -0700
+  [ Martin Joerg ]
+  * Avoid a crash in the HTML presenter when page limit is None.
+
+ -- Chris Lamb <lamby@debian.org>  Fri, 22 Aug 2025 08:13:11 -0700
 
 diffoscope (303) experimental; urgency=medium
 
