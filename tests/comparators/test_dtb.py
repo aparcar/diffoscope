@@ -40,7 +40,7 @@ def fdtdump_version():
         ("fdtdump", "--version"), stderr=subprocess.STDOUT
     ).decode("utf-8")
 
-    m = re.search(r"Version: DTC (?P<version>\d+\.\d+\.\d+)", out)
+    m = re.search(r"Version: DTC v?(?P<version>\d+\.\d+\.\d+)", out)
     if m is None:
         raise ValueError("Error parsing `fdtdump --version` output")
 
