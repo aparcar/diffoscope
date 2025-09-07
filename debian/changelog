@@ -1,8 +1,11 @@
-diffoscope (306) UNRELEASED; urgency=medium
+diffoscope (306) unstable; urgency=medium
 
-  * WIP (generated upon release).
+  [ Zbigniew Jędrzejewski-Szmek ]
+  * Fix compatibility with RPM 6.
+  * Use regular 'open' calls instead of the deprecated 'codecs.open'.
+  * Accept additional 'v' when calling 'fdtump --version'.
 
- -- Chris Lamb <lamby@debian.org>  Fri, 22 Aug 2025 10:41:39 -0700
+ -- Chris Lamb <lamby@debian.org>  Sun, 07 Sep 2025 15:31:24 -0700
 
 diffoscope (305) unstable; urgency=medium
 
