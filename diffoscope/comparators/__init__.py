@@ -95,6 +95,7 @@ class ComparatorManager:
         ("tar.TarFile",),
         ("xz.XzFile",),
         ("apk.ApkFile",),
+        ("alpine_apk.AlpineApkFile",),
         ("odt.OdtFile",),
         ("ocaml.OcamlInterfaceFile",),
         ("docx.DocxFile",),
