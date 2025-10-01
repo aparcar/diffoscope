@@ -27,6 +27,7 @@ EXTERNAL_TOOLS = {
     "aapt2": {"debian": "aapt"},
     "abootimg": {"debian": "abootimg", "guix": "abootimg"},
     "androguard": {"debian": "androguard"},
+    "apk": {"alpine": "apk-tools", "debian": "apk-tools", "arch": "apk-tools"},
     "apksigcopier": {"debian": "apksigcopier"},
     "apktool": {"debian": "apktool"},
     "apksigner": {"debian": "apksigner"},
